@@ -5,8 +5,8 @@ namespace App\Services;
 class SafetyFilterService
 {
     /**
-     * Anti-Dowry Prohibited Keywords and Semantic Phrases
-     * In compliance with Dowry Prohibition Act 1961 (India) & 2018 (Bangladesh)
+     * Anti-Dowry & Anti-Extortion Prohibited Keywords and Semantic Phrases
+     * In compliance with International Anti-Extortion Treaties, UN CEDAW, and Global Anti-Dowry Legislation
      */
     protected const DOWRY_PATTERNS = [
         '/\b(dowry|dahej|paun|pon|joutuk|joutuker|demand\s+money|cash\s+demand)\b/i',
@@ -52,7 +52,7 @@ class SafetyFilterService
                     'flagged' => true,
                     'violation' => 'dowry_solicitation',
                     'matched_term' => $matches[0],
-                    'reason' => 'Message triggered statutory anti-dowry filter (Dowry Prohibition Act). Commercial and asset demands are strictly barred on Vivah Connect.',
+                    'reason' => 'Message triggered statutory anti-dowry & anti-extortion filter. Commercial, asset, and dowry demands are strictly prohibited under international matrimonial laws and Vivah Connect global ethics.',
                 ];
             }
         }

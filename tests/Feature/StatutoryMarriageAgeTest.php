@@ -19,7 +19,7 @@ class StatutoryMarriageAgeTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Underage Groom',
             'email' => 'underage.male@example.com',
-            'phone' => '+8801700000001',
+            'phone' => '+12025550101',
             'gender' => 'male',
             'date_of_birth' => Carbon::now()->subYears(20)->toDateString(), // 20 years old (< 21)
             'role' => 'groom',
@@ -39,7 +39,7 @@ class StatutoryMarriageAgeTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Legal Age Groom',
             'email' => 'legal.male@example.com',
-            'phone' => '+8801700000002',
+            'phone' => '+447911123402',
             'gender' => 'male',
             'date_of_birth' => Carbon::now()->subYears(22)->toDateString(), // 22 years old (>= 21)
             'role' => 'groom',
@@ -59,7 +59,7 @@ class StatutoryMarriageAgeTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Underage Bride',
             'email' => 'underage.female@example.com',
-            'phone' => '+8801700000003',
+            'phone' => '+14165550103',
             'gender' => 'female',
             'date_of_birth' => Carbon::now()->subYears(17)->toDateString(), // 17 years old (< 18)
             'role' => 'bride',
@@ -82,7 +82,7 @@ class StatutoryMarriageAgeTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Polygamy Candidate',
             'email' => 'married.user@example.com',
-            'phone' => '+8801700000004',
+            'phone' => '+61412345604',
             'gender' => 'male',
             'date_of_birth' => Carbon::now()->subYears(25)->toDateString(),
             'role' => 'groom',

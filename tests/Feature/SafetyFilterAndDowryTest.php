@@ -14,10 +14,10 @@ class SafetyFilterAndDowryTest extends TestCase
     {
         $safetyFilter = new SafetyFilterService();
 
-        $textWithPhone = "Namaskar, please call me at +8801712345678 or 01712345678 tonight.";
+        $textWithPhone = "Namaskar, please call me at +12125550198 or +447911123456 tonight.";
         $shieldedPhone = $safetyFilter->applyContactShield($textWithPhone);
         $this->assertTrue($shieldedPhone['has_masked']);
-        $this->assertStringNotContainsString('+8801712345678', $shieldedPhone['masked']);
+        $this->assertStringNotContainsString('+12125550198', $shieldedPhone['masked']);
         $this->assertStringContainsString('[PHONE PROTECTED', $shieldedPhone['masked']);
 
         $textWithEmail = "Send me your details at sourav.test@gmail.com";
@@ -29,7 +29,7 @@ class SafetyFilterAndDowryTest extends TestCase
 
     /**
      * URS FR-8.4 & Statutory Framework: Anti-dowry detection engine.
-     * Complies with Dowry Prohibition Act 1961 (India) & 2018 (Bangladesh).
+     * Complies with International Anti-Extortion Treaties and Global Anti-Dowry Legislation.
      */
     public function test_anti_dowry_detection_blocks_illicit_demands(): void
     {

@@ -21,7 +21,21 @@
     <!-- Search & Filter Controls -->
     <div class="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm">
         <form method="GET" action="{{ route('discovery.index') }}" class="space-y-4">
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 text-xs">
+                <!-- Country / Global Diaspora -->
+                <div>
+                    <label class="block font-bold text-gray-700 uppercase mb-1">Country / Diaspora</label>
+                    <select name="country" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs bg-white">
+                        <option value="">Worldwide (Global)</option>
+                        <option value="United States" {{ ($filters['country'] ?? '') == 'United States' ? 'selected' : '' }}>United States</option>
+                        <option value="United Kingdom" {{ ($filters['country'] ?? '') == 'United Kingdom' ? 'selected' : '' }}>United Kingdom</option>
+                        <option value="Canada" {{ ($filters['country'] ?? '') == 'Canada' ? 'selected' : '' }}>Canada</option>
+                        <option value="Australia" {{ ($filters['country'] ?? '') == 'Australia' ? 'selected' : '' }}>Australia</option>
+                        <option value="India" {{ ($filters['country'] ?? '') == 'India' ? 'selected' : '' }}>India</option>
+                        <option value="Singapore" {{ ($filters['country'] ?? '') == 'Singapore' ? 'selected' : '' }}>Singapore</option>
+                        <option value="United Arab Emirates" {{ ($filters['country'] ?? '') == 'United Arab Emirates' ? 'selected' : '' }}>UAE</option>
+                    </select>
+                </div>
                 <!-- Min Age -->
                 <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">Min Age</label>
@@ -34,8 +48,8 @@
                 </div>
                 <!-- City -->
                 <div>
-                    <label class="block font-bold text-gray-700 uppercase mb-1">City / Location</label>
-                    <input type="text" name="city" value="{{ $filters['city'] ?? '' }}" placeholder="e.g. Dhaka, Kolkata" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                    <label class="block font-bold text-gray-700 uppercase mb-1">City / Region</label>
+                    <input type="text" name="city" value="{{ $filters['city'] ?? '' }}" placeholder="e.g. New York, London, Toronto" class="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
                 </div>
                 <!-- Marital Status -->
                 <div>

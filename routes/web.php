@@ -16,7 +16,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     if (auth()->check()) {
         if (auth()->user()->role === 'admin') return redirect()->route('admin.dashboard');
-        if (auth()->user()->role === 'family_rep') return redirect()->route('family.dashboard');
+        if (in_array(auth()->user()->role, ['family_rep', 'pandit'])) return redirect()->route('family.dashboard');
         return redirect()->route('discovery.index');
     }
     return redirect()->route('login');

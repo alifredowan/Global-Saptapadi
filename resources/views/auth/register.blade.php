@@ -17,7 +17,7 @@
     <div class="bg-amber-50 border-b border-amber-200 px-8 py-3 text-xs text-amber-950 flex items-center space-x-2">
         <span>⚖️</span>
         <span>
-            <strong>Statutory Age Rule:</strong> Minimum <strong>21 years for males</strong> and <strong>18 years for females</strong>. Polygamy strictly barred.
+            <strong>Global Matrimonial Standards:</strong> Minimum legal marriage age <strong>21 for grooms</strong> and <strong>18 for brides</strong> (UN Convention on Consent to Marriage). Strict international monogamy mandate.
         </span>
     </div>
 
@@ -117,8 +117,8 @@
                     <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
                         Mobile Number (with Country Code) <span class="text-red-700">*</span>
                     </label>
-                    <input type="text" name="phone" value="{{ old('phone', '+88017') }}" required 
-                        placeholder="+88017XXXXXXXX or +91XXXXXXXXXX"
+                    <input type="text" name="phone" value="{{ old('phone') }}" required 
+                        placeholder="e.g. +12125550198 or +447911123456 or +919876543210"
                         class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-red-800 outline-none text-sm">
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <label class="flex items-start space-x-2.5 cursor-pointer">
                     <input type="checkbox" name="anti_bot_verified" value="1" required class="mt-0.5 rounded text-red-900 focus:ring-red-800" checked>
                     <span>
-                        <strong>I solemnly affirm and declare:</strong> I am seeking a lawful Hindu/Dharmic marriage union. I understand that Vivah Connect strictly bans dowry solicitation, polygamy, and false credentials under statutory civil and personal laws.
+                        <strong>I solemnly affirm and declare:</strong> I am seeking a lawful Hindu / Dharmic marriage union. I understand that Vivah Connect strictly bans dowry solicitation, transnational extortion, romance fraud, and polygamy under international family conventions and Dharmic matrimonial ethics.
                     </span>
                 </label>
             </div>

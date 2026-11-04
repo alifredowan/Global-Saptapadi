@@ -72,27 +72,27 @@ class AuthController extends Controller
             'anti_bot_verified' => 'required|accepted',
         ]);
 
-        // Statutory Legal Marriage Age Enforcement (URS FR-1.2 & Legal Framework)
-        // Minimum 21 for males, 18 for females
+        // Statutory Legal Marriage Age Enforcement (International Standards & UN Convention on Consent to Marriage)
+        // Minimum 21 for grooms, 18 for brides (Universal minimum adult age of consent: 18+)
         $dob = Carbon::parse($validated['date_of_birth']);
         $age = $dob->age;
 
         if ($validated['gender'] === 'male' && $age < 21) {
             return back()->withErrors([
-                'date_of_birth' => "Underage registration barred: Statutory minimum marriage age for males is 21 years under the Hindu Marriage Act. Candidate is currently {$age} years old."
+                'date_of_birth' => "Underage registration barred: In accordance with statutory matrimonial standards and international conventions on the minimum age for marriage (UN Convention on Consent to Marriage), minimum age for male candidates is 21 years. Candidate is currently {$age} years old."
             ])->withInput();
         }
 
         if ($validated['gender'] === 'female' && $age < 18) {
             return back()->withErrors([
-                'date_of_birth' => "Underage registration barred: Statutory minimum marriage age for females is 18 years. Candidate is currently {$age} years old."
+                'date_of_birth' => "Underage registration barred: In accordance with statutory matrimonial standards and international conventions on the minimum age for marriage (UN Convention on Consent to Marriage), minimum age for female candidates is 18 years. Candidate is currently {$age} years old."
             ])->withInput();
         }
 
-        // Strict Monogamy Check (URS FR-1.1 & Monogamy Mandate)
+        // Strict Monogamy Check (International Family Law & Anti-Bigamy Mandate)
         if ($validated['marital_status'] === 'married') {
             return back()->withErrors([
-                'marital_status' => 'Polygamy and bigamy are strictly barred under Hindu personal law. Only unmarried, divorced, or widowed seekers may register.'
+                'marital_status' => 'Strict Monogamy Mandate: Polygamy and bigamy are strictly prohibited under international family law and Dharmic matrimonial codes. Only unmarried (single), legally divorced, widowed, or annulled seekers may register.'
             ])->withInput();
         }
 
@@ -173,7 +173,7 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
             if ($user->role === 'admin') return redirect()->route('admin.dashboard');
-            if ($user->role === 'family_rep') return redirect()->route('family.dashboard');
+            if (in_array($user->role, ['family_rep', 'pandit'])) return redirect()->route('family.dashboard');
             return redirect()->route('discovery.index')->with('success', "Logged in as {$user->name} ({$user->role})");
         }
         return redirect()->route('login');

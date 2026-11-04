@@ -50,10 +50,13 @@
                     👩‍🏫 <strong>Priya</strong> (Bride)
                 </a>
                 <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}" class="p-2.5 rounded-lg border border-amber-200 bg-amber-50 hover:bg-amber-100 text-center font-medium text-amber-950 transition">
-                    👴 <strong>Subhash</strong> (Family Rep)
+                    👴 <strong>Subhash</strong> (Ghotok / Family Rep)
                 </a>
-                <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="p-2.5 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-center font-medium text-red-950 transition">
-                    🛡️ <strong>Admin</strong> (KYC & Trust)
+                <a href="{{ route('demo.login', ['email' => 'pandit@vivahconnect.com']) }}" class="p-2.5 rounded-lg border border-amber-200 bg-amber-50 hover:bg-amber-100 text-center font-medium text-amber-950 transition">
+                    🕉️ <strong>Pandit Kalyan</strong> (Ghotok & Pandit)
+                </a>
+                <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="col-span-2 p-2 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-center font-medium text-red-950 transition">
+                    🛡️ <strong>Admin</strong> (KYC & Trust Operations)
                 </a>
             </div>
         </div>

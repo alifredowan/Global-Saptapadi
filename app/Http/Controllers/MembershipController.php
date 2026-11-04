@@ -243,13 +243,13 @@ class MembershipController extends Controller
         $user = Auth::user();
 
         $validated = $request->validate([
-            'payment_method' => 'required|in:stripe,paypal,bkash,nagad,upi,card,voucher',
+            'payment_method' => 'required|in:stripe,paypal,card,voucher',
             'voucher_code' => 'nullable|string|max:50',
         ]);
 
         $paymentMethod = $validated['payment_method'];
 
-        if ($paymentMethod === 'stripe') {
+        if ($paymentMethod === 'stripe' || $paymentMethod === 'card') {
             return $this->processStripe($request);
         }
 
@@ -257,12 +257,12 @@ class MembershipController extends Controller
             return $this->processPayPal($request);
         }
 
-        $amount = 1499.00;
-        $currency = 'BDT';
+        $amount = 29.00;
+        $currency = 'USD';
 
         // Check voucher discount
         if (!empty($validated['voucher_code']) && strtoupper(trim($validated['voucher_code'])) === 'SHUBHOVIVAH') {
-            $amount = 999.00; // Promo discount
+            $amount = 19.00; // Promo discount
         }
 
         $trxId = 'TXN_' . strtoupper(Str::random(10));

@@ -24,7 +24,7 @@ class VivahMilestoneAndProposalTest extends TestCase
         $groom = User::create([
             'name' => 'Sourav Banerjee',
             'email' => 'sourav@example.com',
-            'phone' => '+8801700000010',
+            'phone' => '+12125550010',
             'gender' => 'male',
             'date_of_birth' => '1995-05-10',
             'role' => 'groom',
@@ -35,7 +35,7 @@ class VivahMilestoneAndProposalTest extends TestCase
         $bride = User::create([
             'name' => 'Debolina Roy',
             'email' => 'debolina@example.com',
-            'phone' => '+8801700000011',
+            'phone' => '+14165550011',
             'gender' => 'female',
             'date_of_birth' => '1998-08-15',
             'role' => 'bride',
@@ -77,7 +77,7 @@ class VivahMilestoneAndProposalTest extends TestCase
         $groom = User::create([
             'name' => 'Amit Sen',
             'email' => 'amit@example.com',
-            'phone' => '+8801700000020',
+            'phone' => '+12125550020',
             'gender' => 'male',
             'date_of_birth' => '1994-03-12',
             'role' => 'groom',
@@ -89,7 +89,7 @@ class VivahMilestoneAndProposalTest extends TestCase
         $bride = User::create([
             'name' => 'Rupa Mukherjee',
             'email' => 'rupa@example.com',
-            'phone' => '+8801700000021',
+            'phone' => '+447911123021',
             'gender' => 'female',
             'date_of_birth' => '1997-07-20',
             'role' => 'bride',
@@ -101,7 +101,7 @@ class VivahMilestoneAndProposalTest extends TestCase
         $otherSuitor = User::create([
             'name' => 'Other Suitor',
             'email' => 'other@example.com',
-            'phone' => '+8801700000022',
+            'phone' => '+61412345022',
             'gender' => 'male',
             'date_of_birth' => '1993-01-01',
             'role' => 'groom',

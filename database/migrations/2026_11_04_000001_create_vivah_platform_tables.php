@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('weight_kg')->nullable();
             $table->string('complexion')->nullable();
             $table->string('mother_tongue')->default('Bengali');
-            $table->string('citizenship')->default('Bangladesh');
-            $table->string('country')->default('Bangladesh');
+            $table->string('citizenship')->default('United States');
+            $table->string('country')->default('United States');
             $table->string('city')->nullable();
             $table->integer('dependent_children')->default(0);
 
@@ -262,9 +262,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('plan_name')->default('pro_single_vivah_pass');
-            $table->decimal('amount', 10, 2)->default(1499.00);
-            $table->string('currency')->default('BDT'); // BDT, INR, USD
-            $table->string('payment_method'); // bkash, nagad, upi, card, voucher
+            $table->decimal('amount', 10, 2)->default(29.00);
+            $table->string('currency')->default('USD');
+            $table->string('payment_method'); // stripe, paypal, card, voucher
             $table->string('transaction_id');
             $table->string('status')->default('completed'); // completed, pending, failed
             $table->boolean('valid_until_marriage')->default(true);

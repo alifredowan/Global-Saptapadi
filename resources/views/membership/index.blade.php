@@ -357,26 +357,7 @@
                     </form>
                 </div>
 
-                <!-- Alternative Local Wallets -->
-                <div class="mt-4 pt-3 border-t border-gray-100">
-                    <details class="text-[11px] text-gray-500">
-                        <summary class="cursor-pointer hover:text-gray-700 font-medium select-none">
-                            Other regional payment options (bKash / Nagad / UPI)
-                        </summary>
-                        <form method="POST" action="{{ route('membership.checkout') }}" class="space-y-2 mt-2 pt-2">
-                            @csrf
-                            <input type="hidden" name="voucher_code" :value="voucherCode">
-                            <select name="payment_method" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-xs bg-white">
-                                <option value="bkash">bKash Mobile Wallet (BDT 1,499)</option>
-                                <option value="nagad">Nagad Mobile Financial Services (BDT 1,499)</option>
-                                <option value="upi">UPI / Net Banking (INR 1,199)</option>
-                            </select>
-                            <button type="submit" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-gray-900 text-white font-bold text-xs transition">
-                                Pay via Regional Mobile Wallet
-                            </button>
-                        </form>
-                    </details>
-                </div>
+                <!-- End Payment Methods -->
             </div>
             @else
             <div class="mt-8 pt-4 border-t border-amber-100 text-center">

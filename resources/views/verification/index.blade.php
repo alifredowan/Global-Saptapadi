@@ -61,10 +61,10 @@
                 <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">Government ID Type</label>
                     <select name="id_type" required class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 bg-white">
-                        <option value="national_id">National ID Card (NID / Smart Card / Aadhaar)</option>
-                        <option value="passport">International Passport</option>
-                        <option value="voter_id">Voter Identification Card</option>
-                        <option value="driving_license">Driving License</option>
+                        <option value="passport">International Passport (Machine Readable / e-Passport)</option>
+                        <option value="driving_license">State / National Driving License</option>
+                        <option value="national_id">National ID / Citizen Card / Social Security / Aadhaar</option>
+                        <option value="voter_id">Electoral / Voter Identification Card</option>
                     </select>
                 </div>
 
@@ -86,8 +86,8 @@
                 </div>
             </div>
 
-            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-900">
-                🛡️ <strong>Statutory Privacy Protection:</strong> Under the DPDP Act 2023 and Bangladesh privacy rules, submitted biometric artifacts are purely utilized for identity verification and permanently purged upon account erasure request.
+            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-900 leading-relaxed">
+                🛡️ <strong>International Privacy & Identity Protection (GDPR / Global Compliance):</strong> In accordance with international privacy frameworks (GDPR Art. 17 right to erasure and global identity standards), your uploaded government ID artifacts are encrypted in transit and at rest, strictly reviewed by verified trust officers, and permanently purged upon account erasure request.
             </div>
 
             <button type="submit" class="w-full py-3.5 rounded-xl gold-gradient text-white font-bold text-xs shadow hover:opacity-95 transition">

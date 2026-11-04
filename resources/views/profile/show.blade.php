@@ -43,7 +43,7 @@
                             @endif
                         </div>
                         <p class="text-xs sm:text-sm text-amber-900 font-semibold mt-1">
-                            {{ $user->age }} Years • {{ $profile?->city ?? 'Location Open' }}, {{ $profile?->country ?? 'Bangladesh' }} • Managed by {{ ucfirst($user->profile_managed_by) }}
+                            {{ $user->age }} Years • {{ $profile?->city ?? 'Location Open' }}, {{ $profile?->country ?? 'Global Diaspora' }} • Managed by {{ ucfirst($user->profile_managed_by) }}
                         </p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
 
                     <div class="p-3 bg-amber-50/40 rounded-xl border border-amber-100">
                         <span class="text-gray-400 block text-[10px] uppercase font-bold">Citizenship & Native Ancestry</span>
-                        <span class="font-semibold text-gray-900 text-sm">{{ $profile?->citizenship ?? 'Bangladesh' }} • {{ $profile?->native_ancestry ?? 'Ancestral Heritage' }}</span>
+                        <span class="font-semibold text-gray-900 text-sm">{{ $profile?->citizenship ?? 'Global Citizen' }} • {{ $profile?->native_ancestry ?? 'Ancestral Heritage' }}</span>
                     </div>
                 </div>
             </div>

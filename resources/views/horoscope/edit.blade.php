@@ -53,12 +53,12 @@
 
                 <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">City / Place of Birth</label>
-                    <input type="text" name="birth_place_city" value="{{ old('birth_place_city', $kundli->birth_place_city) }}" placeholder="e.g. Dhaka, Kolkata, Sylhet" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                    <input type="text" name="birth_place_city" value="{{ old('birth_place_city', $kundli->birth_place_city) }}" placeholder="e.g. New York, London, Mumbai, Toronto, Kolkata" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
                 </div>
 
                 <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">Country of Birth</label>
-                    <input type="text" name="birth_place_country" value="{{ old('birth_place_country', $kundli->birth_place_country ?? 'Bangladesh') }}" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                    <input type="text" name="birth_place_country" value="{{ old('birth_place_country', $kundli->birth_place_country ?? 'United States') }}" placeholder="e.g. United States, United Kingdom, Canada, India" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
                 </div>
             </div>
         </div>

@@ -420,20 +420,20 @@
                             </ul>
                         </div>
                         <div>
-                            <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Dharmic Communities</h4>
+                            <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Global Dharmic Communities</h4>
                             <p class="text-amber-200/60 mb-3">
-                                Serving Hindu, Jain, Sikh, and Buddhist seekers across Bangladesh, India, and the Global Diaspora with auspicious dignity.
+                                Serving Hindu, Jain, Sikh, and Buddhist seekers worldwide across North America, Europe, United Kingdom, Asia-Pacific, and the Global Diaspora with auspicious dignity.
                             </p>
                             <div class="p-2.5 rounded-lg bg-amber-900/30 border border-amber-800/40 text-[11px] text-amber-300">
-                                🛡️ 100% Government Photo ID & Selfie KYC Verified Network
+                                🛡️ 100% International Government ID & Liveness KYC Verified Network
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-6 border-t border-amber-900/40 flex flex-wrap justify-between items-center text-amber-300/60 text-[11px]">
-                        <div>© 2026 Vivah Connect. All rights reserved. Architectural Reference: URS v1.0.</div>
+                        <div>© 2026 Vivah Connect. Worldwide International Matrimonial Union. All rights reserved.</div>
                         <div class="flex space-x-4">
-                            <span>Statutory Compliance: DPDP Act 2023 / Dowry Prohibition Act</span>
+                            <span>Compliance: International Matrimonial Standards • GDPR & DPDP Compliant • Anti-Dowry & Anti-Extortion Enforcement</span>
                             <span>•</span>
                             <a href="{{ route('milestone.index') }}" class="hover:text-amber-200 underline">Shubho Bibaho Registry</a>
                         </div>

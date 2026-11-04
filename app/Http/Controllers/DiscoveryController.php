@@ -58,6 +58,11 @@ class DiscoveryController extends Controller
 
         // Profile relations filters
         $query->whereHas('profile', function ($q) use ($request, $user) {
+            // Country / Global Diaspora
+            if ($request->filled('country')) {
+                $q->where('country', 'ILIKE', '%' . $request->input('country') . '%');
+            }
+
             // City / Location
             if ($request->filled('city')) {
                 $q->where('city', 'ILIKE', '%' . $request->input('city') . '%');

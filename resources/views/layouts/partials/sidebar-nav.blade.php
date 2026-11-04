@@ -3,7 +3,7 @@
     $unreadCount = $user ? \App\Models\Message::where('receiver_user_id', $user->id)->whereNull('read_at')->count() : 0;
     $pendingProposals = $user ? $user->receivedProposals()->where('status', 'pending')->count() : 0;
     $shortlistsCount = $user ? $user->shortlists()->count() : 0;
-    $isRep = $user && $user->role === 'family_rep';
+    $isRep = $user && (in_array($user->role, ['family_rep', 'pandit']) || \App\Models\FamilyRepresentative::where('rep_user_id', $user->id)->exists());
     $isAdmin = $user && $user->role === 'admin';
     $isSeeker = $user && in_array($user->role, ['groom', 'bride']);
     $pendingMilestone = $user ? \App\Models\VivahMilestone::where(function($q) use ($user) {
@@ -198,10 +198,14 @@
             </a>
             <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}"
                class="p-2 rounded-lg text-[11px] font-semibold text-center transition border {{ $user?->email === 'subhash@example.com' ? 'bg-amber-500 text-stone-950 border-amber-400 font-bold shadow-xs' : 'bg-stone-900/80 text-stone-300 border-stone-800 hover:bg-stone-800 hover:text-white' }}">
-                Family Rep (Subhash)
+                Ghotok (Subhash)
+            </a>
+            <a href="{{ route('demo.login', ['email' => 'pandit@vivahconnect.com']) }}"
+               class="p-2 rounded-lg text-[11px] font-semibold text-center transition border {{ $user?->email === 'pandit@vivahconnect.com' ? 'bg-amber-500 text-stone-950 border-amber-400 font-bold shadow-xs' : 'bg-stone-900/80 text-stone-300 border-stone-800 hover:bg-stone-800 hover:text-white' }}">
+                Pandit / Ghotok
             </a>
             <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}"
-               class="p-2 rounded-lg text-[11px] font-semibold text-center transition border {{ $user?->email === 'admin@vivahconnect.com' ? 'bg-red-700 text-white border-red-500 font-bold shadow-xs' : 'bg-stone-900/80 text-stone-300 border-stone-800 hover:bg-stone-800 hover:text-white' }}">
+               class="col-span-2 p-1.5 rounded-lg text-[11px] font-semibold text-center transition border {{ $user?->email === 'admin@vivahconnect.com' ? 'bg-red-700 text-white border-red-500 font-bold shadow-xs' : 'bg-stone-900/80 text-stone-300 border-stone-800 hover:bg-stone-800 hover:text-white' }}">
                 Admin
             </a>
         </div>

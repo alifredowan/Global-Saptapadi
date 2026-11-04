@@ -50,13 +50,23 @@
                 </div>
 
                 <div>
+                    <label class="block font-bold text-gray-700 uppercase mb-1">Country of Residence</label>
+                    <input type="text" name="country" value="{{ old('country', $profile->country ?? 'United States') }}" placeholder="e.g. United States, United Kingdom, Canada, Australia, India" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-gray-700 uppercase mb-1">Citizenship</label>
+                    <input type="text" name="citizenship" value="{{ old('citizenship', $profile->citizenship ?? 'United States') }}" placeholder="e.g. United States, Canadian, British, Indian" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                </div>
+
+                <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">Mother Tongue</label>
                     <input type="text" name="mother_tongue" value="{{ old('mother_tongue', $profile->mother_tongue ?? 'Bengali') }}" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
                 </div>
 
                 <div>
                     <label class="block font-bold text-gray-700 uppercase mb-1">City / Residential Area</label>
-                    <input type="text" name="city" value="{{ old('city', $profile->city) }}" placeholder="e.g. Dhaka (Gulshan)" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
+                    <input type="text" name="city" value="{{ old('city', $profile->city) }}" placeholder="e.g. New York (Manhattan), London, Toronto, Mumbai" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:ring-1 focus:ring-red-800 text-xs">
                 </div>
 
                 <div>

@@ -75,7 +75,7 @@
                 <span class="text-xs uppercase tracking-widest text-amber-800 font-bold block mb-1">Groom</span>
                 <h2 class="font-cinzel font-bold text-2xl sm:text-3xl text-red-950">{{ $groom->name }}</h2>
                 <p class="text-xs text-gray-600 mt-1">
-                    Gotra Lineage: <strong>{{ $groomGotra }}</strong> • {{ $groom->profile?->city ?? 'Bangladesh' }}
+                    Gotra Lineage: <strong>{{ $groomGotra }}</strong> • {{ $groom->profile?->city ?? 'Global' }}@if($groom->profile?->country), {{ $groom->profile->country }}@endif
                 </p>
             </div>
 
@@ -84,7 +84,7 @@
                 <span class="text-xs uppercase tracking-widest text-amber-800 font-bold block mb-1">Bride</span>
                 <h2 class="font-cinzel font-bold text-2xl sm:text-3xl text-red-950">{{ $bride->name }}</h2>
                 <p class="text-xs text-gray-600 mt-1">
-                    Gotra Lineage: <strong>{{ $brideGotra }}</strong> • {{ $bride->profile?->city ?? 'Bangladesh' }}
+                    Gotra Lineage: <strong>{{ $brideGotra }}</strong> • {{ $bride->profile?->city ?? 'Global' }}@if($bride->profile?->country), {{ $bride->profile->country }}@endif
                 </p>
             </div>
         </div>
