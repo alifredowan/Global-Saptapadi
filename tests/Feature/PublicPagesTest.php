@@ -79,4 +79,31 @@ class PublicPagesTest extends TestCase
         $response->assertSee('Pandit & Acharya', false);
         $response->assertSee('Sagotra');
     }
+
+    public function test_cookie_consent_banner_is_rendered(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Your privacy, your choice');
+        $response->assertSee('We use essential cookies to keep you signed in');
+        $response->assertSee('Accept all');
+        $response->assertSee('Essential only');
+        $response->assertSee('Read our cookie policy');
+    }
+
+    public function test_turnstile_captcha_is_rendered_on_login_and_register_pages(): void
+    {
+        $responseLogin = $this->get('/login');
+        $responseLogin->assertStatus(200);
+        $responseLogin->assertSee('Success!');
+        $responseLogin->assertSee('CLOUDFLARE');
+        $responseLogin->assertSee('cf-turnstile-response');
+
+        $responseRegister = $this->get('/register');
+        $responseRegister->assertStatus(200);
+        $responseRegister->assertSee('Success!');
+        $responseRegister->assertSee('CLOUDFLARE');
+        $responseRegister->assertSee('cf-turnstile-response');
+    }
 }

@@ -193,9 +193,9 @@
                 </p>
             </div>
             <div class="p-4 rounded-xl bg-stone-950 border border-amber-900/40">
-                <h4 class="font-bold text-amber-300 mb-1">Data Privacy (DPDP & GDPR)</h4>
+                <h4 class="font-bold text-amber-300 mb-1">Data Privacy & Essential Cookies (DPDP & GDPR)</h4>
                 <p>
-                    All personal data, biodata documents, and astrological charts are encrypted. Contact shield masking guarantees telephone numbers and emails are never displayed publicly on search engines.
+                    All personal data, biodata documents, and astrological charts are encrypted. Contact shield masking guarantees telephone numbers and emails are never displayed publicly on search engines. We use strictly essential cookies for secure session management and CSRF protection—zero third-party tracking or advertising cookies.
                 </p>
             </div>
         </div>

@@ -395,6 +395,9 @@
                     </label>
                 </div>
 
+                <!-- Cloudflare Turnstile CAPTCHA (Matching Reference Image) -->
+                @include('layouts.partials.turnstile-captcha')
+
                 <!-- Step Navigation Controls -->
                 <div class="pt-4 flex items-center justify-between border-t border-stone-100">
                     <button type="button" @click="step = 2" class="px-4 py-2.5 rounded-xl border border-stone-300 text-stone-700 font-bold text-xs hover:bg-stone-50 transition cursor-pointer">

@@ -472,6 +472,9 @@
     </div>
     @endguest
 
+    <!-- Cookie Consent Banner (Nikah Style) -->
+    @include('layouts.partials.cookie-banner')
+
     @yield('scripts')
 </body>
 </html>
