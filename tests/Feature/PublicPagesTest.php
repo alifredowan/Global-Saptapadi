@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Profile;
+use App\Models\Kundli;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PublicPagesTest extends TestCase
@@ -32,12 +34,49 @@ class PublicPagesTest extends TestCase
         $response->assertSee('$29 USD');
     }
 
-    public function test_authenticated_user_redirects_from_root(): void
+    public function test_authenticated_user_redirects_from_root_to_dashboard(): void
     {
-        $groom = User::where('role', 'groom')->first() ?? User::factory()->create(['role' => 'groom', 'gender' => 'male', 'status' => 'active']);
+        $groom = User::factory()->create(['role' => 'groom', 'gender' => 'male', 'status' => 'active']);
 
         $response = $this->actingAs($groom)->get('/');
 
-        $response->assertRedirect(route('discovery.index'));
+        $response->assertRedirect(route('dashboard'));
+    }
+
+    public function test_groom_can_access_groom_dashboard(): void
+    {
+        $groom = User::factory()->create(['name' => 'Arun Groom', 'role' => 'groom', 'gender' => 'male', 'status' => 'active']);
+        Profile::create(['user_id' => $groom->id, 'gotra' => 'Shandilya', 'sampradaya' => 'Vaishnav']);
+
+        $response = $this->actingAs($groom)->get('/groom/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('Groom Portal');
+        $response->assertSee('Var Dashboard');
+        $response->assertSee('Arun Groom');
+    }
+
+    public function test_bride_can_access_bride_dashboard(): void
+    {
+        $bride = User::factory()->create(['name' => 'Priya Bride', 'role' => 'bride', 'gender' => 'female', 'status' => 'active']);
+        Profile::create(['user_id' => $bride->id, 'gotra' => 'Kashyapa', 'sampradaya' => 'Smarta']);
+
+        $response = $this->actingAs($bride)->get('/bride/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('Bride Portal');
+        $response->assertSee('Kanya Dashboard');
+        $response->assertSee('Priya Bride');
+    }
+
+    public function test_pandit_can_access_pandit_dashboard(): void
+    {
+        $pandit = User::factory()->create(['name' => 'Acharya Pandit', 'role' => 'pandit', 'gender' => 'male', 'status' => 'active']);
+
+        $response = $this->actingAs($pandit)->get('/pandit/dashboard');
+
+        $response->assertStatus(200);
+        $response->assertSee('Pandit & Acharya', false);
+        $response->assertSee('Sagotra');
     }
 }

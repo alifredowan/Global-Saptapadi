@@ -37,14 +37,7 @@ class AuthController extends Controller
 
             AuditLog::log('user_logged_in', ['email' => $user->email], $user->id);
 
-            if ($user->role === 'admin') {
-                return redirect()->intended(route('admin.dashboard'));
-            }
-            if ($user->role === 'family_rep') {
-                return redirect()->intended(route('family.dashboard'));
-            }
-
-            return redirect()->intended(route('discovery.index'));
+            return redirect()->intended(route('dashboard'));
         }
 
         return back()->withErrors([
@@ -172,9 +165,7 @@ class AuthController extends Controller
         if ($user) {
             Auth::login($user);
             $request->session()->regenerate();
-            if ($user->role === 'admin') return redirect()->route('admin.dashboard');
-            if (in_array($user->role, ['family_rep', 'pandit'])) return redirect()->route('family.dashboard');
-            return redirect()->route('discovery.index')->with('success', "Logged in as {$user->name} ({$user->role})");
+            return redirect()->route('dashboard')->with('success', "Logged in as {$user->name} ({$user->role})");
         }
         return redirect()->route('login');
     }

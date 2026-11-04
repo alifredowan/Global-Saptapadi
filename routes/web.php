@@ -12,12 +12,11 @@ use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     if (auth()->check()) {
-        if (auth()->user()->role === 'admin') return redirect()->route('admin.dashboard');
-        if (in_array(auth()->user()->role, ['family_rep', 'pandit'])) return redirect()->route('family.dashboard');
-        return redirect()->route('discovery.index');
+        return redirect()->route('dashboard');
     }
 
     $featuredCandidates = \App\Models\User::with(['profile', 'kundli'])
@@ -49,6 +48,12 @@ Route::get('/demo-login', [AuthController::class, 'demoLogin'])->name('demo.logi
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+    // Role-Specific Dashboards (Opened from Sidebar)
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/groom/dashboard', [DashboardController::class, 'groomDashboard'])->name('groom.dashboard');
+    Route::get('/bride/dashboard', [DashboardController::class, 'brideDashboard'])->name('bride.dashboard');
+    Route::get('/pandit/dashboard', [DashboardController::class, 'panditDashboard'])->name('pandit.dashboard');
+
     // Discovery, Matching & Search
     Route::get('/discovery', [DiscoveryController::class, 'index'])->name('discovery.index');
     Route::post('/shortlist/{id}', [DiscoveryController::class, 'toggleShortlist'])->name('shortlist.toggle');
