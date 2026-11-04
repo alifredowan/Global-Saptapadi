@@ -19,8 +19,19 @@ Route::get('/', function () {
         if (in_array(auth()->user()->role, ['family_rep', 'pandit'])) return redirect()->route('family.dashboard');
         return redirect()->route('discovery.index');
     }
-    return redirect()->route('login');
-});
+
+    $featuredCandidates = \App\Models\User::with(['profile', 'kundli'])
+        ->whereIn('role', ['groom', 'bride'])
+        ->where('status', 'active')
+        ->take(4)
+        ->get();
+
+    return view('welcome', compact('featuredCandidates'));
+})->name('home');
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
 
 // Language forced to English
 Route::get('/language/{lang}', function () {

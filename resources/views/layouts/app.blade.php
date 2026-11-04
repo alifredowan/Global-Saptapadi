@@ -387,72 +387,20 @@
             </main>
 
             <!-- Auspicious Footer -->
-            <footer class="bg-red-950 text-amber-100/80 border-t border-amber-900/60 mt-12 py-10 text-xs">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                        <div>
-                            <div class="flex items-center space-x-2 mb-3">
-                                <div class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-300 font-bold flex items-center justify-center text-xs">VC</div>
-                                <span class="font-heading font-bold text-lg text-amber-200">VIVAH CONNECT</span>
-                            </div>
-                            <p class="text-amber-200/60 leading-relaxed">
-                                Dedicated high-trust matrimonial platform adhering strictly to Hindu customary traditions, statutory legal codes, anti-dowry protocols, and familial dignity.
-                            </p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Customary & Legal Safeguards</h4>
-                            <ul class="space-y-1.5 text-amber-200/70">
-                                <li>• Statutory Minimum Age (21 M / 18 F)</li>
-                                <li>• Strict Monogamy Policy (Polygamy Barred)</li>
-                                <li>• Zero Dowry Policy (Dowry Prohibition Act)</li>
-                                <li>• Contact Shield & Masked Messaging</li>
-                                <li>• Family Representative Delegation</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Astrology & Heritage</h4>
-                            <ul class="space-y-1.5 text-amber-200/70">
-                                <li>• 36-Point Ashtakoota Guna Milan</li>
-                                <li>• Manglik Status & Cancellation Assessment</li>
-                                <li>• Gotra & Nanihal Ancestral Lineage</li>
-                                <li>• Optional "Horoscope Not Required" Toggle</li>
-                                <li>• Dignified Remarriage Support</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-amber-300 uppercase tracking-wider mb-3">Global Dharmic Communities</h4>
-                            <p class="text-amber-200/60 mb-3">
-                                Serving Hindu, Jain, Sikh, and Buddhist seekers worldwide across North America, Europe, United Kingdom, Asia-Pacific, and the Global Diaspora with auspicious dignity.
-                            </p>
-                            <div class="p-2.5 rounded-lg bg-amber-900/30 border border-amber-800/40 text-[11px] text-amber-300">
-                                🛡️ 100% International Government ID & Liveness KYC Verified Network
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-6 border-t border-amber-900/40 flex flex-wrap justify-between items-center text-amber-300/60 text-[11px]">
-                        <div>© 2026 Vivah Connect. Worldwide International Matrimonial Union. All rights reserved.</div>
-                        <div class="flex space-x-4">
-                            <span>Compliance: International Matrimonial Standards • GDPR & DPDP Compliant • Anti-Dowry & Anti-Extortion Enforcement</span>
-                            <span>•</span>
-                            <a href="{{ route('milestone.index') }}" class="hover:text-amber-200 underline">Shubho Bibaho Registry</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            @include('layouts.partials.footer')
         </div>
     </div>
     @endauth
 
     @guest
     {{-- ========================================================= --}}
-    {{-- GUEST USER: MINIMAL CLEAN HEADER                          --}}
+    {{-- GUEST USER: AUPICIOUS TOP BAR & PUBLIC NAVIGATION         --}}
     {{-- ========================================================= --}}
     <div class="min-h-screen flex flex-col">
         <header class="bg-white border-b border-amber-100 shadow-xs sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16 items-center">
-                    <a href="{{ route('discovery.index') }}" class="flex items-center space-x-2.5 group">
+                <div class="flex justify-between h-16 items-center gap-4">
+                    <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group shrink-0">
                         <div class="w-9 h-9 rounded-xl gold-gradient flex items-center justify-center text-amber-200 text-xs font-black shadow-md shadow-amber-950/20 group-hover:scale-105 transition">
                             VC
                         </div>
@@ -462,14 +410,24 @@
                         </div>
                     </a>
 
+                    <!-- Navigation Links for Guests -->
+                    <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-stone-700">
+                        <a href="{{ route('home') }}" class="hover:text-red-900 transition {{ request()->routeIs('home') ? 'text-red-900 font-bold border-b-2 border-red-900 pb-0.5' : '' }}">Home</a>
+                        <a href="{{ route('home') }}#sacred-pillars" class="hover:text-red-900 transition">Sacred Process</a>
+                        <a href="{{ route('home') }}#candidates" class="hover:text-red-900 transition">Candidate Previews</a>
+                        <a href="{{ route('home') }}#single-pass" class="hover:text-red-900 transition">Single Vivah Pass ($29)</a>
+                        <a href="{{ route('about') }}" class="hover:text-red-900 transition {{ request()->routeIs('about') ? 'text-red-900 font-bold border-b-2 border-red-900 pb-0.5' : '' }}">About Us</a>
+                    </nav>
+
                     <!-- Quick Demo Personas & Auth Links -->
-                    <div class="flex items-center space-x-3">
-                        <div class="hidden md:flex items-center space-x-1.5 text-xs text-stone-600">
-                            <span class="text-amber-800 font-semibold">Demo:</span>
-                            <a href="{{ route('demo.login', ['email' => 'arun@example.com']) }}" class="px-2 py-1 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium">Groom</a>
-                            <a href="{{ route('demo.login', ['email' => 'priya@example.com']) }}" class="px-2 py-1 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium">Bride</a>
-                            <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}" class="px-2 py-1 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium">Family</a>
-                            <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="px-2 py-1 rounded bg-red-100 hover:bg-red-200 text-red-900 font-medium">Admin</a>
+                    <div class="flex items-center space-x-2.5 shrink-0">
+                        <div class="hidden xl:flex items-center space-x-1.5 text-[11px] text-stone-600">
+                            <span class="text-amber-800 font-bold">Demo:</span>
+                            <a href="{{ route('demo.login', ['email' => 'arun@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Groom Dr. Arun">Groom</a>
+                            <a href="{{ route('demo.login', ['email' => 'priya@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Bride Priya">Bride</a>
+                            <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Family Rep Subhash">Family</a>
+                            <a href="{{ route('demo.login', ['email' => 'pandit@vivahconnect.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Pandit Acharya Kalyan">Pandit</a>
+                            <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="px-2 py-0.5 rounded bg-red-100 hover:bg-red-200 text-red-900 font-medium" title="Platform Admin">Admin</a>
                         </div>
                         <a href="{{ route('login') }}" class="px-3.5 py-1.5 rounded-lg border border-red-900 text-red-900 hover:bg-red-50 text-xs font-bold transition">Sign In</a>
                         <a href="{{ route('register') }}" class="px-3.5 py-1.5 rounded-lg bg-red-900 hover:bg-red-800 text-amber-100 text-xs font-bold shadow-xs transition">Create Account</a>
@@ -509,10 +467,8 @@
             @yield('content')
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-red-950 text-amber-100/80 border-t border-amber-900/60 mt-12 py-8 text-xs text-center">
-            <p>© 2026 Vivah Connect. Sacred Matrimonial Union. All rights reserved.</p>
-        </footer>
+        <!-- Auspicious Footer for Guests -->
+        @include('layouts.partials.footer')
     </div>
     @endguest
 
