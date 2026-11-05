@@ -19,20 +19,20 @@
                 extend: {
                     colors: {
                         auspicious: {
-                            crimson: '#800020',
-                            deepred: '#991b1b',
-                            saffron: '#ea580c',
-                            terracotta: '#c2410c',
-                            gold: '#b45309',
-                            goldlight: '#fef3c7',
-                            cream: '#fdfbf7',
-                            sand: '#fbf7ee',
+                            crimson: '#7A1F2B',
+                            deepred: '#5E1821',
+                            saffron: '#85531b',
+                            terracotta: '#6c4213',
+                            gold: '#85531b',
+                            goldlight: '#fbf5eb',
+                            cream: '#FBF6EE',
+                            sand: '#f5efe3',
                             card: '#ffffff'
                         }
                     },
                     fontFamily: {
                         heading: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
                     }
                 }
             }
@@ -40,8 +40,8 @@
     </script>
     <!-- Alpine.js for zero-tab sidebar & 3-dots drawer interaction -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
-    <!-- Laravel Reverb & Echo Real-Time WebSockets -->
-    @vite(['resources/js/app.js'])
+    <!-- Design Tokens, Theme CSS & Real-Time WebSockets -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         [x-cloak] { display: none !important; }
         html {
@@ -49,8 +49,8 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            background-color: #fcf9f2;
-            color: #27272a;
+            background-color: var(--bg-canvas, #FBF6EE);
+            color: var(--text-primary, #1f1b18);
         }
         /* Custom smooth scrollbar */
         ::-webkit-scrollbar {
@@ -58,27 +58,27 @@
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #fbf7ee;
+            background: #f5efe3;
         }
         ::-webkit-scrollbar-thumb {
             background: #d4a373;
             border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #b45309;
+            background: #7A1F2B;
         }
         .auspicious-border {
-            border-image: linear-gradient(to right, #800020, #ea580c, #b45309) 1;
+            border-image: linear-gradient(to right, #7A1F2B, #85531b, #5E1821) 1;
         }
         .gold-gradient {
-            background: linear-gradient(135deg, #800020 0%, #991b1b 50%, #c2410c 100%);
+            background: linear-gradient(135deg, #7A1F2B 0%, #5E1821 50%, #4A131A 100%);
         }
         .smooth-card {
             transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
         }
         .smooth-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 28px -10px rgba(128, 0, 32, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
     </style>
 </head>
@@ -397,40 +397,40 @@
     {{-- GUEST USER: AUPICIOUS TOP BAR & PUBLIC NAVIGATION         --}}
     {{-- ========================================================= --}}
     <div class="min-h-screen flex flex-col">
-        <header class="bg-white border-b border-amber-100 shadow-xs sticky top-0 z-40">
+        <header class="bg-[var(--bg-surface)] border-b border-[var(--border-default)] shadow-xs sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center gap-4">
                     <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group shrink-0">
-                        <div class="w-9 h-9 rounded-xl gold-gradient flex items-center justify-center text-amber-200 text-xs font-black shadow-md shadow-amber-950/20 group-hover:scale-105 transition">
+                        <div class="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--accent-primary)] flex items-center justify-center text-white text-xs font-bold shadow-xs group-hover:bg-[var(--accent-hover)] transition">
                             VC
                         </div>
                         <div>
-                            <span class="font-heading font-bold text-lg tracking-wider text-red-900 group-hover:text-amber-700 transition block leading-tight">VIVAH CONNECT</span>
-                            <span class="text-[9px] uppercase font-semibold text-amber-700 tracking-widest block -mt-0.5">Sacred Matrimonial Union</span>
+                            <span class="font-heading font-bold text-lg tracking-wider text-[var(--accent-primary)] group-hover:text-[var(--accent-hover)] transition block leading-tight">VIVAH CONNECT</span>
+                            <span class="text-[9px] uppercase font-semibold text-[var(--text-muted)] tracking-widest block -mt-0.5">Sacred Matrimonial Union</span>
                         </div>
                     </a>
 
                     <!-- Navigation Links for Guests -->
-                    <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-stone-700">
-                        <a href="{{ route('home') }}" class="hover:text-red-900 transition {{ request()->routeIs('home') ? 'text-red-900 font-bold border-b-2 border-red-900 pb-0.5' : '' }}">Home</a>
-                        <a href="{{ route('home') }}#sacred-pillars" class="hover:text-red-900 transition">Sacred Process</a>
-                        <a href="{{ route('home') }}#candidates" class="hover:text-red-900 transition">Candidate Previews</a>
-                        <a href="{{ route('home') }}#single-pass" class="hover:text-red-900 transition">Single Vivah Pass ($29)</a>
-                        <a href="{{ route('about') }}" class="hover:text-red-900 transition {{ request()->routeIs('about') ? 'text-red-900 font-bold border-b-2 border-red-900 pb-0.5' : '' }}">About Us</a>
+                    <nav class="hidden lg:flex items-center space-x-6 text-xs font-medium text-[var(--text-secondary)]">
+                        <a href="{{ route('home') }}" class="hover:text-[var(--accent-primary)] transition {{ request()->routeIs('home') ? 'text-[var(--accent-primary)] font-bold border-b-2 border-[var(--accent-primary)] pb-0.5' : '' }}">Home</a>
+                        <a href="{{ route('home') }}#sacred-pillars" class="hover:text-[var(--accent-primary)] transition">Sacred Process</a>
+                        <a href="{{ route('home') }}#candidates" class="hover:text-[var(--accent-primary)] transition">Candidate Previews</a>
+                        <a href="{{ route('home') }}#single-pass" class="hover:text-[var(--accent-primary)] transition">Single Vivah Pass ($29)</a>
+                        <a href="{{ route('about') }}" class="hover:text-[var(--accent-primary)] transition {{ request()->routeIs('about') ? 'text-[var(--accent-primary)] font-bold border-b-2 border-[var(--accent-primary)] pb-0.5' : '' }}">About Us</a>
                     </nav>
 
                     <!-- Quick Demo Personas & Auth Links -->
                     <div class="flex items-center space-x-2.5 shrink-0">
-                        <div class="hidden xl:flex items-center space-x-1.5 text-[11px] text-stone-600">
-                            <span class="text-amber-800 font-bold">Demo:</span>
-                            <a href="{{ route('demo.login', ['email' => 'arun@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Groom Dr. Arun">Groom</a>
-                            <a href="{{ route('demo.login', ['email' => 'priya@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Bride Priya">Bride</a>
-                            <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Family Rep Subhash">Family</a>
-                            <a href="{{ route('demo.login', ['email' => 'pandit@vivahconnect.com']) }}" class="px-2 py-0.5 rounded bg-amber-100/70 hover:bg-amber-200 text-amber-900 font-medium" title="Pandit Acharya Kalyan">Pandit</a>
-                            <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="px-2 py-0.5 rounded bg-red-100 hover:bg-red-200 text-red-900 font-medium" title="Platform Admin">Admin</a>
+                        <div class="hidden xl:flex items-center space-x-1.5 text-[11px] text-[var(--text-muted)]">
+                            <span class="font-bold text-[var(--text-secondary)]">Demo:</span>
+                            <a href="{{ route('demo.login', ['email' => 'arun@example.com']) }}" class="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] hover:bg-[var(--border-subtle)] text-[var(--text-primary)] font-medium" title="Groom Dr. Arun">Groom</a>
+                            <a href="{{ route('demo.login', ['email' => 'priya@example.com']) }}" class="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] hover:bg-[var(--border-subtle)] text-[var(--text-primary)] font-medium" title="Bride Priya">Bride</a>
+                            <a href="{{ route('demo.login', ['email' => 'subhash@example.com']) }}" class="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] hover:bg-[var(--border-subtle)] text-[var(--text-primary)] font-medium" title="Family Rep Subhash">Family</a>
+                            <a href="{{ route('demo.login', ['email' => 'pandit@vivahconnect.com']) }}" class="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] hover:bg-[var(--border-subtle)] text-[var(--text-primary)] font-medium" title="Pandit Acharya Kalyan">Pandit</a>
+                            <a href="{{ route('demo.login', ['email' => 'admin@vivahconnect.com']) }}" class="px-2 py-0.5 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] hover:bg-[var(--accent-border)] text-[var(--accent-text)] font-medium" title="Platform Admin">Admin</a>
                         </div>
-                        <a href="{{ route('login') }}" class="px-3.5 py-1.5 rounded-lg border border-red-900 text-red-900 hover:bg-red-50 text-xs font-bold transition">Sign In</a>
-                        <a href="{{ route('register') }}" class="px-3.5 py-1.5 rounded-lg bg-red-900 hover:bg-red-800 text-amber-100 text-xs font-bold shadow-xs transition">Create Account</a>
+                        <a href="{{ route('login') }}" class="btn-secondary !min-h-[36px] !py-1 !px-3 text-xs font-semibold">Sign In</a>
+                        <a href="{{ route('register') }}" class="btn-primary !min-h-[36px] !py-1 !px-3.5 text-xs font-bold">Create Account</a>
                     </div>
                 </div>
             </div>

@@ -91,34 +91,34 @@
         this.step = target;
         window.scrollTo({ top: 120, behavior: 'smooth' });
     }
-}" class="max-w-2xl mx-auto my-8 bg-white rounded-3xl shadow-xl border border-amber-200 overflow-hidden">
+}" class="max-w-2xl mx-auto my-8 card-ledger p-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-default)]">
 
     <!-- Header Banner -->
-    <div class="gold-gradient p-8 text-center text-amber-100 relative overflow-hidden">
-        <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-amber-400/20 border-2 border-amber-300 flex items-center justify-center text-sm font-black font-heading shadow-inner">
+    <div class="p-8 text-center bg-[var(--bg-subtle)] border-b border-[var(--border-subtle)] relative overflow-hidden">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] flex items-center justify-center text-sm font-bold text-[var(--accent-primary)] font-heading">
             VC
         </div>
-        <h1 class="font-heading font-extrabold text-2xl text-amber-100">Sacred Matrimonial Registration</h1>
-        <p class="text-xs text-amber-200/90 mt-1 uppercase tracking-widest font-semibold">
+        <h1 class="font-heading font-bold text-2xl text-[var(--text-primary)]">Sacred Matrimonial Registration</h1>
+        <p class="text-xs text-[var(--text-secondary)] mt-1 uppercase tracking-widest font-semibold">
             Vedic Biodata • Chaperoned Family Trust • Zero Dowry Enforcement
         </p>
 
-        <!-- Stepper Progress Tracker (Nikah Style) -->
+        <!-- Stepper Progress Tracker (Design Kit Stepper Spec) -->
         <div class="mt-6 max-w-md mx-auto">
-            <div class="flex items-center justify-between text-xs font-bold text-amber-200 mb-2 px-2">
-                <span :class="step >= 1 ? 'text-amber-300 font-extrabold' : 'opacity-60'">1. Candidate Biodata</span>
-                <span :class="step >= 2 ? 'text-amber-300 font-extrabold' : 'opacity-60'">2. Security & Contact</span>
-                <span :class="step >= 3 ? 'text-amber-300 font-extrabold' : 'opacity-60'">3. Sacred Pledge</span>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text-secondary)] mb-2 px-2">
+                <span :class="step >= 1 ? 'text-[var(--accent-primary)] font-bold' : 'opacity-60'">1. Candidate Biodata</span>
+                <span :class="step >= 2 ? 'text-[var(--accent-primary)] font-bold' : 'opacity-60'">2. Security & Contact</span>
+                <span :class="step >= 3 ? 'text-[var(--accent-primary)] font-bold' : 'opacity-60'">3. Sacred Pledge</span>
             </div>
-            <div class="w-full bg-amber-950/40 rounded-full h-2 overflow-hidden border border-amber-400/30">
-                <div class="bg-amber-300 h-full rounded-full transition-all duration-500 ease-out" 
+            <div class="w-full bg-[var(--neutral-200)] rounded-full h-1.5 overflow-hidden">
+                <div class="bg-[var(--accent-primary)] h-full rounded-full transition-all duration-300 ease-out" 
                      :style="'width: ' + (step === 1 ? '33.33%' : (step === 2 ? '66.66%' : '100%'))"></div>
             </div>
         </div>
     </div>
 
     <!-- Statutory Legal Notice Banner -->
-    <div class="bg-amber-50 border-b border-amber-200 px-6 sm:px-8 py-3 text-xs text-amber-950 flex items-center space-x-2.5">
+    <div class="bg-[var(--accent-subtle)] border-b border-[var(--accent-border)] px-6 sm:px-8 py-3 text-xs text-[var(--accent-text)] flex items-center space-x-2.5">
         <span class="text-base">⚖️</span>
         <span>
             <strong>Global Matrimonial Standards:</strong> Statutory minimum marriage age <strong>21 for grooms</strong> and <strong>18 for brides</strong> (UN Convention on Consent to Marriage). Strict international monogamy mandate.
@@ -259,9 +259,9 @@
 
                 <!-- Next Button -->
                 <div class="pt-4 flex justify-end">
-                    <button type="button" @click="goToStep(2)" class="px-6 py-3 rounded-xl gold-gradient text-white font-bold text-xs shadow-md hover:opacity-95 transition flex items-center space-x-1.5 cursor-pointer">
+                    <button type="button" @click="goToStep(2)" class="btn-primary text-xs font-bold !py-2.5 !px-5 cursor-pointer">
                         <span>Continue to Security & Contact</span>
-                        <span>→</span>
+                        <span>&rarr;</span>
                     </button>
                 </div>
             </div>
@@ -336,12 +336,12 @@
 
                 <!-- Step Navigation Controls -->
                 <div class="pt-4 flex items-center justify-between border-t border-stone-100">
-                    <button type="button" @click="step = 1" class="px-4 py-2.5 rounded-xl border border-stone-300 text-stone-700 font-bold text-xs hover:bg-stone-50 transition cursor-pointer">
-                        ← Back to Step 1
+                    <button type="button" @click="step = 1" class="btn-secondary text-xs font-semibold !py-2 !px-4 cursor-pointer">
+                        &larr; Back to Step 1
                     </button>
-                    <button type="button" @click="goToStep(3)" class="px-6 py-3 rounded-xl gold-gradient text-white font-bold text-xs shadow-md hover:opacity-95 transition flex items-center space-x-1.5 cursor-pointer">
+                    <button type="button" @click="goToStep(3)" class="btn-primary text-xs font-bold !py-2.5 !px-5 cursor-pointer">
                         <span>Continue to Sacred Pledge</span>
-                        <span>→</span>
+                        <span>&rarr;</span>
                     </button>
                 </div>
             </div>
@@ -360,35 +360,35 @@
 
                 <!-- Dharmic Ethical Commitments Highlights -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs space-y-1">
-                        <div class="text-amber-900 font-bold flex items-center space-x-1.5">
+                    <div class="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs space-y-1">
+                        <div class="text-[var(--accent-primary)] font-bold flex items-center space-x-1.5">
                             <span>🚫</span>
                             <span>Zero Dowry</span>
                         </div>
-                        <p class="text-[11px] text-stone-600">Strictly banned under UN CEDAW and Dharmic marriage codes.</p>
+                        <p class="text-[11px] text-[var(--text-secondary)]">Strictly banned under UN CEDAW and Dharmic marriage codes.</p>
                     </div>
 
-                    <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs space-y-1">
-                        <div class="text-amber-900 font-bold flex items-center space-x-1.5">
+                    <div class="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs space-y-1">
+                        <div class="text-[var(--accent-primary)] font-bold flex items-center space-x-1.5">
                             <span>💍</span>
                             <span>Strict Monogamy</span>
                         </div>
-                        <p class="text-[11px] text-stone-600">Bigamy and polygamy are barred under international family law.</p>
+                        <p class="text-[11px] text-[var(--text-secondary)]">Bigamy and polygamy are barred under international family law.</p>
                     </div>
 
-                    <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs space-y-1">
-                        <div class="text-amber-900 font-bold flex items-center space-x-1.5">
+                    <div class="p-3.5 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-subtle)] text-xs space-y-1">
+                        <div class="text-[var(--accent-primary)] font-bold flex items-center space-x-1.5">
                             <span>🛡️</span>
                             <span>Modesty Shield</span>
                         </div>
-                        <p class="text-[11px] text-stone-600">Candidate photos and contact numbers are protected with privacy veils.</p>
+                        <p class="text-[11px] text-[var(--text-secondary)]">Candidate photos and contact numbers are protected with privacy veils.</p>
                     </div>
                 </div>
 
                 <!-- Solemn Affirmation Declaration Checkbox -->
-                <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-300 space-y-2 text-xs text-stone-800">
+                <div class="p-4 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] space-y-2 text-xs text-[var(--text-primary)]">
                     <label class="flex items-start space-x-3 cursor-pointer">
-                        <input type="checkbox" name="anti_bot_verified" value="1" required class="mt-0.5 rounded text-red-900 focus:ring-red-800 w-4 h-4 cursor-pointer" checked>
+                        <input type="checkbox" name="anti_bot_verified" value="1" required class="mt-0.5 rounded text-[var(--accent-primary)] focus:ring-[var(--accent-primary)] w-4 h-4 cursor-pointer" checked>
                         <span class="text-[11px] leading-relaxed">
                             <strong>I solemnly affirm and declare:</strong> I am seeking a lawful, authentic Hindu / Dharmic matrimonial union. I understand and agree that Vivah Connect strictly prohibits dowry demands, transnational matrimonial fraud, deceitful profiles, and polygamy. I declare all submitted candidate particulars to be genuine.
                         </span>
@@ -400,11 +400,10 @@
 
                 <!-- Step Navigation Controls -->
                 <div class="pt-4 flex items-center justify-between border-t border-stone-100">
-                    <button type="button" @click="step = 2" class="px-4 py-2.5 rounded-xl border border-stone-300 text-stone-700 font-bold text-xs hover:bg-stone-50 transition cursor-pointer">
-                        ← Back to Step 2
+                    <button type="button" @click="step = 2" class="btn-secondary text-xs font-semibold !py-2 !px-4 cursor-pointer">
+                        &larr; Back to Step 2
                     </button>
-                    <button type="submit" class="px-7 py-3.5 rounded-xl gold-gradient text-white font-bold text-sm shadow-lg hover:opacity-95 transition flex items-center space-x-2 cursor-pointer">
-                        <span>✨</span>
+                    <button type="submit" class="btn-primary text-xs font-bold !py-3 !px-6 cursor-pointer">
                         <span>Complete Registration & Build Biodata</span>
                     </button>
                 </div>

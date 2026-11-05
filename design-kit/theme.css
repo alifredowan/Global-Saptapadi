@@ -1,0 +1,109 @@
+/**
+ * Theme Tokens (Hindu Matrimony — Vivah Platform Preset)
+ * 
+ * Palette:
+ * - Accent: #7A1F2B (deep maroon)
+ * - Accent hover: #5E1821 (darker shade of the same hue)
+ * - Accent active: #4A131A
+ * - Background canvas: #FBF6EE (warm cream)
+ * - Secondary accent: #85531B (dignified brass / amber)
+ * - Neutrals & Semantic status colors kept unchanged from design-tokens.css.
+ *   (Muted green used only for validation & status badges).
+ */
+
+:root {
+  /* =======================================================================
+   * 1. CANVAS & BACKGROUND TINTS (Warm cream base)
+   * ======================================================================= */
+  --bg-canvas: #FBF6EE;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f5efe3;
+  --bg-muted: #ebe3d3;
+  --bg-inset: #e2dac8;
+
+  /* =======================================================================
+   * 2. TYPOGRAPHY INK & CONTRAST
+   * ======================================================================= */
+  --text-primary: #1f1b18;
+  --text-secondary: #524a43;
+  --text-muted: #786f66;
+  --text-inverse: #ffffff;
+
+  /* =======================================================================
+   * 3. HAIRLINE BORDER HUES
+   * ======================================================================= */
+  --border-subtle: #eee6d6;
+  --border-default: #dfd6c2;
+  --border-strong: #bbb098;
+
+  /* =======================================================================
+   * 4. PRIMARY ACCENT (Deep Maroon — Auspicious Dharmic / Vivah Union)
+   * ======================================================================= */
+  --accent-primary: #7A1F2B;
+  --accent-hover: #5E1821;
+  --accent-active: #4A131A;
+  --accent-subtle: #faf1f2;
+  --accent-subtle-hover: #f3e2e4;
+  --accent-border: #e8c2c7;
+  --accent-text: #5E1821;
+  --accent-contrast: #ffffff;
+
+  /* =======================================================================
+   * 5. SECONDARY ACCENT (Dignified Brass / Amber — Heritage highlights)
+   * ======================================================================= */
+  --secondary-primary: #85531b;
+  --secondary-hover: #6c4213;
+  --secondary-subtle: #fbf5eb;
+  --secondary-border: #ebd9be;
+  --secondary-text: #61390d;
+
+  /* =======================================================================
+   * 6. KEYBOARD ACCESSIBILITY FOCUS RING
+   * ======================================================================= */
+  --focus-ring: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--accent-primary);
+  --focus-ring-offset: 2px;
+
+  /* =======================================================================
+   * 7. GEOMETRIC BACKGROUND PATTERN (Restrained 3-5% opacity maroon dot grid)
+   * ======================================================================= */
+  --pattern-faint: radial-gradient(circle, rgba(122, 31, 43, 0.05) 1px, transparent 1px);
+  --pattern-faint-size: 24px 24px;
+}
+
+/* =======================================================================
+ * DARK THEME (Warm maroon-slate night palette — NO harsh #000000)
+ * ======================================================================= */
+.dark {
+  --bg-canvas: #161213;
+  --bg-surface: #1e191a;
+  --bg-subtle: #292224;
+  --bg-muted: #362d30;
+  --bg-inset: #191415;
+
+  --text-primary: #f5f2f0;
+  --text-secondary: #c7bfc1;
+  --text-muted: #8f8588;
+  --text-inverse: #161213;
+
+  --border-subtle: #2b2325;
+  --border-default: #3d3235;
+  --border-strong: #59494e;
+
+  --accent-primary: #d45b6b;
+  --accent-hover: #e07684;
+  --accent-active: #c24354;
+  --accent-subtle: #2d181c;
+  --accent-subtle-hover: #3b2025;
+  --accent-border: #5a2c33;
+  --accent-text: #e07684;
+  --accent-contrast: #161213;
+
+  --secondary-primary: #f3b060;
+  --secondary-hover: #f7c385;
+  --secondary-subtle: #2c2214;
+  --secondary-border: #523f25;
+  --secondary-text: #f7c385;
+
+  --focus-ring: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--accent-primary);
+  --pattern-faint: radial-gradient(circle, rgba(212, 91, 107, 0.08) 1px, transparent 1px);
+}

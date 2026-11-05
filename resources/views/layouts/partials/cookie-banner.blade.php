@@ -27,29 +27,29 @@ x-transition:enter-end="opacity-100 translate-y-0 scale-100"
 x-transition:leave="transition ease-in duration-200 transform"
 x-transition:leave-start="opacity-100 translate-y-0 scale-100"
 x-transition:leave-end="opacity-0 translate-y-6 scale-95"
-class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 max-w-md w-[calc(100vw-2rem)] sm:w-[420px] bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-stone-200 shadow-2xl shadow-stone-900/15">
+class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 max-w-md w-[calc(100vw-2rem)] sm:w-[420px] card-ledger p-4 sm:p-5">
     
     <div class="flex items-start space-x-3.5">
-        <!-- Cookie Emoji Icon Badge -->
-        <div class="w-10 h-10 rounded-2xl bg-amber-50 border border-amber-200/90 flex items-center justify-center text-xl shrink-0 shadow-xs">
+        <!-- Cookie Icon Badge -->
+        <div class="w-10 h-10 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] flex items-center justify-center text-xl shrink-0 shadow-xs">
             <span>🍪</span>
         </div>
 
         <div class="flex-1 space-y-1">
             <!-- Title -->
             <div class="flex items-center justify-between">
-                <h4 class="font-heading font-bold text-sm text-stone-900 tracking-tight">
+                <h4 class="font-heading font-bold text-sm text-[var(--text-primary)] tracking-tight">
                     Your privacy, your choice
                 </h4>
-                <button type="button" @click="essentialOnly()" class="text-stone-400 hover:text-stone-600 text-xs p-1 transition" title="Dismiss">
+                <button type="button" @click="essentialOnly()" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xs p-1 transition" title="Dismiss">
                     ✕
                 </button>
             </div>
 
             <!-- Description -->
-            <p class="text-[12px] sm:text-xs text-stone-600 leading-relaxed">
+            <p class="text-[12px] sm:text-xs text-[var(--text-secondary)] leading-relaxed">
                 We use essential cookies to keep you signed in, protect forms, and remember your privacy preference. We do not use advertising cookies. 
-                <a href="{{ route('about') }}#legal-compliance" class="font-semibold text-amber-900 underline hover:text-red-900 transition">
+                <a href="{{ route('about') }}#legal-compliance" class="font-semibold text-[var(--accent-primary)] underline hover:text-[var(--accent-hover)] transition">
                     Read our cookie policy
                 </a>.
             </p>
@@ -59,18 +59,18 @@ class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 max-w-md w-[calc(100vw-2
                 <div class="flex items-center gap-2">
                     <button type="button" 
                             @click="acceptAll()" 
-                            class="px-4 py-2 rounded-xl gold-gradient text-white text-xs font-bold hover:opacity-95 shadow-xs transition cursor-pointer">
+                            class="btn-primary !min-h-[36px] !py-1 !px-3.5 text-xs font-bold">
                         Accept all
                     </button>
 
                     <button type="button" 
                             @click="essentialOnly()" 
-                            class="px-3.5 py-2 rounded-xl border border-stone-300 text-stone-700 bg-white hover:bg-stone-50 text-xs font-bold transition cursor-pointer">
+                            class="btn-secondary !min-h-[36px] !py-1 !px-3 text-xs font-semibold">
                         Essential only
                     </button>
                 </div>
 
-                <a href="{{ route('about') }}#legal-compliance" class="text-xs text-stone-500 hover:text-stone-800 font-medium transition shrink-0">
+                <a href="{{ route('about') }}#legal-compliance" class="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] font-medium transition shrink-0">
                     Questions?
                 </a>
             </div>
