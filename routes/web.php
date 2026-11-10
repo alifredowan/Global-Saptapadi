@@ -40,9 +40,9 @@ Route::get('/language/{lang}', function () {
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/demo-login', [AuthController::class, 'demoLogin'])->name('demo.login');
 
@@ -75,14 +75,14 @@ Route::middleware('auth')->group(function () {
 
     // Formal Proposals & Interests
     Route::get('/proposals', [ProposalController::class, 'index'])->name('proposals.index');
-    Route::post('/proposals/send/{receiverId}', [ProposalController::class, 'store'])->name('proposals.store');
+    Route::post('/proposals/send/{receiverId}', [ProposalController::class, 'store'])->name('proposals.store')->middleware('throttle:proposals');
     Route::post('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposals.accept');
     Route::post('/proposals/{id}/decline', [ProposalController::class, 'decline'])->name('proposals.decline');
 
     // Secure Chaperoned Communication
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/{partnerId}', [ChatController::class, 'show'])->name('chat.show');
-    Route::post('/chat/{partnerId}/send', [ChatController::class, 'sendMessage'])->name('chat.send');
+    Route::post('/chat/{partnerId}/send', [ChatController::class, 'sendMessage'])->name('chat.send')->middleware('throttle:messages');
     Route::post('/chat/{partnerId}/contact-exchange', [ChatController::class, 'requestContactExchange'])->name('chat.contact_exchange');
     Route::post('/chat/{partnerId}/report', [ChatController::class, 'reportUser'])->name('chat.report');
 
@@ -110,9 +110,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/milestone/declare', [MilestoneController::class, 'declareMarriage'])->name('milestone.declare');
     Route::get('/certificate/{uuid}', [MilestoneController::class, 'viewCertificate'])->name('milestone.certificate');
 
-    // Admin & Moderation Operations
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::post('/admin/kyc/{id}', [AdminController::class, 'reviewKyc'])->name('admin.kyc.review');
-    Route::post('/admin/report/{id}', [AdminController::class, 'handleReport'])->name('admin.report.handle');
-    Route::get('/admin/audit-logs', [AdminController::class, 'auditLogs'])->name('admin.audit_logs');
+    // Admin & Moderation Operations (RBAC: Admin only)
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::post('/admin/kyc/{id}', [AdminController::class, 'reviewKyc'])->name('admin.kyc.review');
+        Route::post('/admin/report/{id}', [AdminController::class, 'handleReport'])->name('admin.report.handle');
+        Route::get('/admin/audit-logs', [AdminController::class, 'auditLogs'])->name('admin.audit_logs');
+    });
 });

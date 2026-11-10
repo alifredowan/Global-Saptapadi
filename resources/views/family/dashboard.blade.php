@@ -6,7 +6,7 @@
     <!-- Header -->
     <div class="bg-gradient-to-r from-red-950 via-red-900 to-amber-900 rounded-3xl p-6 sm:p-8 text-amber-100 shadow-md">
         <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span>🏛️</span>
+            <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-4 h-4 rounded-full object-cover inline-block">
             <span>Family Representative Governance Dashboard</span>
         </div>
         <h1 class="font-heading font-bold text-2xl sm:text-3xl text-amber-100">

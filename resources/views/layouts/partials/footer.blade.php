@@ -5,9 +5,7 @@
             <!-- Left: Logo, Brand Name, Divider & Copyright -->
             <div class="flex items-center space-x-3.5 flex-wrap justify-center md:justify-start">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group">
-                    <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[#7A1F2B] text-white font-bold flex items-center justify-center text-xs shadow-xs group-hover:bg-[#5E1821] transition">
-                        VC
-                    </div>
+                    <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-8 h-8 rounded-[var(--radius-sm)] object-cover shadow-xs border border-white/10 group-hover:scale-105 transition shrink-0">
                     <span class="font-heading font-bold text-sm sm:text-base text-stone-100 tracking-wider group-hover:text-amber-300 transition">
                         Vivah Connect
                     </span>

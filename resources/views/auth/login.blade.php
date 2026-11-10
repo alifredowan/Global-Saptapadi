@@ -4,9 +4,7 @@
 <div class="max-w-md mx-auto my-12 card-ledger p-0 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-default)]">
     <!-- Header with Refined Theme Bar -->
     <div class="p-8 text-center bg-[var(--bg-subtle)] border-b border-[var(--border-subtle)]">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] flex items-center justify-center text-sm font-bold text-[var(--accent-primary)] font-heading">
-            VC
-        </div>
+        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-14 h-14 mx-auto mb-3 rounded-[var(--radius-sm)] object-cover shadow-sm border border-[var(--border-default)]">
         <h2 class="font-heading font-bold text-2xl text-[var(--text-primary)]">Welcome Back</h2>
         <p class="text-xs text-[var(--text-secondary)] mt-1 leading-relaxed">
             Sign in to review matches, proposals, and chaperoned messages.

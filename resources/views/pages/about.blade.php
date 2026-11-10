@@ -5,6 +5,7 @@
 
     <!-- Hero Header Banner -->
     <div class="card-ledger pattern-header p-8 sm:p-12 text-white bg-[var(--accent-primary)] text-center">
+        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-16 h-16 mx-auto mb-4 rounded-[var(--radius-sm)] object-cover shadow-md border border-white/20">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-3">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
             <span>About Vivah Connect &bull; Sacred Matrimonial Union</span>

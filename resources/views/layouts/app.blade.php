@@ -6,6 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Vivah Connect') }} - Sacred Matrimonial Union</title>
     
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-emblem.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo-emblem.png') }}">
+    
     <!-- Google Fonts: Cinzel (Auspicious Heading), Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,9 +151,7 @@
 
                 <!-- Brand in Mobile Drawer -->
                 <div @click="mobileSidebarOpen = false" class="flex items-center gap-3 px-2 mb-6 cursor-pointer select-none">
-                    <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-amber-200 text-xs font-black shadow-md shadow-amber-950/40">
-                        VC
-                    </div>
+                    <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-10 h-10 rounded-xl object-cover shadow-md shadow-amber-950/40 border border-amber-500/30 shrink-0">
                     <div>
                         <span class="font-heading font-bold text-lg text-amber-100 tracking-wider flex items-center gap-1">
                             VIVAH <span class="text-amber-400">CONNECT</span>
@@ -208,9 +211,7 @@
                         @click="toggleSidebar()"
                         class="flex items-center gap-2.5 group flex-1 min-w-0 text-left cursor-pointer focus:outline-none"
                         title="Toggle Navigation Sidebar">
-                    <div class="w-9 h-9 rounded-xl gold-gradient flex items-center justify-center text-amber-200 text-xs font-black shadow-md shadow-amber-950/40 group-hover:scale-105 transition transform">
-                        VC
-                    </div>
+                    <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-9 h-9 rounded-xl object-cover shadow-md shadow-amber-950/40 border border-amber-500/30 group-hover:scale-105 transition transform shrink-0">
                     <div class="min-w-0 flex-1">
                         <div class="font-heading font-bold text-base text-amber-100 tracking-wider group-hover:text-amber-300 transition truncate">
                             VIVAH <span class="text-amber-400">CONNECT</span>
@@ -292,9 +293,7 @@
                     <div @click="toggleSidebar()"
                          class="flex items-center space-x-2.5 cursor-pointer select-none group shrink-0 whitespace-nowrap"
                          title="Open / Close Sidebar (Vivah Connect Logo)">
-                        <div class="w-9 h-9 rounded-xl gold-gradient flex items-center justify-center text-amber-200 text-xs font-black shadow-md shadow-amber-950/20 group-hover:scale-105 transition transform shrink-0">
-                            VC
-                        </div>
+                        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-9 h-9 rounded-xl object-cover shadow-xs border border-amber-800/30 group-hover:scale-105 transition transform shrink-0">
                         <div class="hidden sm:block">
                             <span class="font-heading font-bold text-lg tracking-wider text-red-900 group-hover:text-amber-700 transition block leading-tight">VIVAH CONNECT</span>
                             <span class="text-[9px] uppercase font-semibold text-amber-700 tracking-widest block -mt-0.5">Sacred Matrimonial Union</span>
@@ -401,9 +400,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center gap-4">
                     <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group shrink-0">
-                        <div class="w-9 h-9 rounded-[var(--radius-sm)] bg-[var(--accent-primary)] flex items-center justify-center text-white text-xs font-bold shadow-xs group-hover:bg-[var(--accent-hover)] transition">
-                            VC
-                        </div>
+                        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-9 h-9 rounded-[var(--radius-sm)] object-cover shadow-xs border border-[var(--border-default)] group-hover:scale-105 transition shrink-0">
                         <div>
                             <span class="font-heading font-bold text-lg tracking-wider text-[var(--accent-primary)] group-hover:text-[var(--accent-hover)] transition block leading-tight">VIVAH CONNECT</span>
                             <span class="text-[9px] uppercase font-semibold text-[var(--text-muted)] tracking-widest block -mt-0.5">Sacred Matrimonial Union</span>

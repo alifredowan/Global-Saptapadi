@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Kundli;
@@ -19,12 +21,9 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
@@ -50,46 +49,14 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:20',
-            'gender' => 'required|in:male,female',
-            'date_of_birth' => 'required|date',
-            'role' => 'required|in:groom,bride,family_rep',
-            'profile_managed_by' => 'required|in:self,father,mother,brother,sister,uncle,aunt,grandparent,other',
-            'marital_status' => 'required|in:never_married,divorced,widowed,annulled',
-            'password' => 'required|string|min:8|confirmed',
-            'anti_bot_verified' => 'required|accepted',
-        ]);
+        $validated = $request->validated();
 
-        // Statutory Legal Marriage Age Enforcement (International Standards & UN Convention on Consent to Marriage)
-        // Minimum 21 for grooms, 18 for brides (Universal minimum adult age of consent: 18+)
+        // Set role based on gender if seeker
         $dob = Carbon::parse($validated['date_of_birth']);
         $age = $dob->age;
 
-        if ($validated['gender'] === 'male' && $age < 21) {
-            return back()->withErrors([
-                'date_of_birth' => "Underage registration barred: In accordance with statutory matrimonial standards and international conventions on the minimum age for marriage (UN Convention on Consent to Marriage), minimum age for male candidates is 21 years. Candidate is currently {$age} years old."
-            ])->withInput();
-        }
-
-        if ($validated['gender'] === 'female' && $age < 18) {
-            return back()->withErrors([
-                'date_of_birth' => "Underage registration barred: In accordance with statutory matrimonial standards and international conventions on the minimum age for marriage (UN Convention on Consent to Marriage), minimum age for female candidates is 18 years. Candidate is currently {$age} years old."
-            ])->withInput();
-        }
-
-        // Strict Monogamy Check (International Family Law & Anti-Bigamy Mandate)
-        if ($validated['marital_status'] === 'married') {
-            return back()->withErrors([
-                'marital_status' => 'Strict Monogamy Mandate: Polygamy and bigamy are strictly prohibited under international family law and Dharmic matrimonial codes. Only unmarried (single), legally divorced, widowed, or annulled seekers may register.'
-            ])->withInput();
-        }
-
-        // Set role based on gender if seeker
         $role = $validated['role'];
         if ($role !== 'family_rep') {
             $role = ($validated['gender'] === 'male') ? 'groom' : 'bride';

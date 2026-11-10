@@ -12,9 +12,12 @@
                 
                 <!-- Left Column (7 cols): Sincere Left-Aligned Headline & Trust Signals -->
                 <div class="lg:col-span-7 space-y-5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] text-[var(--accent-text)] text-xs font-bold uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Sacred Matrimonial Union • Global Dharmic Diaspora</span>
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-11 h-11 rounded-[var(--radius-sm)] shadow-xs object-cover border border-[var(--border-default)] shrink-0">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] text-[var(--accent-text)] text-xs font-bold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-[var(--accent-primary)]"></span>
+                            <span>Sacred Matrimonial Union • Global Dharmic Diaspora</span>
+                        </div>
                     </div>
 
                     <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[var(--text-primary)] tracking-tight leading-tight">

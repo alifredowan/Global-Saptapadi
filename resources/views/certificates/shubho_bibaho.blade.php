@@ -46,8 +46,13 @@
         <div class="absolute bottom-4 right-4 text-amber-700 text-2xl font-serif">✦</div>
 
         <!-- Watermark -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
-            <span class="text-[280px] font-cinzel text-red-950 font-black">VC</span>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05]">
+            <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-80 h-80 object-contain rounded-full">
+        </div>
+
+        <!-- Header Logo -->
+        <div class="mb-3">
+            <img src="{{ asset('images/logo-full.jpg') }}" alt="Vivah Connect" class="h-16 mx-auto object-contain rounded-lg shadow-sm border border-amber-900/20">
         </div>
 
         <!-- Inscription Banner -->

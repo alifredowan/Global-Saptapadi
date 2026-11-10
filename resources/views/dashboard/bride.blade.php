@@ -10,7 +10,7 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-2">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-200 text-xs font-bold uppercase tracking-wider border border-rose-400/30">
-                    <span>🪷</span>
+                    <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-4 h-4 rounded-full object-cover inline-block">
                     <span>Bride Portal • Kanya Dashboard</span>
                 </div>
                 <h1 class="font-heading font-extrabold text-2xl sm:text-3xl text-amber-100">

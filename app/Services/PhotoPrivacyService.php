@@ -12,10 +12,27 @@ class PhotoPrivacyService
 {
     /**
      * Store photo and create blurred companion version for privacy protection.
+     * Hardened against file upload attacks (OWASP A08).
      */
     public function savePhoto(User $user, UploadedFile $file, bool $isPrimary = false): Photo
     {
-        $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        // 1. Strict server-side MIME and extension resolution (Ignore client-supplied extension)
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/webp'];
+        $mimeType = $file->getMimeType();
+
+        if (!in_array($mimeType, $allowedMimes, true)) {
+            throw new \InvalidArgumentException('Unsupported image type. Only JPEG, PNG, and WebP are accepted.');
+        }
+
+        $extension = match ($mimeType) {
+            'image/jpeg' => 'jpg',
+            'image/png'  => 'png',
+            'image/webp' => 'webp',
+            default      => 'jpg',
+        };
+
+        // 2. Cryptographically unpredictable UUID filename
+        $filename = (string) Str::uuid() . '.' . $extension;
         $uploadDir = public_path('uploads/photos');
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0755, true);

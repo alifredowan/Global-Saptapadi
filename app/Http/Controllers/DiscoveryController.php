@@ -110,12 +110,30 @@ class DiscoveryController extends Controller
         }
 
         $candidates = $query->paginate(12)->withQueryString();
+        $candidateIds = $candidates->getCollection()->pluck('id');
+
+        // Eager batch check to eliminate N+1 queries (Speed & Performance Standard)
+        $shortlistedLookup = Shortlist::where('user_id', $user->id)
+            ->whereIn('candidate_user_id', $candidateIds)
+            ->pluck('candidate_user_id')
+            ->flip();
+
+        $photoGrantLookup = \App\Models\PhotoAccessGrant::where('grantee_user_id', $user->id)
+            ->whereIn('owner_user_id', $candidateIds)
+            ->where('status', 'granted')
+            ->pluck('owner_user_id')
+            ->flip();
 
         // Calculate compatibility score and gotra advisories for each candidate
-        $results = $candidates->getCollection()->map(function ($candidate) use ($user) {
+        $results = $candidates->getCollection()->map(function ($candidate) use ($user, $shortlistedLookup, $photoGrantLookup) {
             $compatibility = $this->astrologyService->calculateOverallCompatibility($user, $candidate);
-            $canViewPhotos = $user->canViewUnblurredPhotoOf($candidate);
-            $isShortlisted = Shortlist::where('user_id', $user->id)->where('candidate_user_id', $candidate->id)->exists();
+            
+            // O(1) in-memory check
+            $canViewPhotos = ($candidate->profile?->photo_privacy === 'public')
+                || isset($photoGrantLookup[$candidate->id])
+                || $user->canViewUnblurredPhotoOf($candidate);
+
+            $isShortlisted = isset($shortlistedLookup[$candidate->id]);
 
             return [
                 'user' => $candidate,

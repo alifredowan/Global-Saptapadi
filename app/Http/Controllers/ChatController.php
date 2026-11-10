@@ -33,13 +33,22 @@ class ChatController extends Controller
             ->where('status', 'accepted')
             ->get();
 
-        $conversations = $acceptedProposals->map(function ($prop) use ($user) {
+        $partnerIds = $acceptedProposals->map(function ($p) use ($user) {
+            return $p->sender_user_id === $user->id ? $p->receiver_user_id : $p->sender_user_id;
+        })->unique();
+
+        // Batch-load latest messages in a single query to eliminate N+1 overhead
+        $latestMessages = Message::where(function ($q) use ($user, $partnerIds) {
+            $q->where('sender_user_id', $user->id)->whereIn('receiver_user_id', $partnerIds);
+        })->orWhere(function ($q) use ($user, $partnerIds) {
+            $q->where('receiver_user_id', $user->id)->whereIn('sender_user_id', $partnerIds);
+        })->orderBy('created_at', 'desc')->get()->groupBy(function ($msg) use ($user) {
+            return $msg->sender_user_id === $user->id ? $msg->receiver_user_id : $msg->sender_user_id;
+        });
+
+        $conversations = $acceptedProposals->map(function ($prop) use ($user, $latestMessages) {
             $partner = ($prop->sender_user_id === $user->id) ? $prop->receiver : $prop->sender;
-            $lastMessage = Message::where(function ($q) use ($user, $partner) {
-                $q->where('sender_user_id', $user->id)->where('receiver_user_id', $partner->id);
-            })->orWhere(function ($q) use ($user, $partner) {
-                $q->where('sender_user_id', $partner->id)->where('receiver_user_id', $user->id);
-            })->latest()->first();
+            $lastMessage = $latestMessages->get($partner->id)?->first();
 
             return [
                 'partner' => $partner,

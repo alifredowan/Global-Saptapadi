@@ -8,7 +8,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
                 <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-red-800 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
-                    <span>🛡️</span>
+                    <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-4 h-4 rounded-full object-cover inline-block">
                     <span>Vivah Connect Trust & Operations Center</span>
                 </div>
                 <h1 class="font-heading font-bold text-2xl sm:text-3xl text-amber-100">

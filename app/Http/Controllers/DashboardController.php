@@ -75,9 +75,10 @@ class DashboardController extends Controller
         });
 
         // Proposals stats
-        $pendingReceivedProposals = Proposal::with(['sender.profile'])
+        $pendingReceivedProposals = Proposal::with(['sender.profile', 'sender.kundli', 'sender.photos'])
             ->where('receiver_user_id', $user->id)
             ->where('status', 'pending')
+            ->latest()
             ->get();
 
         $sentProposalsCount = Proposal::where('sender_user_id', $user->id)->count();

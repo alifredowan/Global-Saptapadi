@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Photo;
@@ -46,77 +47,12 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user', 'profile', 'kundli', 'photos'));
     }
 
-    public function update(Request $request, PhotoPrivacyService $photoService)
+    public function update(UpdateProfileRequest $request, PhotoPrivacyService $photoService)
     {
         $user = Auth::user();
         $profile = $user->profile;
 
-        $validated = $request->validate([
-            // Physical & Personal
-            'height_cm' => 'nullable|integer|min:120|max:230',
-            'weight_kg' => 'nullable|integer|min:35|max:200',
-            'complexion' => 'nullable|string',
-            'mother_tongue' => 'nullable|string',
-            'citizenship' => 'nullable|string',
-            'country' => 'nullable|string',
-            'city' => 'nullable|string',
-            'marital_status' => 'nullable|in:never_married,divorced,widowed,annulled',
-            'dependent_children' => 'nullable|integer|min:0',
-
-            // Education & Profession
-            'qualification_level' => 'nullable|string',
-            'education_detail' => 'nullable|string',
-            'profession' => 'nullable|string',
-            'organization_type' => 'nullable|string',
-            'annual_income_range' => 'nullable|string',
-
-            // Religion & Lineage
-            'religion' => 'nullable|string',
-            'sampradaya' => 'nullable|string',
-            'caste_jati' => 'nullable|string',
-            'sub_caste' => 'nullable|string',
-            'caste_no_bar' => 'nullable|boolean',
-            'gotra' => 'nullable|string',
-            'nanihal_gotra' => 'nullable|string',
-
-            // Lifestyle & Habits
-            'diet' => 'nullable|in:vegetarian,eggetarian,non_vegetarian,jain,vegan',
-            'smoking' => 'nullable|in:never,occasionally,regularly',
-            'alcohol' => 'nullable|in:never,occasionally,regularly',
-
-            // Spiritual Practice
-            'puja_frequency' => 'nullable|string',
-            'temple_visits' => 'nullable|string',
-            'fasting_vrata' => 'nullable|string',
-            'scripture_study' => 'nullable|string',
-            'guru_lineage' => 'nullable|string',
-            'tilak_preference' => 'nullable|string',
-            'post_marriage_customs' => 'nullable|string',
-
-            // Family
-            'family_structure' => 'nullable|in:nuclear,joint',
-            'family_values' => 'nullable|in:traditional,moderate,liberal',
-            'father_occupation' => 'nullable|string',
-            'mother_occupation' => 'nullable|string',
-            'brothers_count' => 'nullable|integer|min:0',
-            'sisters_count' => 'nullable|integer|min:0',
-            'native_ancestry' => 'nullable|string',
-            'living_arrangements_preference' => 'nullable|string',
-
-            // Narrative Bio
-            'about_me' => 'nullable|string|max:2000',
-            'partner_preferences_bio' => 'nullable|string|max:2000',
-
-            // Photo & Field Privacy
-            'photo_privacy' => 'nullable|in:public,blur_until_mutual,restricted',
-            'mask_income' => 'nullable|boolean',
-            'mask_gotra' => 'nullable|boolean',
-            'mask_caste' => 'nullable|boolean',
-            'mask_kundli' => 'nullable|boolean',
-
-            // Photos upload (up to 6)
-            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-        ]);
+        $validated = $request->validated();
 
         if (isset($validated['marital_status'])) {
             $user->update(['marital_status' => $validated['marital_status']]);

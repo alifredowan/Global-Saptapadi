@@ -95,9 +95,7 @@
 
     <!-- Header Banner -->
     <div class="p-8 text-center bg-[var(--bg-subtle)] border-b border-[var(--border-subtle)] relative overflow-hidden">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-[var(--radius-sm)] bg-[var(--accent-subtle)] border border-[var(--accent-border)] flex items-center justify-center text-sm font-bold text-[var(--accent-primary)] font-heading">
-            VC
-        </div>
+        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-14 h-14 mx-auto mb-3 rounded-[var(--radius-sm)] object-cover shadow-sm border border-[var(--border-default)]">
         <h1 class="font-heading font-bold text-2xl text-[var(--text-primary)]">Sacred Matrimonial Registration</h1>
         <p class="text-xs text-[var(--text-secondary)] mt-1 uppercase tracking-widest font-semibold">
             Vedic Biodata • Chaperoned Family Trust • Zero Dowry Enforcement
