@@ -52,7 +52,7 @@ class SafetyFilterService
                     'flagged' => true,
                     'violation' => 'dowry_solicitation',
                     'matched_term' => $matches[0],
-                    'reason' => 'Message triggered statutory anti-dowry & anti-extortion filter. Commercial, asset, and dowry demands are strictly prohibited under international matrimonial laws and Vivah Connect global ethics.',
+                    'reason' => 'Message triggered statutory anti-dowry & anti-extortion filter. Commercial, asset, and dowry demands are strictly prohibited under international matrimonial laws and Global Saptapadi global ethics.',
                 ];
             }
         }

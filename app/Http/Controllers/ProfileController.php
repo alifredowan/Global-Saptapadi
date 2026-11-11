@@ -126,5 +126,30 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         return redirect()->route('login')->with('success', 'Your account and personal data have been permanently erased.');
     }
+
+    public function privacySettings()
+    {
+        $user = Auth::user();
+        $profile = $user->profile ?? Profile::create(['user_id' => $user->id]);
+        $compliance = \App\Services\ComplianceService::getSettings();
+        return view('settings.privacy', compact('user', 'profile', 'compliance'));
+    }
+
+    public function updatePrivacySettings(Request $request)
+    {
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        $validated = $request->validate([
+            'photo_privacy' => 'required|in:blur_until_mutual,public,restricted',
+            'phone_visibility' => 'nullable|in:mutual_family_only,chaperone_approved',
+        ]);
+
+        $profile->update([
+            'photo_privacy' => $validated['photo_privacy'],
+        ]);
+
+        return back()->with('success', 'Privacy preferences updated.');
+    }
 }
 

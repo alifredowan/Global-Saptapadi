@@ -17,10 +17,10 @@ class PublicPagesTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Sacred Matrimonial Union');
+        $response->assertSee('Global Saptapadi');
+        $response->assertSee('Seven sacred steps');
         $response->assertSee('Single Vivah Pass');
-        $response->assertSee('36-Point Ashtakoota Guna Milan');
-        $response->assertSee('Find Compatible Dharmic Matches');
+        $response->assertSee('36-Guna');
     }
 
     public function test_guest_sees_about_us_page(): void
@@ -28,7 +28,7 @@ class PublicPagesTest extends TestCase
         $response = $this->get('/about');
 
         $response->assertStatus(200);
-        $response->assertSee('About Vivah Connect');
+        $response->assertSee('Global Saptapadi');
         $response->assertSee('5 Sacred Dharmic Pillars');
         $response->assertSee('Pandit Acharya Kalyan');
         $response->assertSee('$29 USD');
@@ -86,10 +86,10 @@ class PublicPagesTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Your privacy, your choice');
-        $response->assertSee('We use essential cookies to keep you signed in');
+        $response->assertSee('We use a few cookies to keep you signed in');
         $response->assertSee('Accept all');
-        $response->assertSee('Essential only');
-        $response->assertSee('Read our cookie policy');
+        $response->assertSee('Reject non-essential');
+        $response->assertSee('Read cookie policy');
     }
 
     public function test_turnstile_captcha_is_rendered_on_login_and_register_pages(): void

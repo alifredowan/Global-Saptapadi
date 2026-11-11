@@ -121,7 +121,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('home')->with('info', 'You have been signed out.');
     }
 
     // Switch between demo accounts for instant evaluation
@@ -137,4 +137,5 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 }
+
 

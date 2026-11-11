@@ -3,118 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commemorative Marriage Certificate - {{ $groom->name }} & {{ $bride->name }}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Commemorative Marriage Certificate &bull; {{ $groom->name }} &amp; {{ $bride->name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            background-color: #f7f2e7;
-            font-family: 'Playfair Display', serif;
+            background-color: #FFFBF3;
+            color: #1A1A1A;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
         }
-        .cert-border {
-            border: 14px solid #800020;
-            outline: 3px solid #d97706;
-            outline-offset: -8px;
+        .font-serif {
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
+        .action-bar {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.75rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 180ms ease-out;
+        }
+        .btn-print {
+            background-color: #8B1E2D;
+            color: #ffffff;
+            border: 1px solid #8B1E2D;
+        }
+        .btn-print:hover {
+            background-color: #6E1723;
+        }
+        .btn-back {
+            background-color: #ffffff;
+            color: #44403C;
+            border: 1px solid #D6D3D1;
+        }
+        .btn-back:hover {
+            background-color: #F5F5F4;
+        }
+        .certificate-canvas {
+            width: 100%;
+            max-width: 820px;
+            background-color: #FFFFFF;
+            border: 2px solid #E07B1A;
+            outline: 6px solid #8B1E2D;
+            outline-offset: -10px;
+            padding: 3.5rem 3rem;
+            position: relative;
+            box-shadow: 0 10px 30px -10px rgba(139, 30, 45, 0.12);
+            text-align: center;
+        }
+        .corner-ornament {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            color: #E07B1A;
+        }
+        .corner-tl { top: 16px; left: 16px; }
+        .corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+        .corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+        .corner-br { bottom: 16px; right: 16px; transform: scale(-1); }
+        .sub-header {
+            font-size: 0.6875rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #E07B1A;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .cert-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #8B1E2D;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            margin-bottom: 0.25rem;
+        }
+        .cert-subtitle {
+            font-size: 1rem;
+            color: #E07B1A;
+            margin-bottom: 1.5rem;
+        }
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E07B1A, transparent);
+            margin: 0 auto 1.75rem;
+        }
+        .lead-text {
+            font-size: 0.9375rem;
+            color: #57534E;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-style: italic;
+        }
+        .couple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .couple-card {
+            background-color: #FFFBF3;
+            border: 1px solid #EADFCB;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .couple-role {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #E07B1A;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .couple-name {
+            font-size: 1.625rem;
+            font-weight: 700;
+            color: #8B1E2D;
+            margin-bottom: 0.25rem;
+        }
+        .couple-meta {
+            font-size: 0.75rem;
+            color: #57534E;
+        }
+        .blessing-quote {
+            font-size: 0.875rem;
+            color: #78716C;
+            font-style: italic;
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+        .cert-footer {
+            border-top: 1px solid #EADFCB;
+            padding-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #78716C;
+        }
+        .seal-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .seal-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1.5px dashed #E07B1A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B1E2D;
+            font-weight: 700;
+            font-size: 0.6875rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        @media (max-width: 640px) {
+            .certificate-canvas { padding: 2rem 1.5rem; }
+            .couple-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .cert-footer { grid-template-columns: 1fr; gap: 1rem; text-align: center !important; }
+            .cert-footer > div:last-child { text-align: center !important; }
         }
         @media print {
-            body { background: white; }
-            .no-print { display: none; }
+            body { background: #ffffff; padding: 0; }
+            .no-print { display: none !important; }
+            .certificate-canvas {
+                box-shadow: none;
+                border-width: 2px;
+                outline-width: 5px;
+                max-width: 100%;
+                margin: 0;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen p-4 sm:p-12 flex flex-col items-center justify-center">
+<body>
 
-    <div class="no-print mb-6 flex space-x-4">
-        <button onclick="window.print()" class="px-6 py-2.5 bg-red-900 text-amber-100 rounded-xl font-bold text-xs shadow hover:bg-red-800 transition">
-            🖨️ Print / Save as PDF
+    <div class="action-bar no-print">
+        <button onclick="window.print()" class="btn btn-print">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24-1.076-.672-2.14-1.296-3.111A9.972 9.972 0 0012 3a9.972 9.972 0 006.576 7.718c-.624.97-1.056 2.035-1.296 3.111M6.75 18h10.5M6 21h12a1.5 1.5 0 001.5-1.5v-4.5A1.5 1.5 0 0018 13.5H6a1.5 1.5 0 00-1.5 1.5v4.5A1.5 1.5 0 006 21z"/></svg>
+            <span>Print or Save as PDF</span>
         </button>
-        <a href="{{ route('milestone.index') }}" class="px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-xl font-bold text-xs hover:bg-gray-50 transition">
-            ← Return to Vivah Connect
+        <a href="{{ route('milestone.index') }}" class="btn btn-back">
+            <span>&larr; Return to Dashboard</span>
         </a>
     </div>
 
     <!-- The Auspicious Certificate Canvas -->
-    <div class="w-full max-w-4xl bg-[#fffdf7] cert-border p-8 sm:p-14 shadow-2xl relative overflow-hidden text-center text-gray-900">
+    <div class="certificate-canvas">
         
-        <!-- Corner Motifs -->
-        <div class="absolute top-4 left-4 text-amber-700 text-2xl font-serif">✦</div>
-        <div class="absolute top-4 right-4 text-amber-700 text-2xl font-serif">✦</div>
-        <div class="absolute bottom-4 left-4 text-amber-700 text-2xl font-serif">✦</div>
-        <div class="absolute bottom-4 right-4 text-amber-700 text-2xl font-serif">✦</div>
+        <!-- Corner Ornaments (Hand-drawn Alpona L-stroke style) -->
+        <svg class="corner-ornament corner-tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V5a2 2 0 012-2h10M3 3l6 6"/></svg>
+        <svg class="corner-ornament corner-tr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V5a2 2 0 012-2h10M3 3l6 6"/></svg>
+        <svg class="corner-ornament corner-bl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V5a2 2 0 012-2h10M3 3l6 6"/></svg>
+        <svg class="corner-ornament corner-br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15V5a2 2 0 012-2h10M3 3l6 6"/></svg>
 
-        <!-- Watermark -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05]">
-            <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-80 h-80 object-contain rounded-full">
+        <div class="sub-header">
+            Sacred Matrimonial Covenant &bull; Saptapadi Milestone Registry
         </div>
 
-        <!-- Header Logo -->
-        <div class="mb-3">
-            <img src="{{ asset('images/logo-full.jpg') }}" alt="Vivah Connect" class="h-16 mx-auto object-contain rounded-lg shadow-sm border border-amber-900/20">
-        </div>
-
-        <!-- Inscription Banner -->
-        <div class="text-xs sm:text-sm text-amber-800 tracking-widest font-semibold uppercase mb-2">
-            Sacred Matrimonial Covenant • Vivah Union Registry
-        </div>
-
-        <h1 class="font-cinzel font-black text-3xl sm:text-5xl text-red-950 tracking-wider mb-1 uppercase">
+        <h1 class="font-serif cert-title">
             Certificate of Vivah Union
         </h1>
-        <div class="font-semibold text-lg sm:text-xl text-amber-900 mb-6 tracking-wide">
+        <div class="font-serif cert-subtitle">
             Commemorating Sacred Matrimonial Solemnization
         </div>
 
-        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mb-6"></div>
+        <div class="divider"></div>
 
-        <p class="text-sm sm:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed italic mb-8">
+        <p class="font-serif lead-text">
             This solemn certificate commemorates the sacred matrimonial union solemnized under traditional Vedic rites and mutual familial blessings between:
         </p>
 
         <!-- Groom & Bride Block -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 my-8 max-w-3xl mx-auto items-center">
+        <div class="couple-grid">
             <!-- Groom -->
-            <div class="p-6 rounded-2xl bg-amber-50/60 border border-amber-200/80">
-                <span class="text-xs uppercase tracking-widest text-amber-800 font-bold block mb-1">Groom</span>
-                <h2 class="font-cinzel font-bold text-2xl sm:text-3xl text-red-950">{{ $groom->name }}</h2>
-                <p class="text-xs text-gray-600 mt-1">
-                    Gotra Lineage: <strong>{{ $groomGotra }}</strong> • {{ $groom->profile?->city ?? 'Global' }}@if($groom->profile?->country), {{ $groom->profile->country }}@endif
+            <div class="couple-card">
+                <div class="couple-role">Groom</div>
+                <h2 class="font-serif couple-name">{{ $groom->name }}</h2>
+                <p class="couple-meta">
+                    Gotra: <strong>{{ $groomGotra }}</strong> &bull; {{ $groom->profile?->city ?? 'Global' }}@if($groom->profile?->country), {{ $groom->profile->country }}@endif
                 </p>
             </div>
 
             <!-- Bride -->
-            <div class="p-6 rounded-2xl bg-amber-50/60 border border-amber-200/80">
-                <span class="text-xs uppercase tracking-widest text-amber-800 font-bold block mb-1">Bride</span>
-                <h2 class="font-cinzel font-bold text-2xl sm:text-3xl text-red-950">{{ $bride->name }}</h2>
-                <p class="text-xs text-gray-600 mt-1">
-                    Gotra Lineage: <strong>{{ $brideGotra }}</strong> • {{ $bride->profile?->city ?? 'Global' }}@if($bride->profile?->country), {{ $bride->profile->country }}@endif
+            <div class="couple-card">
+                <div class="couple-role">Bride</div>
+                <h2 class="font-serif couple-name">{{ $bride->name }}</h2>
+                <p class="couple-meta">
+                    Gotra: <strong>{{ $brideGotra }}</strong> &bull; {{ $bride->profile?->city ?? 'Global' }}@if($bride->profile?->country), {{ $bride->profile->country }}@endif
                 </p>
             </div>
         </div>
 
-        <p class="text-xs sm:text-sm text-gray-700 max-w-xl mx-auto mb-10 leading-relaxed italic">
-            "May their united lives forever shine with enduring affection, mutual respect, peace, and Dharmic fulfillment."
+        <p class="font-serif blessing-quote">
+            &ldquo;Seven steps taken together around the sacred fire. May their united lives forever shine with enduring affection, mutual respect, peace, and Dharmic fulfillment.&rdquo;
         </p>
 
         <!-- Footer Details -->
-        <div class="pt-8 border-t border-amber-200/80 grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-gray-600 items-end">
-            <div>
-                <span class="block text-[10px] text-gray-400 uppercase font-bold">Wedding Date</span>
-                <span class="font-bold text-gray-900 text-sm">{{ $weddingDate }}</span>
+        <div class="cert-footer">
+            <div style="text-align: left;">
+                <span style="display: block; font-size: 0.625rem; text-transform: uppercase; color: #A8A29E; font-weight: 700;">Solemnization Date</span>
+                <strong style="color: #1F1917; font-size: 0.875rem;">{{ $weddingDate }}</strong>
             </div>
 
-            <div class="text-center">
-                <div class="w-16 h-16 rounded-full border-2 border-dashed border-amber-600 mx-auto flex items-center justify-center text-red-900 text-xs font-bold font-cinzel">
+            <div class="seal-box">
+                <div class="seal-circle font-serif">
                     SEAL
                 </div>
-                <span class="text-[10px] text-amber-900 uppercase font-semibold mt-1 block">Vivah Connect Registry</span>
+                <span style="font-size: 0.625rem; color: #E07B1A; text-transform: uppercase; font-weight: 600;">Global Saptapadi Registry</span>
             </div>
 
-            <div class="text-right">
-                <span class="block text-[10px] text-gray-400 uppercase font-bold">Registry Certificate UUID</span>
-                <span class="font-mono text-[10px] text-gray-700 block truncate">{{ $uuid }}</span>
+            <div style="text-align: right;">
+                <span style="display: block; font-size: 0.625rem; text-transform: uppercase; color: #A8A29E; font-weight: 700;">Registry UUID</span>
+                <span style="font-family: monospace; font-size: 0.6875rem; color: #57534E;">{{ $uuid }}</span>
             </div>
         </div>
     </div>

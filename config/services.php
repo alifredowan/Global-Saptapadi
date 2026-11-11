@@ -48,4 +48,9 @@ return [
         'currency' => env('PAYPAL_CURRENCY', 'USD'),
     ],
 
+    'turnstile' => [
+        'key' => env('TURNSTILE_SITE_KEY'),
+        'secret' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
 ];

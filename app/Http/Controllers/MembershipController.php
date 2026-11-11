@@ -18,8 +18,8 @@ class MembershipController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $latestSubscription = $user->subscriptions()->latest()->first();
-        $subscriptions = $user->subscriptions()->orderBy('created_at', 'desc')->get();
+        $latestSubscription = $user ? $user->subscriptions()->latest()->first() : null;
+        $subscriptions = $user ? $user->subscriptions()->orderBy('created_at', 'desc')->get() : collect();
 
         $stripeKey = config('services.stripe.key');
         $paypalClientId = config('services.paypal.client_id');
@@ -127,7 +127,7 @@ class MembershipController extends Controller
             'order_id' => $orderId,
             'amount' => number_format($amount, 2, '.', ''),
             'currency' => 'USD',
-            'description' => 'Vivah Connect - Pro Single Vivah Pass (One-Time Fee until Marriage)',
+            'description' => 'Global Saptapadi - Pro Single Vivah Pass (One-Time Fee until Marriage)',
         ]);
     }
 

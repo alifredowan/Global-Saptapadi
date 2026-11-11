@@ -3,7 +3,7 @@ import Pusher from 'pusher-js';
 
 window.Pusher = Pusher;
 
-const reverbKey = import.meta.env.VITE_REVERB_APP_KEY || 'vivahconnectreverbkey';
+const reverbKey = import.meta.env.VITE_REVERB_APP_KEY || 'globalsaptapadireverbkey';
 
 if (reverbKey) {
     try {

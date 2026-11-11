@@ -1,109 +1,613 @@
 /**
- * Theme Tokens (Hindu Matrimony — Vivah Platform Preset)
+ * Theme Tokens & Craft Styles — Global Saptapadi
  * 
- * Palette:
- * - Accent: #7A1F2B (deep maroon)
- * - Accent hover: #5E1821 (darker shade of the same hue)
- * - Accent active: #4A131A
- * - Background canvas: #FBF6EE (warm cream)
- * - Secondary accent: #85531B (dignified brass / amber)
- * - Neutrals & Semantic status colors kept unchanged from design-tokens.css.
- *   (Muted green used only for validation & status badges).
+ * Hindu Wedding Color Symbolism:
+ * - Kumkum Maroon (#8B1E2D): marriage, sindoor, shakti, auspicious beginnings (Primary ~50%)
+ * - Agni Saffron (#E07B1A): sacred fire of the Saptapadi, purity, devotion (Accent ~10%)
+ * - Haldi (#F2B01E): turmeric yellow, auspiciousness & joy (Secondary soft tint)
+ * - Tulsi Green (#2F7D4F): nature, growth, new beginnings (Verified & success only <1%)
+ * - Ivory / White (#FFFBF3 / #FFFFFF): purity, handmade paper grain (Canvas & neutrals ~40%)
+ * - Ink Dark (#4A0F1A to #330A12): dark sections, footer, CTA bands
  */
 
 :root {
   /* =======================================================================
-   * 1. CANVAS & BACKGROUND TINTS (Warm cream base)
+   * 1. HINDU WEDDING DESIGN TOKENS (LIGHT MODE)
    * ======================================================================= */
-  --bg-canvas: #FBF6EE;
-  --bg-surface: #ffffff;
-  --bg-subtle: #f5efe3;
-  --bg-muted: #ebe3d3;
-  --bg-inset: #e2dac8;
+  --color-primary: #8B1E2D;           /* kumkum maroon */
+  --color-primary-hover: #6E1723;
+  --color-primary-soft: #F8E9EB;
 
-  /* =======================================================================
-   * 2. TYPOGRAPHY INK & CONTRAST
-   * ======================================================================= */
-  --text-primary: #1f1b18;
-  --text-secondary: #524a43;
-  --text-muted: #786f66;
-  --text-inverse: #ffffff;
+  --color-ink-dark: #4A0F1A;          /* dark sections, footer, CTA band */
+  --color-ink-darker: #330A12;
 
-  /* =======================================================================
-   * 3. HAIRLINE BORDER HUES
-   * ======================================================================= */
-  --border-subtle: #eee6d6;
-  --border-default: #dfd6c2;
-  --border-strong: #bbb098;
+  --color-accent: #E07B1A;           /* sacred agni saffron */
+  --color-accent-hover: #BF640E;
+  --color-accent-soft: #FDEBD6;
 
-  /* =======================================================================
-   * 4. PRIMARY ACCENT (Deep Maroon — Auspicious Dharmic / Vivah Union)
-   * ======================================================================= */
-  --accent-primary: #7A1F2B;
-  --accent-hover: #5E1821;
-  --accent-active: #4A131A;
-  --accent-subtle: #faf1f2;
-  --accent-subtle-hover: #f3e2e4;
-  --accent-border: #e8c2c7;
-  --accent-text: #5E1821;
-  --accent-contrast: #ffffff;
+  --color-haldi: #F2B01E;            /* turmeric yellow (highlights & illustrations, not body text) */
+  --color-haldi-soft: #FFF5D6;
 
-  /* =======================================================================
-   * 5. SECONDARY ACCENT (Dignified Brass / Amber — Heritage highlights)
-   * ======================================================================= */
-  --secondary-primary: #85531b;
-  --secondary-hover: #6c4213;
-  --secondary-subtle: #fbf5eb;
-  --secondary-border: #ebd9be;
-  --secondary-text: #61390d;
+  --color-tulsi: #2F7D4F;            /* tulsi green (success & verified only) */
+  --color-tulsi-soft: #EDF7F2;
+  --color-tulsi-border: #BCE3CE;
 
-  /* =======================================================================
-   * 6. KEYBOARD ACCESSIBILITY FOCUS RING
-   * ======================================================================= */
-  --focus-ring: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--accent-primary);
-  --focus-ring-offset: 2px;
+  --color-bg: #FFFBF3;               /* warm ivory canvas */
+  --color-surface: #FFFFFF;          /* pure white cards */
+  --color-surface-alt: #F8F1E4;      /* warm neutral secondary surface */
 
-  /* =======================================================================
-   * 7. GEOMETRIC BACKGROUND PATTERN (Restrained 3-5% opacity maroon dot grid)
-   * ======================================================================= */
-  --pattern-faint: radial-gradient(circle, rgba(122, 31, 43, 0.05) 1px, transparent 1px);
-  --pattern-faint-size: 24px 24px;
+  --color-text: #1A1A1A;             /* near-black body text (WCAG AAA 16.8:1) */
+  --color-text-muted: #4B5563;       /* secondary text (WCAG AAA 7.3:1) */
+  --color-text-on-dark: #F3E4DD;     /* body text on ink-dark bands (WCAG AAA 12.3:1) */
+  --color-border: #EADFCB;           /* 1px warm neutral border */
+
+  /* Semantic Signals */
+  --color-warning: #A15C00;
+  --color-warning-soft: #FEF7ED;
+  --color-warning-border: #FCD34D;
+
+  --color-error: #B3261E;
+  --color-error-soft: #FDF2F2;
+  --color-error-border: #FCA5A5;
+
+  --color-info: var(--color-primary);
+  --color-info-soft: var(--color-primary-soft);
+  --color-info-border: #F0C4CB;
+
+  /* Focus Ring: 2px saffron outline with 2px offset */
+  --focus-ring: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-accent);
+
+  /* Legacy aliases mapping directly to new Hindu wedding tokens */
+  --bg-canvas: var(--color-bg);
+  --bg-surface: var(--color-surface);
+  --bg-subtle: var(--color-surface-alt);
+  --bg-muted: #F0E6D5;
+  --bg-inset: #EADFCB;
+
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+  --text-muted: #6B7280;
+  --text-inverse: #FFFFFF;
+
+  --border-subtle: #F3EBDD;
+  --border-default: var(--color-border);
+  --border-strong: #D5C5AC;
+
+  --accent-primary: var(--color-primary);
+  --accent-hover: var(--color-primary-hover);
+  --accent-active: var(--color-ink-dark);
+  --accent-subtle: var(--color-primary-soft);
+  --accent-subtle-hover: #F0D5D9;
+  --accent-border: #F0C4CB;
+  --accent-text: var(--color-primary);
+  --accent-contrast: #FFFFFF;
+
+  --secondary-primary: var(--color-accent);
+  --secondary-hover: var(--color-accent-hover);
+  --secondary-subtle: var(--color-accent-soft);
+  --secondary-border: #F8CCA0;
+  --secondary-text: #A74E06;
+  --secondary-contrast: #330A12;
+
+  --color-success: var(--color-tulsi);
+  --color-success-bg: var(--color-tulsi-soft);
+  --color-success-border: var(--color-tulsi-border);
+
+  --color-danger: var(--color-error);
+  --color-danger-bg: var(--color-error-soft);
+  --color-danger-border: var(--color-error-border);
+
+  /* Radii & Typography */
+  --radius-xs: 2px;
+  --radius-sm: 4px;   /* buttons, inputs, pills */
+  --radius-md: 8px;   /* cards, dossiers, tables */
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --shadow-warm-sm: 0 1px 3px 0 rgba(26, 26, 26, 0.05), 0 1px 2px -1px rgba(26, 26, 26, 0.04);
+  --shadow-warm-md: 0 4px 8px -2px rgba(26, 26, 26, 0.08), 0 2px 4px -2px rgba(26, 26, 26, 0.05);
 }
 
 /* =======================================================================
- * DARK THEME (Warm maroon-slate night palette — NO harsh #000000)
+ * 2. DARK THEME TOKENS
  * ======================================================================= */
-.dark {
-  --bg-canvas: #161213;
-  --bg-surface: #1e191a;
-  --bg-subtle: #292224;
-  --bg-muted: #362d30;
-  --bg-inset: #191415;
+.dark, [data-theme="dark"] {
+  --color-bg: #1C0C10;
+  --color-surface: #2A1218;
+  --color-surface-alt: #351820;
 
-  --text-primary: #f5f2f0;
-  --text-secondary: #c7bfc1;
-  --text-muted: #8f8588;
-  --text-inverse: #161213;
+  --color-text: #F5EDE8;
+  --color-text-muted: #C9B8B3;
+  --color-text-on-dark: #F5EDE8;
+  --color-border: #4A2A33;
 
-  --border-subtle: #2b2325;
-  --border-default: #3d3235;
-  --border-strong: #59494e;
+  --color-primary: #D4636F;           /* lighter maroon-rose for WCAG AA in dark mode */
+  --color-primary-hover: #E27B86;
+  --color-primary-soft: rgba(212, 99, 111, 0.15);
 
-  --accent-primary: #d45b6b;
-  --accent-hover: #e07684;
-  --accent-active: #c24354;
-  --accent-subtle: #2d181c;
-  --accent-subtle-hover: #3b2025;
-  --accent-border: #5a2c33;
-  --accent-text: #e07684;
-  --accent-contrast: #161213;
+  --color-ink-dark: #1C0C10;
+  --color-ink-darker: #13070A;
 
-  --secondary-primary: #f3b060;
-  --secondary-hover: #f7c385;
-  --secondary-subtle: #2c2214;
-  --secondary-border: #523f25;
-  --secondary-text: #f7c385;
+  --color-accent: #F29A45;           /* warm bright saffron */
+  --color-accent-hover: #FBAF6A;
+  --color-accent-soft: rgba(242, 154, 69, 0.15);
 
-  --focus-ring: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--accent-primary);
-  --pattern-faint: radial-gradient(circle, rgba(212, 91, 107, 0.08) 1px, transparent 1px);
+  --color-haldi: #F6C453;
+  --color-haldi-soft: rgba(246, 196, 83, 0.15);
+
+  --color-tulsi: #5FB27F;
+  --color-tulsi-soft: rgba(95, 178, 127, 0.15);
+  --color-tulsi-border: #3A6B4D;
+
+  --color-warning: #F6C453;
+  --color-warning-soft: rgba(246, 196, 83, 0.15);
+  --color-warning-border: #6B4F1A;
+
+  --color-error: #F87171;
+  --color-error-soft: rgba(248, 113, 113, 0.15);
+  --color-error-border: #5C2224;
+
+  --color-info: var(--color-primary);
+  --color-info-soft: var(--color-primary-soft);
+  --color-info-border: #5E2C33;
+
+  /* Legacy aliases in dark mode */
+  --bg-canvas: var(--color-bg);
+  --bg-surface: var(--color-surface);
+  --bg-subtle: var(--color-surface-alt);
+  --bg-muted: #421E27;
+  --bg-inset: #13070A;
+
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+  --text-muted: #9E8D88;
+  --text-inverse: #1C0C10;
+
+  --border-subtle: #3A1F26;
+  --border-default: var(--color-border);
+  --border-strong: #663B46;
+
+  --accent-primary: var(--color-primary);
+  --accent-hover: var(--color-primary-hover);
+  --accent-active: #BF525E;
+  --accent-subtle: var(--color-primary-soft);
+  --accent-subtle-hover: rgba(212, 99, 111, 0.25);
+  --accent-border: #5E2C33;
+  --accent-text: #F5949F;
+  --accent-contrast: #1C0C10;
+
+  --secondary-primary: var(--color-accent);
+  --secondary-hover: var(--color-accent-hover);
+  --secondary-subtle: var(--color-accent-soft);
+  --secondary-border: #6E3F1A;
+  --secondary-text: #FBBF24;
+  --secondary-contrast: #1C0C10;
+
+  --color-success: var(--color-tulsi);
+  --color-success-bg: var(--color-tulsi-soft);
+  --color-success-border: var(--color-tulsi-border);
+
+  --color-danger: var(--color-error);
+  --color-danger-bg: var(--color-error-soft);
+  --color-danger-border: var(--color-error-border);
+
+  --focus-ring: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-accent);
+}
+
+/* =======================================================================
+ * 3. SCOPED TOKEN OVERRIDE FOR DARK SECTIONS (CTA band, footer, highlights)
+ * - Uses --color-ink-dark (#4A0F1A) with subtle diagonal gradient to #330A12
+ * - White headings (#FFFFFF)
+ * - #F3E4DD body text
+ * - Saffron hover on links (var(--color-accent))
+ * ======================================================================= */
+.section--dark, .section-dark, [data-surface="dark"] {
+  background: linear-gradient(135deg, var(--color-ink-dark) 0%, var(--color-ink-darker) 100%) !important;
+  --bg-surface: var(--color-ink-dark);
+  --text-primary: #FFFFFF !important;
+  --text-secondary: #F3E4DD !important;
+  --text-muted: #E0CFC8 !important;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-default: rgba(255, 255, 255, 0.2);
+  --border-strong: rgba(255, 255, 255, 0.35);
+  color: #F3E4DD;
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4,
+.section--dark h5,
+.section--dark h6,
+.section--dark .heading-dark {
+  color: #FFFFFF !important;
+}
+
+.section--dark p,
+.section--dark span:not(.chip-accent):not(.badge-signal):not(.btn-saffron):not(.btn-primary):not(.badge-pro),
+.section--dark li {
+  color: #F3E4DD;
+}
+
+.section--dark a:not(.btn-primary):not(.btn-secondary):not(.btn-saffron) {
+  color: #FFFFFF;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.section--dark a:not(.btn-primary):not(.btn-secondary):not(.btn-saffron):hover {
+  color: var(--color-accent) !important;
+  text-decoration-color: var(--color-accent) !important;
+}
+
+/* Primary CTA on dark band = Saffron with dark text (#330A12) */
+.section--dark .btn-primary,
+.section--dark .btn-saffron {
+  background-color: var(--color-accent) !important;
+  color: #330A12 !important;
+  border-color: var(--color-accent) !important;
+  font-weight: 600;
+}
+.section--dark .btn-primary:hover,
+.section--dark .btn-saffron:hover {
+  background-color: var(--color-accent-hover) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-accent-hover) !important;
+}
+
+/* Secondary Button on dark band = transparent with 1px white border */
+.section--dark .btn-secondary,
+.section-dark .btn-secondary {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+.section--dark .btn-secondary:hover,
+.section-dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+/* =======================================================================
+ * 4. TINTED SECTIONS ALTERNATING UTILITIES
+ * Ivory -> White -> Haldi-Soft -> Primary-Soft -> Accent-Soft
+ * ======================================================================= */
+.section--ivory { background-color: var(--color-bg); }
+.section--white { background-color: var(--color-surface); }
+.section--haldi { background-color: var(--color-haldi-soft); }
+.section--primary-soft { background-color: var(--color-primary-soft); }
+.section--accent-soft { background-color: var(--color-accent-soft); }
+
+/* =======================================================================
+ * 5. BUTTONS SPECIFICATION
+ * - Primary: solid kumkum maroon with white text
+ * - Secondary: transparent with 1px maroon border (white border on dark)
+ * - Saffron CTA: solid saffron with dark text (#330A12)
+ * ======================================================================= */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--shadow-warm-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1.5px);
+  box-shadow: var(--shadow-warm-md);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn-saffron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--color-accent);
+  color: #330A12;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-accent);
+  box-shadow: var(--shadow-warm-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+.btn-saffron:hover {
+  background-color: var(--color-accent-hover);
+  color: #FFFFFF;
+  border-color: var(--color-accent-hover);
+  transform: translateY(-1.5px);
+}
+.btn-saffron:active {
+  transform: translateY(0);
+}
+.btn-saffron:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  height: 48px;
+  padding: 0 20px;
+  background-color: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--shadow-warm-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 180ms ease-out, background-color 180ms ease-out, border-color 180ms ease-out;
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary-hover);
+  color: var(--color-primary-hover);
+  transform: translateY(-1.5px);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* =======================================================================
+ * 6. CARDS, HIGHLIGHTS & GUNA MILAN GRADIENT
+ * ======================================================================= */
+.card-ledger {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-warm-sm);
+  transition: border-color 180ms ease-out, box-shadow 180ms ease-out, transform 180ms ease-out;
+}
+.card-ledger:hover {
+  border-color: var(--border-strong);
+}
+
+/* Card highlight state: 2px maroon border */
+.card-highlight {
+  border: 2px solid var(--color-primary) !important;
+}
+
+/* Compatibility & Guna Milan gradient ring */
+.guna-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+/* =======================================================================
+ * 7. BADGES (Tulsi Green Verified, Saffron Pro, Maroon Unread)
+ * ======================================================================= */
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background-color: var(--color-tulsi);
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-pro {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background-color: var(--color-accent);
+  color: #330A12;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-unread {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =======================================================================
+ * 8. SAPTAPADI SEVEN-STEP PROGRESS TRACKER
+ * - Completed: Maroon (--color-primary)
+ * - Current: Saffron (--color-accent) with soft halo
+ * - Upcoming: Border color (--color-border)
+ * ======================================================================= */
+.saptapadi-path {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saptapadi-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.saptapadi-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+
+.saptapadi-step.is-complete:not(:last-child)::after {
+  background: var(--color-primary);
+}
+
+.saptapadi-node {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  position: relative;
+  z-index: 2;
+  transition: all 200ms ease-out;
+}
+
+.saptapadi-step.is-complete .saptapadi-node {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.saptapadi-step.is-active .saptapadi-node,
+.saptapadi-step.is-current .saptapadi-node {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #330A12;
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.saptapadi-step:not(.is-complete):not(.is-active):not(.is-current) .saptapadi-node {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
+/* =======================================================================
+ * 9. TEXTURES, ORNAMENTS & PHOTO GRADE
+ * ======================================================================= */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+.paper-texture {
+  background-color: var(--color-bg);
+  background-image: radial-gradient(rgba(139, 30, 45, 0.025) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.font-serif, .font-heading {
+  font-family: var(--font-serif);
+  font-feature-settings: 'liga', 'kern';
+}
+
+/* Alpona monoline line divider (1.5px stroke, lotus / petal inspired, non-kitsch) */
+.alpona-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--color-accent);
+  opacity: 0.85;
+}
+.alpona-divider::before,
+.alpona-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), var(--border-strong));
+}
+.alpona-divider::after {
+  background: linear-gradient(to left, transparent, var(--color-border), var(--border-strong));
+}
+
+/* Marigold-toned photo grade on imagery */
+.photo-marigold {
+  filter: sepia(0.08) saturate(1.05) contrast(1.02);
+}
+
+/* Links: Maroon, underlined on hover */
+a.link-brand,
+.link-primary {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
+}
+a.link-brand:hover,
+.link-primary:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+}
+
+/* Global focus-visible indicator: 2px saffron outline with 2px offset */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

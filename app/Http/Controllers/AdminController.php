@@ -90,5 +90,27 @@ class AdminController extends Controller
         $logs = AuditLog::with('user')->latest()->paginate(25);
         return view('admin.audit_logs', compact('logs'));
     }
+
+    public function compliance()
+    {
+        $settings = \App\Services\ComplianceService::getSettings();
+        return view('admin.compliance', compact('settings'));
+    }
+
+    public function updateCompliance(Request $request)
+    {
+        $validated = $request->validate([
+            'banner_heading' => 'required|string|max:120',
+            'banner_text' => 'required|string|max:500',
+            'policy_url' => 'required|string|max:255',
+            'privacy_url' => 'required|string|max:255',
+            'terms_url' => 'required|string|max:255',
+            'categories' => 'nullable|array',
+        ]);
+
+        \App\Services\ComplianceService::updateSettings($validated, Auth::id());
+
+        return back()->with('success', 'Compliance notice, cookie categories, and policy links updated successfully.');
+    }
 }
 

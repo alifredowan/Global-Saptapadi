@@ -4,84 +4,83 @@
 <div class="max-w-6xl mx-auto space-y-6">
 
     <!-- Bride Hero Banner -->
-    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-red-950 via-[#3a090e] to-rose-950 text-amber-100 p-6 sm:p-8 shadow-xl border border-rose-800/40">
-        <div class="absolute -right-16 -top-16 w-56 h-56 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
+    <div class="relative overflow-hidden rounded-2xl section--dark text-white p-6 sm:p-8 shadow-sm border border-[var(--color-accent)]/30">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-2">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-200 text-xs font-bold uppercase tracking-wider border border-rose-400/30">
-                    <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-4 h-4 rounded-full object-cover inline-block">
-                    <span>Bride Portal • Kanya Dashboard</span>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs text-stone-200 text-xs font-medium tracking-wide border border-white/20">
+                    <svg class="w-3.5 h-3.5 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                    <span>Kanya Portal &bull; Bride Dashboard</span>
                 </div>
-                <h1 class="font-heading font-extrabold text-2xl sm:text-3xl text-amber-100">
+                <h1 class="font-serif font-bold text-2xl sm:text-3xl text-white tracking-tight">
                     Namaste, {{ $user->name }}
                 </h1>
-                <p class="text-xs sm:text-sm text-amber-200/90 max-w-xl leading-relaxed">
-                    Welcome to your private matrimonial sanctuary. Your dignity, personal modesty, and family honor are protected at every stage.
+                <p class="text-xs sm:text-sm text-stone-200 max-w-xl leading-relaxed">
+                    Review proposal inquiries, assess compatibility, and communicate in a private space where your family's dignity is protected.
                 </p>
 
                 <!-- Profile Tags -->
                 <div class="flex flex-wrap items-center gap-2 pt-2 text-[11px]">
-                    <span class="px-2.5 py-1 rounded-lg bg-rose-950/60 border border-rose-700/60 text-amber-200">
+                    <span class="px-2.5 py-1 rounded-lg bg-black/20 border border-white/10 text-stone-200">
                         Gotra: <strong>{{ $profile?->gotra ?? 'Not specified' }}</strong>
                     </span>
-                    <span class="px-2.5 py-1 rounded-lg bg-rose-950/60 border border-rose-700/60 text-amber-200">
+                    <span class="px-2.5 py-1 rounded-lg bg-black/20 border border-white/10 text-stone-200">
                         Sampradaya: <strong>{{ $profile?->sampradaya ?? 'Dharmic' }}</strong>
                     </span>
-                    <span class="px-2.5 py-1 rounded-lg bg-rose-950/60 border border-rose-700/60 text-amber-200">
-                        {{ $user->age ?? 26 }} yrs • {{ $profile?->city ?? 'Diaspora' }}
+                    <span class="px-2.5 py-1 rounded-lg bg-black/20 border border-white/10 text-stone-200">
+                        {{ $user->age ?? 26 }} yrs &bull; {{ $profile?->city ?? 'Diaspora' }}
                     </span>
                     @if($user->is_verified)
-                        <span class="px-2.5 py-1 rounded-lg bg-emerald-900/60 border border-emerald-500/60 text-emerald-300 font-bold">
-                            ✓ 100% ID KYC Verified
+                        <span class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 font-medium inline-flex items-center gap-1">
+                            <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <span>ID Verified</span>
                         </span>
                     @else
-                        <a href="{{ route('verification.index') }}" class="px-2.5 py-1 rounded-lg bg-amber-500/20 border border-amber-400/50 text-amber-300 font-bold hover:bg-amber-500/30 transition">
-                            ⚠️ Complete KYC Verification →
+                        <a href="{{ route('verification.index') }}" class="px-2.5 py-1 rounded-lg bg-amber-500/20 border border-amber-400/50 text-[var(--color-accent)] font-medium hover:bg-amber-500/30 transition inline-flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                            <span>Complete ID Verification &rarr;</span>
                         </a>
                     @endif
                 </div>
             </div>
 
             <!-- Modesty Privacy Shield Status Box -->
-            <div class="bg-stone-950/70 backdrop-blur-xs p-4 sm:p-5 rounded-2xl border border-rose-400/40 text-center sm:text-right shrink-0 space-y-1.5">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-300 block">Photo Privacy Shield</span>
-                <div class="text-base font-black text-white flex items-center justify-center sm:justify-end space-x-1.5">
-                    <span>🔒</span>
-                    <span>{{ $photoPrivacy === 'blur_until_mutual' ? 'MODESTY BLUR ACTIVE' : 'PUBLIC PHOTO' }}</span>
+            <div class="bg-black/30 backdrop-blur-xs p-4 sm:p-5 rounded-xl border border-white/15 text-center sm:text-right shrink-0 space-y-1.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 block">Photo Privacy</span>
+                <div class="text-sm font-serif font-bold text-white flex items-center justify-center sm:justify-end gap-1.5">
+                    <svg class="w-4 h-4 text-stone-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                    <span>{{ $photoPrivacy === 'blur_until_mutual' ? 'Modesty Blur Active' : 'Public Photo' }}</span>
                 </div>
-                <span class="text-[10px] text-amber-300/80 block">
-                    {{ $photoPrivacy === 'blur_until_mutual' ? 'Unlocks only on mutual consent' : 'Visible to verified seekers' }}
+                <span class="text-[10px] text-stone-300 block">
+                    {{ $photoPrivacy === 'blur_until_mutual' ? 'Visible only upon mutual consent' : 'Visible to verified seekers' }}
                 </span>
-                <a href="{{ route('profile.edit') }}#privacy" class="inline-block text-[11px] text-rose-300 hover:text-white underline font-semibold">
-                    Change Privacy Setting →
+                <a href="{{ route('profile.edit') }}#privacy" class="inline-block text-[11px] text-amber-300 hover:text-white underline font-medium">
+                    Adjust Privacy Settings &rarr;
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Profile Completeness Prompt (Nikah Matrimony Pattern) -->
+    <!-- Profile Completeness Prompt -->
     @php
         $completeness = $profile?->profile_completeness_pct ?? 40;
     @endphp
     @if($completeness < 100)
-    <div class="bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl p-4 sm:p-5 border border-rose-300/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="bg-amber-50/70 dark:bg-amber-950/20 rounded-2xl p-4 sm:p-5 border border-amber-200/80 dark:border-amber-900/50 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div class="space-y-1">
             <div class="flex items-center space-x-2">
-                <span class="text-base">📝</span>
-                <span class="font-bold text-rose-950 text-xs sm:text-sm">Complete Your Sacred Biodata</span>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-200 text-rose-900">{{ $completeness }}% Complete</span>
+                <svg class="w-4 h-4 text-[var(--color-accent)] dark:text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+                <span class="font-medium text-stone-900 dark:text-stone-100 text-xs sm:text-sm">Complete Your Biodata</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 dark:bg-amber-900/40 text-[var(--color-accent)] dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60">{{ $completeness }}% Complete</span>
             </div>
-            <p class="text-[11px] text-stone-600">
-                A complete biodata with modesty photo settings and family preferences fosters greater respect and genuine Dharmic proposals.
+            <p class="text-[11px] text-stone-600 dark:text-stone-400">
+                A complete biodata with modesty photo options and family preferences receives respectful, aligned family inquiries.
             </p>
-            <div class="w-full sm:w-72 bg-rose-200/60 rounded-full h-2 overflow-hidden mt-1">
-                <div class="gold-gradient h-full rounded-full transition-all duration-500" style="width: {{ $completeness }}%"></div>
+            <div class="w-full sm:w-72 bg-stone-200 dark:bg-stone-700 rounded-full h-1.5 overflow-hidden mt-1.5">
+                <div class="bg-[var(--color-primary)] dark:bg-[var(--color-accent)] h-full rounded-full transition-all duration-500" style="width: {{ $completeness }}%"></div>
             </div>
         </div>
-        <a href="{{ route('profile.edit') }}" class="px-4 py-2.5 rounded-xl gold-gradient text-white text-xs font-bold shadow hover:opacity-95 transition shrink-0 flex items-center justify-center space-x-1.5">
-            <span>✨</span>
-            <span>Complete 7-Step Biodata →</span>
+        <a href="{{ route('profile.edit') }}" class="px-4 py-2 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-xs font-medium shadow-xs transition shrink-0 flex items-center justify-center space-x-1.5">
+            <span>Complete 7-Step Biodata &rarr;</span>
         </a>
     </div>
     @endif
@@ -89,64 +88,63 @@
     <!-- 4 Key Statistics Cards -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <!-- Suitor Proposals Pending -->
-        <a href="{{ route('proposals.index') }}" class="bg-white p-5 rounded-2xl border border-rose-200 shadow-xs hover:border-rose-400 transition smooth-card group">
+        <a href="{{ route('proposals.index') }}" class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs hover:border-[var(--color-accent)]/40 transition group">
             <div class="flex items-center justify-between text-stone-400 mb-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-stone-600">Pending Suitors</span>
-                <span class="text-lg group-hover:scale-110 transition transform">💌</span>
+                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500">Pending Proposals</span>
+                <svg class="w-4 h-4 text-stone-400 group-hover:text-[var(--color-primary)] dark:group-hover:text-[var(--color-accent)] transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             </div>
-            <div class="text-2xl font-extrabold text-red-950">{{ $pendingReceivedProposals->count() }}</div>
-            <span class="text-[10px] text-rose-700 font-semibold mt-1 block">Awaiting Your Review →</span>
+            <div class="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100">{{ $pendingReceivedProposals->count() }}</div>
+            <span class="text-[10px] text-[var(--color-accent)] dark:text-[var(--color-accent)] font-medium mt-1 block">Awaiting Review &rarr;</span>
         </a>
 
         <!-- Compatible Grooms -->
-        <a href="{{ route('discovery.index') }}" class="bg-white p-5 rounded-2xl border border-rose-200 shadow-xs hover:border-rose-400 transition smooth-card group">
+        <a href="{{ route('discovery.index') }}" class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs hover:border-[var(--color-accent)]/40 transition group">
             <div class="flex items-center justify-between text-stone-400 mb-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-stone-600">Eligible Grooms</span>
-                <span class="text-lg group-hover:scale-110 transition transform">🤵</span>
+                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500">Eligible Grooms</span>
+                <svg class="w-4 h-4 text-stone-400 group-hover:text-[var(--color-primary)] dark:group-hover:text-[var(--color-accent)] transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
             </div>
-            <div class="text-2xl font-extrabold text-red-950">{{ $totalCompatibleGrooms }}</div>
-            <span class="text-[10px] text-amber-700 font-semibold mt-1 block">Browse Matches →</span>
+            <div class="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100">{{ $totalCompatibleGrooms }}</div>
+            <span class="text-[10px] text-[var(--color-accent)] dark:text-[var(--color-accent)] font-medium mt-1 block">Browse Matches &rarr;</span>
         </a>
 
         <!-- Shortlists -->
-        <a href="{{ route('shortlists.index') }}" class="bg-white p-5 rounded-2xl border border-rose-200 shadow-xs hover:border-rose-400 transition smooth-card group">
+        <a href="{{ route('shortlists.index') }}" class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs hover:border-[var(--color-accent)]/40 transition group">
             <div class="flex items-center justify-between text-stone-400 mb-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-stone-600">Shortlisted</span>
-                <span class="text-lg group-hover:scale-110 transition transform">⭐</span>
+                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500">Shortlisted</span>
+                <svg class="w-4 h-4 text-stone-400 group-hover:text-[var(--color-primary)] dark:group-hover:text-[var(--color-accent)] transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"/></svg>
             </div>
-            <div class="text-2xl font-extrabold text-red-950">{{ $shortlistsCount }}</div>
-            <span class="text-[10px] text-amber-700 font-semibold mt-1 block">Saved Grooms →</span>
+            <div class="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100">{{ $shortlistsCount }}</div>
+            <span class="text-[10px] text-[var(--color-accent)] dark:text-[var(--color-accent)] font-medium mt-1 block">Saved Grooms &rarr;</span>
         </a>
 
         <!-- Chaperoned Chat -->
-        <a href="{{ route('chat.index') }}" class="bg-white p-5 rounded-2xl border border-rose-200 shadow-xs hover:border-rose-400 transition smooth-card group">
+        <a href="{{ route('chat.index') }}" class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs hover:border-[var(--color-accent)]/40 transition group">
             <div class="flex items-center justify-between text-stone-400 mb-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-stone-600">Family Chat</span>
-                <span class="text-lg group-hover:scale-110 transition transform">💬</span>
+                <span class="text-[11px] font-medium uppercase tracking-wider text-stone-500">Family Chat</span>
+                <svg class="w-4 h-4 text-stone-400 group-hover:text-[var(--color-primary)] dark:group-hover:text-[var(--color-accent)] transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v7.018z"/></svg>
             </div>
-            <div class="text-2xl font-extrabold text-red-950">{{ $unreadMessagesCount }} <span class="text-xs text-stone-400 font-normal">unread</span></div>
-            <span class="text-[10px] text-emerald-700 font-semibold mt-1 block">Family Protected →</span>
+            <div class="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100">{{ $unreadMessagesCount }} <span class="text-xs text-stone-400 font-sans font-normal">unread</span></div>
+            <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-medium mt-1 block">Family Protected &rarr;</span>
         </a>
     </div>
 
     <!-- Quick Action Launchpad Bar -->
-    <div class="bg-white rounded-2xl p-4 border border-rose-200/90 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
-        <span class="font-bold text-stone-700 uppercase tracking-wider text-[11px] flex items-center space-x-1.5">
-            <span>⚡</span>
-            <span>Bride Quick Actions:</span>
+    <div class="bg-white dark:bg-stone-900 rounded-2xl p-4 border border-stone-200/90 dark:border-stone-800 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+        <span class="font-medium text-stone-700 dark:text-stone-300 tracking-wider text-[11px] flex items-center space-x-1.5">
+            <span>Bride Actions:</span>
         </span>
         <div class="flex flex-wrap items-center gap-2">
-            <a href="{{ route('proposals.index') }}" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-300 text-rose-950 font-bold transition">
-                💌 Review Suitor Proposals ({{ $pendingReceivedProposals->count() }})
+            <a href="{{ route('proposals.index') }}" class="px-3 py-1.5 rounded-xl bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-medium transition">
+                Review Proposals ({{ $pendingReceivedProposals->count() }})
             </a>
-            <a href="{{ route('discovery.index') }}" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 font-bold transition">
-                🔍 Find Compatible Grooms
+            <a href="{{ route('discovery.index') }}" class="px-3 py-1.5 rounded-xl bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-medium transition">
+                Find Compatible Grooms
             </a>
-            <a href="{{ route('horoscope.edit') }}" class="px-3 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 border border-red-200 text-red-900 font-bold transition">
-                🪐 Kundli & 36-Gunas
+            <a href="{{ route('horoscope.edit') }}" class="px-3 py-1.5 rounded-xl bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-medium transition">
+                Kundli &amp; 36-Gunas
             </a>
-            <a href="{{ route('profile.edit') }}#privacy" class="px-3 py-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 border border-stone-300 text-stone-800 font-bold transition">
-                🔒 Privacy & Modesty Shield
+            <a href="{{ route('profile.edit') }}#privacy" class="px-3 py-1.5 rounded-xl bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-medium transition">
+                Privacy &amp; Modesty
             </a>
         </div>
     </div>
@@ -156,13 +154,12 @@
 
         <!-- Column 1 & 2: Suitor Proposals Awaiting Review -->
         <div class="lg:col-span-2 space-y-4">
-            <div class="flex items-center justify-between pb-1 border-b border-rose-200/80">
-                <h2 class="font-heading font-bold text-base text-red-950 flex items-center space-x-2">
-                    <span>💌</span>
-                    <span>Suitors Seeking Your Sacred Union</span>
+            <div class="flex items-center justify-between pb-1 border-b border-stone-200 dark:border-stone-800">
+                <h2 class="font-serif font-bold text-lg text-stone-900 dark:text-stone-100">
+                    Proposals Awaiting Review
                 </h2>
-                <a href="{{ route('proposals.index') }}" class="text-xs font-bold text-rose-800 hover:text-red-900">
-                    All Proposals →
+                <a href="{{ route('proposals.index') }}" class="text-xs font-medium text-[var(--color-accent)] dark:text-[var(--color-accent)] hover:underline">
+                    All Proposals &rarr;
                 </a>
             </div>
 
@@ -173,18 +170,18 @@
                             $suitor = $prop->sender;
                             $sProfile = $suitor->profile;
                         @endphp
-                        <div class="bg-white rounded-2xl p-4 border border-rose-200/80 shadow-xs hover:border-rose-400 transition flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="bg-white dark:bg-stone-900 rounded-2xl p-4 border border-stone-200/90 dark:border-stone-800 shadow-xs hover:border-[var(--color-accent)]/40 transition flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                             <div class="flex items-center space-x-3.5">
-                                <div class="w-14 h-14 rounded-2xl overflow-hidden bg-stone-900 border border-rose-300 shrink-0">
+                                <div class="w-13 h-13 rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shrink-0">
                                     <img src="{{ $suitor->primary_photo_url }}" alt="{{ $suitor->name }}" class="w-full h-full object-cover">
                                 </div>
                                 <div>
-                                    <h3 class="font-heading font-bold text-sm text-stone-900">{{ $suitor->name }}</h3>
-                                    <p class="text-xs text-rose-900 font-semibold">
-                                        {{ $sProfile?->caste_jati ?? 'Hindu' }} ({{ $sProfile?->gotra ?? 'Gotra N/A' }}) • {{ $suitor->age }} yrs
+                                    <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">{{ $suitor->name }}</h3>
+                                    <p class="text-xs text-[var(--color-accent)] dark:text-[var(--color-accent)] font-medium">
+                                        Gotra: {{ $sProfile?->gotra ?? 'Not specified' }} &bull; {{ $suitor->age }} yrs
                                     </p>
-                                    <p class="text-[11px] text-stone-500">
-                                        {{ $sProfile?->profession ?? 'Professional' }} • {{ $sProfile?->city ?? 'Diaspora' }}
+                                    <p class="text-[11px] text-stone-500 dark:text-stone-400">
+                                        {{ $sProfile?->profession ?? 'Professional' }} &bull; {{ $sProfile?->city ?? 'Diaspora' }}
                                     </p>
                                 </div>
                             </div>
@@ -192,13 +189,13 @@
                             <div class="flex items-center space-x-2 w-full sm:w-auto">
                                 <form action="{{ route('proposals.accept', $prop->id) }}" method="POST" class="flex-1 sm:flex-initial">
                                     @csrf
-                                    <button type="submit" class="w-full px-4 py-2 rounded-xl gold-gradient text-white font-bold text-xs shadow-xs hover:opacity-95 transition">
+                                    <button type="submit" class="w-full px-4 py-2 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-medium text-xs shadow-xs transition cursor-pointer">
                                         Accept Interest
                                     </button>
                                 </form>
                                 <form action="{{ route('proposals.decline', $prop->id) }}" method="POST" class="flex-1 sm:flex-initial">
                                     @csrf
-                                    <button type="submit" class="w-full px-3 py-2 rounded-xl border border-stone-300 text-stone-600 font-bold text-xs hover:bg-stone-50 transition">
+                                    <button type="submit" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-600 dark:text-stone-300 font-medium text-xs hover:bg-stone-50 dark:hover:bg-stone-800 transition cursor-pointer">
                                         Decline
                                     </button>
                                 </form>
@@ -207,23 +204,21 @@
                     @endforeach
                 </div>
             @else
-                <div class="bg-rose-50/50 rounded-2xl p-6 border border-rose-200 text-center space-y-2">
-                    <span class="text-2xl">🕊️</span>
-                    <h3 class="font-heading font-bold text-sm text-rose-950">No Pending Suitor Proposals</h3>
-                    <p class="text-xs text-stone-600 max-w-md mx-auto">
-                        Your biodata is active in the discovery directory. When prospective grooms send proposals, you and your family elders can review them here.
+                <div class="bg-stone-50 dark:bg-stone-800/60 rounded-2xl p-6 border border-stone-200/90 dark:border-stone-700/80 text-center space-y-2">
+                    <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">No Pending Proposals</h3>
+                    <p class="text-xs text-stone-600 dark:text-stone-400 max-w-md mx-auto leading-relaxed">
+                        Your biodata is active in the discovery directory. When candidates express interest, you and your family elders can review them here.
                     </p>
-                    <a href="{{ route('discovery.index') }}" class="inline-block mt-2 px-4 py-2 rounded-xl gold-gradient text-white text-xs font-bold shadow-xs">
-                        Explore Compatible Grooms
+                    <a href="{{ route('discovery.index') }}" class="inline-block mt-2 px-4 py-2 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-xs font-medium shadow-xs transition">
+                        Explore Candidates
                     </a>
                 </div>
             @endif
 
             <!-- Recommended Compatible Grooms Preview -->
             <div class="pt-4">
-                <h3 class="font-heading font-bold text-sm text-stone-900 mb-3 flex items-center space-x-1.5">
-                    <span>✨</span>
-                    <span>Recommended Grooms Based on Your Sanskar:</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100 mb-3">
+                    Recommended Matches
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     @foreach($recommendedGrooms as $item)
@@ -232,23 +227,23 @@
                             $gProfile = $groom->profile;
                             $comp = $item['compatibility'];
                         @endphp
-                        <div class="bg-white rounded-2xl border border-amber-200/90 p-3.5 space-y-2 shadow-xs hover:border-amber-400 transition smooth-card">
+                        <div class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/90 dark:border-stone-800 p-3.5 space-y-2.5 shadow-xs hover:border-[var(--color-accent)]/40 transition">
                             <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 rounded-xl overflow-hidden bg-stone-900 shrink-0">
+                                <div class="w-12 h-12 rounded-xl overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
                                     <img src="{{ $groom->primary_photo_url }}" alt="{{ $groom->name }}" class="w-full h-full object-cover">
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h4 class="font-bold text-xs text-stone-900 truncate">{{ $groom->name }}</h4>
-                                    <span class="text-[10px] text-amber-800 font-semibold block truncate">
-                                        {{ $gProfile?->gotra ?? 'Gotra' }} • {{ $groom->age }} yrs • {{ $gProfile?->city ?? 'Diaspora' }}
+                                    <h4 class="font-serif font-bold text-sm text-stone-900 dark:text-stone-100 truncate">{{ $groom->name }}</h4>
+                                    <span class="text-[11px] text-stone-500 dark:text-stone-400 block truncate">
+                                        {{ $gProfile?->gotra ?? 'Gotra' }} &bull; {{ $groom->age }} yrs &bull; {{ $gProfile?->city ?? 'Diaspora' }}
                                     </span>
-                                    <span class="text-[10px] text-emerald-700 font-bold">
-                                        ✨ {{ $comp['percentage'] }}% Match
+                                    <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-medium">
+                                        {{ $comp['percentage'] }}% Compatibility
                                     </span>
                                 </div>
                             </div>
-                            <a href="{{ route('profile.show', $groom->id) }}" class="w-full py-1.5 rounded-lg border border-red-900 text-red-900 hover:bg-red-50 text-[11px] font-bold text-center block transition">
-                                View Suitor Biodata
+                            <a href="{{ route('profile.show', $groom->id) }}" class="w-full py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 text-xs font-medium text-center block transition">
+                                View Biodata
                             </a>
                         </div>
                     @endforeach
@@ -259,41 +254,40 @@
         <!-- Column 3: Family Representative & Chaperone Status -->
         <div class="space-y-6">
             <!-- Family Representative Card -->
-            <div class="bg-white rounded-3xl p-5 border border-rose-200 shadow-xs space-y-4">
-                <div class="flex items-center justify-between pb-2 border-b border-rose-100">
-                    <h3 class="font-heading font-bold text-sm text-red-950 flex items-center space-x-1.5">
-                        <span>👥</span>
+            <div class="bg-white dark:bg-stone-900 rounded-2xl p-5 border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-stone-200 dark:border-stone-800">
+                    <h3 class="font-serif font-bold text-sm text-stone-900 dark:text-stone-100 flex items-center space-x-1.5">
+                        <svg class="w-4 h-4 text-[var(--color-accent)] dark:text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
                         <span>Guardian Chaperone</span>
                     </h3>
-                    <a href="{{ route('family.manage') }}" class="text-[10px] font-bold text-rose-800 hover:underline">
-                        Manage →
+                    <a href="{{ route('family.manage') }}" class="text-[11px] font-medium text-[var(--color-accent)] dark:text-[var(--color-accent)] hover:underline">
+                        Manage &rarr;
                     </a>
                 </div>
 
                 @if($familyRepLink)
-                    <div class="p-3.5 rounded-2xl bg-rose-50/60 border border-rose-200/80 space-y-2">
+                    <div class="p-3.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/50 space-y-2">
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-rose-900 text-amber-200 font-bold flex items-center justify-center text-xs shrink-0">
+                            <div class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-stone-100 font-serif font-bold flex items-center justify-center text-xs shrink-0">
                                 {{ strtoupper(substr($familyRepLink->representativeUser->name, 0, 2)) }}
                             </div>
                             <div class="min-w-0">
-                                <h4 class="font-bold text-stone-900 text-xs truncate">{{ $familyRepLink->representativeUser->name }}</h4>
-                                <span class="text-[10px] text-rose-800 font-semibold block">
-                                    {{ ucfirst($familyRepLink->relationship) }} • Full Oversight
+                                <h4 class="font-medium text-stone-900 dark:text-stone-100 text-xs truncate">{{ $familyRepLink->representativeUser->name }}</h4>
+                                <span class="text-[11px] text-stone-500 dark:text-stone-400 block">
+                                    {{ ucfirst($familyRepLink->relationship) }} &bull; Full Oversight
                                 </span>
                             </div>
                         </div>
-                        <p class="text-[11px] text-stone-600 leading-tight">
-                            ✓ Active in 3-way chaperoned conversations to safeguard family honor and ensure respectful discourse.
+                        <p class="text-[11px] text-stone-600 dark:text-stone-400 leading-tight">
+                            ✓ Active in chaperoned conversations to safeguard family honor and ensure respectful discourse.
                         </p>
                     </div>
                 @else
                     <div class="text-center py-4 space-y-2">
-                        <div class="text-2xl">👨‍👩‍👧</div>
-                        <p class="text-xs text-stone-600 leading-relaxed">
+                        <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
                             Link your father, mother, or trusted family elder to chaperone chats and review prospective in-laws.
                         </p>
-                        <a href="{{ route('family.manage') }}" class="inline-block px-4 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-950 text-xs font-bold transition">
+                        <a href="{{ route('family.manage') }}" class="inline-block px-4 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-[var(--color-accent)] dark:text-amber-300 text-xs font-medium transition hover:bg-amber-100">
                             Link Family Elder (Free)
                         </a>
                     </div>
@@ -301,19 +295,19 @@
             </div>
 
             <!-- Modesty & Anti-Dowry Shield Notice -->
-            <div class="bg-gradient-to-br from-[#2a080c] to-[#1a0507] text-amber-100 rounded-3xl p-5 border border-rose-900/50 shadow-xs space-y-2.5 text-xs">
-                <span class="font-bold text-rose-300 text-[11px] uppercase tracking-wider block">
-                    Kanya Safeguards & Ethics
+            <div class="bg-stone-50 dark:bg-stone-800/60 text-stone-700 dark:text-stone-300 rounded-2xl p-5 border border-stone-200/90 dark:border-stone-700/80 shadow-xs space-y-2.5 text-xs">
+                <span class="font-serif font-bold text-stone-900 dark:text-stone-100 text-sm block">
+                    Kanya Protections &amp; Ethics
                 </span>
-                <ul class="space-y-1.5 text-amber-200/80 text-[11px]">
-                    <li>• Contact shield masks your phone and email from suitors</li>
-                    <li>• Dowry demands automatically trigger instant ban & police report</li>
-                    <li>• Photos remain respectfully blurred until you grant mutual consent</li>
-                    <li>• Chaperoned family oversight ensures zero unsolicited harassment</li>
+                <ul class="space-y-1.5 text-stone-600 dark:text-stone-400 text-[11px]">
+                    <li>&bull; Phone numbers and emails are masked until you give mutual consent</li>
+                    <li>&bull; Dowry demands result in immediate profile ban and incident report</li>
+                    <li>&bull; Photos stay respectfully blurred until mutual interest is accepted</li>
+                    <li>&bull; Chaperoned family oversight ensures polite and dignified conversation</li>
                 </ul>
                 <div class="pt-1">
-                    <a href="{{ route('about') }}#legal-compliance" class="text-[10px] font-bold text-rose-300 hover:underline">
-                        Read Kanya Protection Charter →
+                    <a href="{{ route('about') }}#legal-compliance" class="text-[11px] font-medium text-[var(--color-accent)] dark:text-[var(--color-accent)] hover:underline">
+                        Read Community Safeguards &rarr;
                     </a>
                 </div>
             </div>
@@ -323,4 +317,3 @@
 
 </div>
 @endsection
-

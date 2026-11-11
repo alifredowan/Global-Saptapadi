@@ -25,7 +25,7 @@ const PORT = process.env.NODE_SOCKET_PORT || 3000;
 const pool = new pg.Pool({
     user: process.env.DB_USERNAME || 'postgres',
     host: process.env.DB_HOST || '127.0.0.1',
-    database: process.env.DB_DATABASE || 'vivah_connect',
+    database: process.env.DB_DATABASE || 'global_saptapadi',
     password: process.env.DB_PASSWORD || 'postgres',
     port: parseInt(process.env.DB_PORT || '5432', 10),
 });
@@ -173,7 +173,7 @@ io.on('connection', (socket) => {
 app.get('/api/health', (req, res) => {
     res.json({
         status: 'online',
-        service: 'Vivah Connect Real-Time Node.js Chaperoned Communication Gateway',
+        service: 'Global Saptapadi Real-Time Node.js Chaperoned Communication Gateway',
         active_users_count: activeUsers.size,
         timestamp: new Date().toISOString(),
     });
@@ -188,6 +188,6 @@ app.post('/api/broadcast-proposal', (req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`[Vivah Connect] Real-Time Node.js Server listening on port ${PORT}`);
+    console.log(`[Global Saptapadi] Real-Time Node.js Server listening on port ${PORT}`);
 });
 

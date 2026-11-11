@@ -32,6 +32,21 @@ Route::get('/about', function () {
     return view('pages.about');
 })->name('about');
 
+Route::get('/privacy-policy', function () {
+    return view('pages.privacy_policy');
+})->name('privacy.policy');
+
+Route::get('/cookie-policy', function () {
+    return view('pages.cookie_policy');
+})->name('cookie.policy');
+
+Route::get('/terms', function () {
+    return view('pages.terms');
+})->name('terms');
+
+// Public Pricing & Membership Information
+Route::get('/membership', [MembershipController::class, 'index'])->name('membership.index');
+
 // Language forced to English
 Route::get('/language/{lang}', function () {
     session(['locale' => 'en']);
@@ -79,6 +94,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposals.accept');
     Route::post('/proposals/{id}/decline', [ProposalController::class, 'decline'])->name('proposals.decline');
 
+    // Notifications
+    Route::post('/notifications/mark-all-read', function (\Illuminate\Http\Request $request) {
+        $user = \Illuminate\Support\Facades\Auth::user();
+        if ($user) {
+            \App\Models\Message::where('receiver_user_id', $user->id)
+                ->whereNull('read_at')
+                ->update(['read_at' => now(), 'status' => 'read']);
+        }
+        return back()->with('info', 'All notifications marked as read.');
+    })->name('notifications.mark_all_read');
+
     // Secure Chaperoned Communication
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/{partnerId}', [ChatController::class, 'show'])->name('chat.show');
@@ -97,8 +123,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/verification', [VerificationController::class, 'index'])->name('verification.index');
     Route::post('/verification', [VerificationController::class, 'submit'])->name('verification.submit');
 
-    // Membership & Single Vivah Pass
-    Route::get('/membership', [MembershipController::class, 'index'])->name('membership.index');
+    // Membership & Single Vivah Pass (Payment Gateways)
     Route::post('/membership/checkout', [MembershipController::class, 'checkout'])->name('membership.checkout');
     Route::post('/membership/stripe', [MembershipController::class, 'processStripe'])->name('membership.stripe');
     Route::post('/membership/paypal/order', [MembershipController::class, 'createPayPalOrder'])->name('membership.paypal.order');
@@ -110,11 +135,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/milestone/declare', [MilestoneController::class, 'declareMarriage'])->name('milestone.declare');
     Route::get('/certificate/{uuid}', [MilestoneController::class, 'viewCertificate'])->name('milestone.certificate');
 
+    // Settings & Privacy Console
+    Route::get('/settings/privacy', [ProfileController::class, 'privacySettings'])->name('settings.privacy');
+    Route::post('/settings/privacy', [ProfileController::class, 'updatePrivacySettings'])->name('settings.privacy.update');
+
     // Admin & Moderation Operations (RBAC: Admin only)
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::post('/admin/kyc/{id}', [AdminController::class, 'reviewKyc'])->name('admin.kyc.review');
         Route::post('/admin/report/{id}', [AdminController::class, 'handleReport'])->name('admin.report.handle');
         Route::get('/admin/audit-logs', [AdminController::class, 'auditLogs'])->name('admin.audit_logs');
+        Route::get('/admin/compliance', [AdminController::class, 'compliance'])->name('admin.compliance');
+        Route::post('/admin/compliance', [AdminController::class, 'updateCompliance'])->name('admin.compliance.update');
     });
 });

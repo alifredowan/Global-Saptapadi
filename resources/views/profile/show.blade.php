@@ -1,32 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-5xl mx-auto space-y-6">
+<div class="max-w-5xl mx-auto space-y-6 pb-20 sm:pb-6">
 
-    <!-- Top Profile Banner -->
-    <div class="card-ledger overflow-hidden bg-[var(--bg-surface)]">
-        <div class="h-40 bg-[var(--accent-primary)] pattern-header relative">
+    <!-- Top Profile Banner & Hero Dossier -->
+    <div class="card-ledger overflow-hidden bg-[var(--bg-surface)] border border-[var(--border-default)]">
+        <!-- Banner header with delicate Alpona corner ornament -->
+        <div class="h-36 bg-[var(--accent-subtle)] border-b border-[var(--accent-border)] relative">
+            <div class="absolute top-0 right-0 p-3 pointer-events-none opacity-40">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="text-[var(--secondary-primary)]">
+                    <path d="M80 0C60 0 20 20 20 80" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="70" cy="10" r="2" fill="currentColor"/>
+                    <circle cx="50" cy="30" r="2" fill="currentColor"/>
+                </svg>
+            </div>
+
             @if($isOwnProfile)
-            <a href="{{ route('profile.edit') }}" class="absolute top-4 right-4 btn-secondary text-xs shadow-xs flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-                <span>Edit My Biodata</span>
+            <a href="{{ route('profile.edit') }}" class="absolute top-4 right-4 btn-secondary text-xs flex items-center gap-1.5 !min-h-[34px] !px-3 shadow-xs">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                <span>Edit Biodata</span>
             </a>
             @endif
         </div>
 
-        <div class="px-6 sm:px-8 pb-8 pt-0 relative">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between -mt-16 gap-4 mb-6">
-                <!-- Avatar & Status -->
+        <div class="px-6 sm:px-8 pb-6 pt-0 relative">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between -mt-16 gap-4 mb-4">
+                <!-- Avatar & Candidate Header -->
                 <div class="flex items-end gap-4">
-                    <div class="w-32 h-32 rounded-[var(--radius-md)] border-4 border-[var(--bg-surface)] shadow-md bg-[var(--neutral-100)] overflow-hidden relative shrink-0">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-[var(--radius-sm)] border-4 border-[var(--bg-surface)] shadow-sm bg-[var(--bg-subtle)] overflow-hidden relative shrink-0">
                         <img src="{{ $canViewPhotos ? $user->primary_photo_url : $user->blurred_photo_url }}" 
                              alt="{{ $user->name }}" 
-                             class="w-full h-full object-cover {{ !$canViewPhotos ? 'filter blur-sm scale-110' : '' }}">
+                             class="w-full h-full object-cover {{ !$canViewPhotos ? 'filter blur-[4px] scale-105' : '' }}">
                         
                         @if(!$canViewPhotos)
-                        <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white text-center p-2">
-                            <svg class="w-5 h-5 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            <span class="text-[9px] font-bold uppercase tracking-wider">Modesty Blurred</span>
+                        <div class="absolute inset-0 bg-[#171312]/50 flex flex-col items-center justify-center text-white text-center p-2">
+                            <svg class="w-4 h-4 mb-1 text-amber-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span class="text-[9px] font-semibold tracking-wider text-amber-100">Photo Private</span>
                         </div>
                         @endif
                     </div>
@@ -35,37 +44,37 @@
                         <div class="flex items-center gap-2 flex-wrap">
                             <h1 class="font-serif font-bold text-2xl sm:text-3xl text-[var(--text-primary)]">{{ $user->name }}</h1>
                             @if($user->is_verified)
-                            <span class="badge-verified" title="Government ID & Live Selfie KYC Verified">
-                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Verified Seeker</span>
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[var(--radius-xs)] bg-[var(--color-success-bg)] border border-[var(--color-success-border)] text-[11px] font-semibold text-[var(--color-success)]" title="Government ID Verified">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Verified Candidate</span>
                             </span>
                             @endif
                         </div>
-                        <p class="text-xs sm:text-sm text-[var(--text-secondary)] font-medium mt-1">
-                            {{ $user->age }} Years &bull; {{ $profile?->city ?? 'Location Open' }}, {{ $profile?->country ?? 'Global Diaspora' }} &bull; Managed by {{ ucfirst($user->profile_managed_by) }}
+                        <p class="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
+                            {{ $user->age }} Years &bull; {{ $profile?->city ?? 'Location Open' }}, {{ $profile?->country ?? 'Diaspora' }} &bull; Profile managed by {{ ucfirst($user->profile_managed_by) }}
                         </p>
                     </div>
                 </div>
 
-                <!-- Interaction CTA (if viewing someone else) -->
+                <!-- Desktop Interaction CTA (if viewing someone else) -->
                 @if(!$isOwnProfile)
-                <div class="flex items-center gap-2 pb-1">
-                    <a href="{{ route('horoscope.compare', $user->id) }}" class="btn-secondary text-xs flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-[var(--secondary-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        <span>Ashtakoota Guna Milan</span>
+                <div class="hidden sm:flex items-center gap-2 pb-1">
+                    <a href="{{ route('horoscope.compare', $user->id) }}" class="btn-secondary text-xs flex items-center gap-1.5 !min-h-[38px]">
+                        <svg class="w-4 h-4 text-[var(--secondary-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span>Kundli Milan</span>
                     </a>
 
                     @if(auth()->user()->hasMutualInterestWith($user->id))
-                    <a href="{{ route('chat.show', $user->id) }}" class="btn-primary text-xs flex items-center gap-1.5">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        <span>Open Chaperoned Chat</span>
+                    <a href="{{ route('chat.show', $user->id) }}" class="btn-primary text-xs flex items-center gap-1.5 !min-h-[38px]">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>Open Chat</span>
                     </a>
                     @else
                     <form method="POST" action="{{ route('proposals.store', $user->id) }}">
                         @csrf
-                        <button type="submit" class="btn-primary text-xs flex items-center gap-1.5">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                            <span>Transmit Formal Interest</span>
+                        <button type="submit" class="btn-primary text-xs flex items-center gap-1.5 !min-h-[38px] cursor-pointer">
+                            <span>Send Expression of Interest</span>
+                            &rarr;
                         </button>
                     </form>
                     @endif
@@ -73,221 +82,208 @@
                 @endif
             </div>
 
-            <!-- Completeness Bar -->
-            <div class="p-3.5 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-[var(--radius-sm)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <!-- Profile Completeness & Family Review Banner -->
+            <div class="p-3 bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-[var(--radius-sm)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
                 <div class="flex items-center gap-2">
-                    <span class="font-bold text-[var(--text-primary)] uppercase tracking-wider text-[11px]">Biodata Completeness:</span>
+                    <span class="font-semibold text-[var(--text-secondary)] uppercase text-[10px] tracking-wider">Biodata Completeness:</span>
                     <span class="font-bold text-[var(--accent-primary)]">{{ $profile?->profile_completeness_pct ?? 60 }}%</span>
                 </div>
-                <div class="w-full sm:w-64 bg-[var(--border-default)] rounded-full h-2 overflow-hidden">
-                    <div class="bg-[var(--accent-primary)] h-full rounded-full transition-all duration-300" style="width: {{ $profile?->profile_completeness_pct ?? 60 }}%"></div>
+                <div class="w-full sm:w-56 bg-[var(--border-default)] rounded-full h-1.5 overflow-hidden">
+                    <div class="bg-[var(--accent-primary)] h-full rounded-full" style="width: {{ $profile?->profile_completeness_pct ?? 60 }}%"></div>
                 </div>
                 <div class="text-[11px] text-[var(--text-muted)]">
-                    High-trust verified biodatas receive 4.5x higher matching discovery.
+                    Phone numbers and private contact stay shielded until mutual family acceptance.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Biodata Grid -->
+    <!-- Main Biodata Grid (2 Columns on Desktop) -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- Left 2 Columns: Detailed Specifications -->
+        <!-- Left 2 Columns: Detailed Ledger Specifications -->
         <div class="lg:col-span-2 space-y-6">
 
             <!-- Narrative About Me -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-3">
-                <div class="border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Candidate Narrative &amp; Personal Reflections</span>
+                <div class="border-b border-[var(--border-subtle)] pb-2 flex items-center justify-between">
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Personal Narrative
                     </h2>
                 </div>
                 <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed italic p-4 bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
-                    "{{ $profile?->about_me ?? 'A peaceful Dharmic soul seeking a lifelong companion built upon mutual respect, devotion, and cultural harmony.' }}"
+                    "{{ $profile?->about_me ?? 'A peaceful soul seeking a lifelong partner rooted in mutual respect, devotion, and cultural harmony.' }}"
                 </p>
+                @if($profile?->partner_preferences_bio)
+                <div class="pt-2">
+                    <span class="text-xs font-semibold text-[var(--text-primary)] block mb-1">Partner Preferences:</span>
+                    <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
+                        {{ $profile->partner_preferences_bio }}
+                    </p>
+                </div>
+                @endif
             </div>
 
-            <!-- Cultural, Spiritual & Heritage Classification (FR-2.3, FR-2.4, FR-2.6) -->
+            <!-- Lineage & Spiritual Practice -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-4">
                 <div class="border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Lineage, Community &amp; Spiritual Practice</span>
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Lineage, Sampradaya &amp; Spiritual Lifestyle
                     </h2>
                 </div>
 
-                <dl class="divide-y divide-[var(--border-subtle)]">
-                    <div class="def-row">
-                        <dt class="def-term">Religion &amp; Sampradaya</dt>
-                        <dd class="def-desc">{{ $profile?->religion ?? 'Hindu' }} ({{ $profile?->sampradaya ?? 'General Dharmic' }})</dd>
+                <div class="divide-y divide-[var(--border-subtle)] text-xs">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Religion &amp; Sampradaya</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ $profile?->religion ?? 'Hindu' }} ({{ $profile?->sampradaya ?? 'General Dharmic' }})</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Community &amp; Sub-Caste</dt>
-                        <dd class="def-desc">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Community / Caste</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">
                             @if($profile?->mask_caste && !$isOwnProfile)
-                                <span class="text-[var(--text-muted)] italic">Masked by candidate ("Caste No Bar")</span>
+                                <span class="text-[var(--text-muted)] italic">Masked ("Caste No Bar")</span>
                             @else
                                 {{ $profile?->caste_jati ?? 'Hindu' }} @if($profile?->sub_caste) &bull; {{ $profile->sub_caste }} @endif
                             @endif
-                        </dd>
+                        </span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Paternal Gotra</dt>
-                        <dd class="def-desc">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Paternal Gotra</span>
+                        <span class="font-semibold text-[var(--accent-primary)] text-right w-2/3 font-serif text-sm">
                             @if($profile?->mask_gotra && !$isOwnProfile)
-                                <span class="text-[var(--text-muted)] italic">Masked until mutual interest</span>
+                                <span class="text-[var(--text-muted)] italic text-xs font-sans">Masked until mutual interest</span>
                             @else
                                 {{ $profile?->gotra ?? 'Not Stated' }}
                             @endif
-                        </dd>
+                        </span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Maternal Lineage (Nanihal Gotra)</dt>
-                        <dd class="def-desc">{{ $profile?->nanihal_gotra ?? 'Not Stated' }}</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Maternal Gotra (Nanihal)</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ $profile?->nanihal_gotra ?? 'Not Stated' }}</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Daily Puja &amp; Temple Visits</dt>
-                        <dd class="def-desc">{{ ucfirst($profile?->puja_frequency ?? 'Daily') }} Puja &bull; {{ ucfirst($profile?->temple_visits ?? 'Weekly') }} visits</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Dietary Practice</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3 capitalize">{{ $profile?->diet ?? 'Vegetarian' }}</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Fasting (Vrata) &amp; Scripture</dt>
-                        <dd class="def-desc">{{ ucfirst($profile?->fasting_vrata ?? 'Festivals') }} &bull; {{ ucfirst($profile?->scripture_study ?? 'Occasional') }}</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Puja &amp; Temple Visits</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ ucfirst($profile?->puja_frequency ?? 'Daily') }} Puja &bull; {{ ucfirst($profile?->temple_visits ?? 'Weekly') }} visits</span>
                     </div>
-                </dl>
+                </div>
             </div>
 
-            <!-- Education & Professional Background (FR-2.2) -->
+            <!-- Education & Profession -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-4">
                 <div class="border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Education &amp; Professional Dossier</span>
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Education &amp; Career
                     </h2>
                 </div>
 
-                <dl class="divide-y divide-[var(--border-subtle)]">
-                    <div class="def-row">
-                        <dt class="def-term">Highest Qualification</dt>
-                        <dd class="def-desc">
-                            <span class="font-semibold text-[var(--text-primary)]">{{ $profile?->qualification_level ?? 'Graduate' }}</span>
-                            @if($profile?->education_detail)
-                            <span class="text-[var(--text-muted)] block text-xs mt-0.5">{{ $profile->education_detail }}</span>
-                            @endif
-                        </dd>
+                <div class="divide-y divide-[var(--border-subtle)] text-xs">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Qualification</span>
+                        <span class="font-semibold text-[var(--text-primary)] text-right w-2/3">{{ $profile?->qualification_level ?? 'Graduate' }}</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Profession &amp; Enterprise</dt>
-                        <dd class="def-desc">
-                            <span class="font-semibold text-[var(--text-primary)]">{{ $profile?->profession ?? 'Professional' }}</span>
-                            @if($profile?->organization_type)
-                            <span class="text-[var(--text-muted)] block text-xs mt-0.5">{{ $profile->organization_type }}</span>
-                            @endif
-                        </dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Profession</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ $profile?->profession ?? 'Professional' }} @if($profile?->organization_type) &bull; {{ $profile->organization_type }} @endif</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Annual Gross Income Range</dt>
-                        <dd class="def-desc">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Annual Income</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">
                             @if($profile?->mask_income && !$isOwnProfile)
-                                <span class="text-[var(--text-muted)] italic">Disclosed to mutual matches only</span>
+                                <span class="text-[var(--text-muted)] italic">Shared upon mutual interest</span>
                             @else
-                                {{ $profile?->annual_income_range ?? 'Available upon request' }}
+                                {{ $profile?->annual_income_range ?? 'Available upon family request' }}
                             @endif
-                        </dd>
+                        </span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Citizenship &amp; Native Ancestry</dt>
-                        <dd class="def-desc">{{ $profile?->citizenship ?? 'Global Citizen' }} &bull; {{ $profile?->native_ancestry ?? 'Ancestral Heritage' }}</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Citizenship &amp; Ancestry</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ $profile?->citizenship ?? 'Global' }} &bull; {{ $profile?->native_ancestry ?? 'Heritage Open' }}</span>
                     </div>
-                </dl>
+                </div>
             </div>
 
-            <!-- Family Heritage & Background (FR-2.7) -->
+            <!-- Family Background -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-4">
                 <div class="border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Family Values &amp; Living Arrangements</span>
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Family Roots &amp; Heritage
                     </h2>
                 </div>
 
-                <dl class="divide-y divide-[var(--border-subtle)]">
-                    <div class="def-row">
-                        <dt class="def-term">Family Structure &amp; Values</dt>
-                        <dd class="def-desc">{{ ucfirst($profile?->family_structure ?? 'Nuclear') }} Family &bull; {{ ucfirst($profile?->family_values ?? 'Traditional') }} Values</dd>
+                <div class="divide-y divide-[var(--border-subtle)] text-xs">
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Family Structure &amp; Outlook</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ ucfirst($profile?->family_structure ?? 'Nuclear') }} Family &bull; {{ ucfirst($profile?->family_values ?? 'Traditional') }} Values</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Parents' Occupations</dt>
-                        <dd class="def-desc">Father: {{ $profile?->father_occupation ?? 'Respected' }} &bull; Mother: {{ $profile?->mother_occupation ?? 'Homemaker' }}</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Parents</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">Father: {{ $profile?->father_occupation ?? 'Respected' }} &bull; Mother: {{ $profile?->mother_occupation ?? 'Homemaker' }}</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Siblings</dt>
-                        <dd class="def-desc">{{ $profile?->brothers_count ?? 0 }} Brother(s) &bull; {{ $profile?->sisters_count ?? 0 }} Sister(s)</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Siblings</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ $profile?->brothers_count ?? 0 }} Brother(s) &bull; {{ $profile?->sisters_count ?? 0 }} Sister(s)</span>
                     </div>
 
-                    <div class="def-row">
-                        <dt class="def-term">Post-Marriage Living Preference</dt>
-                        <dd class="def-desc">{{ ucfirst(str_replace('_', ' ', $profile?->living_arrangements_preference ?? 'Flexible')) }}</dd>
+                    <div class="py-2.5 flex justify-between gap-4">
+                        <span class="text-[var(--text-muted)] w-1/3">Residence Post-Marriage</span>
+                        <span class="font-medium text-[var(--text-primary)] text-right w-2/3">{{ ucfirst(str_replace('_', ' ', $profile?->living_arrangements_preference ?? 'Open to discussion')) }}</span>
                     </div>
-                </dl>
+                </div>
             </div>
         </div>
 
         <!-- Right Column: Horoscope & Photo Gallery -->
         <div class="space-y-6">
 
-            <!-- Astrological Natal Profile (FR-3.1, FR-3.4) -->
+            <!-- Astrological Kundli Dossier -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-4">
                 <div class="flex items-center justify-between border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Janam Patrika / Kundli</span>
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Horoscope (Janam Patrika)
                     </h2>
                     @if($kundli?->horoscope_opt_out)
-                    <span class="badge-status text-[10px]">Opted Out</span>
+                    <span class="text-[10px] text-[var(--text-muted)]">Optional</span>
                     @endif
                 </div>
 
                 @if(!$kundli || $kundli->horoscope_opt_out)
                     <div class="p-4 bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] text-center text-xs text-[var(--text-muted)] border border-[var(--border-subtle)]">
-                        "Horoscope Not Required" selected by candidate. Matching evaluates lifestyle, cultural traditions, and family values.
+                        Horoscope matching was marked as optional by candidate. Evaluation is based on cultural background, education, and values.
                     </div>
                 @else
-                    <dl class="divide-y divide-[var(--border-subtle)] text-xs">
-                        <div class="def-row">
-                            <dt class="def-term">Rashi (Moon Sign)</dt>
-                            <dd class="def-desc font-semibold text-[var(--accent-primary)]">{{ $kundli->rashi ?? 'Not Specified' }}</dd>
+                    <div class="divide-y divide-[var(--border-subtle)] text-xs">
+                        <div class="py-2 flex justify-between">
+                            <span class="text-[var(--text-muted)]">Rashi</span>
+                            <span class="font-semibold text-[var(--accent-primary)] font-serif text-sm">{{ $kundli->rashi ?? 'Not Specified' }}</span>
                         </div>
-                        <div class="def-row">
-                            <dt class="def-term">Nakshatra</dt>
-                            <dd class="def-desc font-semibold text-[var(--accent-primary)]">{{ $kundli->nakshatra ?? 'Not Specified' }} (Charan {{ $kundli->charan ?? 1 }})</dd>
+                        <div class="py-2 flex justify-between">
+                            <span class="text-[var(--text-muted)]">Nakshatra</span>
+                            <span class="font-semibold text-[var(--accent-primary)] font-serif text-sm">{{ $kundli->nakshatra ?? 'Not Specified' }} (Charan {{ $kundli->charan ?? 1 }})</span>
                         </div>
-                        <div class="def-row">
-                            <dt class="def-term">Manglik Status</dt>
-                            <dd class="def-desc font-semibold {{ $kundli->manglik_status === 'manglik' ? 'text-[var(--color-warning)]' : 'text-[var(--color-success)]' }}">
+                        <div class="py-2 flex justify-between">
+                            <span class="text-[var(--text-muted)]">Manglik</span>
+                            <span class="font-medium {{ $kundli->manglik_status === 'manglik' ? 'text-[var(--secondary-text)]' : 'text-[var(--color-success)]' }}">
                                 {{ ucfirst(str_replace('_', ' ', $kundli->manglik_status ?? 'Non Manglik')) }}
-                            </dd>
+                            </span>
                         </div>
-                        <div class="def-row">
-                            <dt class="def-term">Chart Verification</dt>
-                            <dd class="def-desc font-semibold {{ $kundli->chart_verified_by_pandit ? 'text-[var(--color-success)]' : 'text-[var(--text-muted)]' }}">
-                                {{ $kundli->chart_verified_by_pandit ? 'Verified by Pandit' : 'Self-declared chart' }}
-                            </dd>
-                        </div>
-                    </dl>
+                    </div>
 
                     @if(!$isOwnProfile)
-                    <a href="{{ route('horoscope.compare', $user->id) }}" class="btn-secondary w-full text-xs text-center justify-center">
+                    <a href="{{ route('horoscope.compare', $user->id) }}" class="btn-secondary w-full text-xs text-center justify-center !min-h-[38px] mt-2">
                         <span>Compare 36-Point Guna Milan</span>
                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                     </a>
@@ -295,35 +291,58 @@
                 @endif
             </div>
 
-            <!-- Photo Gallery (Up to 6 Photos with Privacy Controls) -->
+            <!-- Photo Gallery (Up to 6 Photos) -->
             <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-4">
                 <div class="flex items-center justify-between border-b border-[var(--border-subtle)] pb-2">
-                    <h2 class="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"></span>
-                        <span>Photo Gallery ({{ $user->photos->count() }}/6)</span>
+                    <h2 class="text-xs font-semibold text-[var(--secondary-text)] uppercase tracking-wider">
+                        Photographs ({{ $user->photos->count() }})
                     </h2>
-                    <span class="text-[10px] text-[var(--text-muted)] font-semibold uppercase">
-                        {{ ucfirst(str_replace('_', ' ', $profile?->photo_privacy ?? 'blur_until_mutual')) }}
+                    <span class="text-[10px] text-[var(--text-muted)]">
+                        {{ $canViewPhotos ? 'Unlocked' : 'Protected' }}
                     </span>
                 </div>
 
                 @if($user->photos->isEmpty())
                 <div class="p-6 bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] text-center text-xs text-[var(--text-muted)] border border-[var(--border-subtle)]">
-                    No additional gallery photographs uploaded yet.
+                    No additional photographs uploaded yet.
                 </div>
                 @else
                 <div class="grid grid-cols-2 gap-2">
                     @foreach($user->photos as $p)
-                    <div class="relative h-28 rounded-[var(--radius-sm)] overflow-hidden bg-[var(--neutral-100)] border border-[var(--border-subtle)]">
+                    <div class="relative h-28 rounded-[var(--radius-sm)] overflow-hidden bg-[var(--bg-subtle)] border border-[var(--border-default)]">
                         <img src="{{ $canViewPhotos ? asset($p->photo_path) : asset($p->blurred_photo_path ?? $p->photo_path) }}" 
-                             alt="Photo" 
-                             class="w-full h-full object-cover {{ !$canViewPhotos ? 'filter blur-sm scale-110' : '' }}">
+                             alt="Candidate photo" 
+                             class="w-full h-full object-cover {{ !$canViewPhotos ? 'filter blur-[3px] scale-105' : '' }}">
                     </div>
                     @endforeach
                 </div>
                 @endif
             </div>
+
         </div>
     </div>
+
+    <!-- Mobile-First Sticky Bottom Action Bar (48px touch target) -->
+    @if(!$isOwnProfile)
+    <div class="sm:hidden fixed bottom-0 inset-x-0 bg-[var(--bg-surface)] border-t border-[var(--border-default)] p-3 z-30 shadow-lg flex items-center justify-between gap-3">
+        <a href="{{ route('horoscope.compare', $user->id) }}" class="btn-secondary flex-1 text-center justify-center !min-h-[48px] !h-[48px] !text-xs font-semibold">
+            Kundli Milan
+        </a>
+
+        @if(auth()->user()->hasMutualInterestWith($user->id))
+        <a href="{{ route('chat.show', $user->id) }}" class="btn-primary flex-1 text-center justify-center !min-h-[48px] !h-[48px] !text-xs font-semibold">
+            Open Chat
+        </a>
+        @else
+        <form method="POST" action="{{ route('proposals.store', $user->id) }}" class="flex-1">
+            @csrf
+            <button type="submit" class="btn-primary w-full text-center justify-center !min-h-[48px] !h-[48px] !text-xs font-semibold cursor-pointer">
+                Send Interest
+            </button>
+        </form>
+        @endif
+    </div>
+    @endif
+
 </div>
 @endsection

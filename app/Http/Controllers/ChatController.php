@@ -179,10 +179,10 @@ class ChatController extends Controller
             ], $user->id);
 
             if ($request->wantsJson() || $request->ajax()) {
-                return response()->json(['blocked' => true, 'error' => 'Message blocked! Dowry solicitation violates statutory laws and Vivah Connect ethics.'], 422);
+                return response()->json(['blocked' => true, 'error' => 'Message blocked! Dowry solicitation violates statutory laws and Global Saptapadi ethics.'], 422);
             }
 
-            return back()->with('error', 'Message blocked! Dowry solicitation and commercial demands violate statutory laws and Vivah Connect ethics.');
+            return back()->with('error', 'Message blocked! Dowry solicitation and commercial demands violate statutory laws and Global Saptapadi ethics.');
         }
 
         $message = Message::create([

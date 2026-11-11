@@ -1,219 +1,210 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-5xl mx-auto space-y-10 py-2">
+<div class="max-w-5xl mx-auto space-y-12 py-4">
 
-    <!-- Hero Header Banner -->
-    <div class="card-ledger pattern-header p-8 sm:p-12 text-white bg-[var(--accent-primary)] text-center">
-        <img src="{{ asset('images/logo-emblem.png') }}" alt="Vivah Connect" class="w-16 h-16 mx-auto mb-4 rounded-[var(--radius-sm)] object-cover shadow-md border border-white/20">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest mb-3">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
-            <span>About Vivah Connect &bull; Sacred Matrimonial Union</span>
-        </div>
-        <h1 class="font-serif font-bold text-3xl sm:text-4xl text-white max-w-3xl mx-auto leading-tight">
-            Restoring Sanctity, Familial Trust, and Vedic Heritage to Matrimony
-        </h1>
-        <p class="text-xs sm:text-sm text-white/80 mt-3 max-w-2xl mx-auto leading-relaxed">
-            Vivah Connect was established to counter the commercial exploitation of matrimony. In the Vedic tradition, marriage is not a transient transaction, but a sacred covenant connecting two souls and two lineages.
-        </p>
+    <!-- Hero Editorial Header -->
+    <div class="relative section--dark rounded-2xl p-8 sm:p-14 text-white overflow-hidden border border-[var(--color-accent)]/30 shadow-sm">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs border border-white/20 text-stone-200 text-xs font-medium tracking-wide mb-4">
+                <svg class="w-3.5 h-3.5 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                <span>Seven steps. One lifetime.</span>
+            </div>
+            <h1 class="font-serif font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+                Matrimony built for families, not algorithms.
+            </h1>
+            <p class="text-sm sm:text-base text-[#F3E4DD] mt-4 leading-relaxed max-w-2xl">
+                Global Saptapadi was started by Hindu families who were tired of dating apps disguised as matrimony sites. In our tradition, marriage is not an endless swiping catalog. It is a sacred union between two individuals and two lineages.
+            </p>
 
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-white/90">
-            <span class="px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20">Single Vivah Pass ($29 USD)</span>
-            <span class="px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20">36-Point Ashtakoota Guna Milan</span>
-            <span class="px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20">100% ID KYC Verification</span>
-            <span class="px-3 py-1 rounded-[var(--radius-sm)] bg-white/10 border border-white/20">UN CEDAW Zero-Dowry Shield</span>
-        </div>
-    </div>
-
-    <!-- 1. The Sacred Genesis & Mission -->
-    <div class="card-ledger p-6 sm:p-10 bg-[var(--bg-surface)] space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider text-[var(--accent-primary)] block">Our Sacred Genesis</span>
-        <h2 class="text-xl sm:text-2xl font-bold font-serif text-[var(--text-primary)]">
-            Why Vivah Connect Was Founded
-        </h2>
-        <div class="text-xs sm:text-sm text-[var(--text-secondary)] space-y-3 leading-relaxed">
-            <p>
-                In today's digital landscape, modern matrimonial websites have succumbed to corporate models borrowed from casual dating apps. They profit primarily through <strong>recurring monthly subscription fees</strong>, incentivizing them financially to keep individuals searching indefinitely rather than helping them solemnize a lasting marriage.
-            </p>
-            <p>
-                Furthermore, commercial sites are frequently rife with fake profiles, unverified marital statuses, masked commercial solicitations, and distressing dowry demands that violate statutory laws and human dignity.
-            </p>
-            <p>
-                <strong>Vivah Connect was created as a principled alternative.</strong> Grounded in authentic Dharmic ethics, we provide an auspicious sanctuary where seekers and family guardians can explore compatibility with peace of mind, safeguarded by rigorous verification and guided by ancient astrological wisdom.
-            </p>
+            <div class="mt-8 flex flex-wrap gap-2 text-xs text-stone-300">
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Single Vivah Pass ($29 once)</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Optional 36-Point Kundli</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Human-verified government IDs</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20">Strict anti-dowry policy</span>
+            </div>
         </div>
     </div>
 
-    <!-- 2. The 5 Core Dharmic Pillars -->
-    <div id="sacred-pillars" class="space-y-6">
-        <div class="text-center max-w-2xl mx-auto space-y-1">
-            <span class="text-xs font-bold uppercase tracking-widest text-[var(--accent-primary)]">Foundational Principles</span>
-            <h2 class="text-2xl font-bold font-serif text-[var(--text-primary)]">
-                The 5 Sacred Dharmic Pillars
+    <!-- Editorial Story: Why We Built This -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-5 bg-white dark:bg-stone-900 rounded-2xl p-6 sm:p-8 border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-4">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)] block">Our Intention</span>
+            <h2 class="font-serif font-bold text-2xl text-stone-900 dark:text-stone-100">
+                A sanctuary for intentional marriages
             </h2>
-            <p class="text-xs text-[var(--text-muted)]">The core values that govern every feature and policy on our platform.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- Pillar 1: Satya -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--accent-primary)] font-bold flex items-center justify-center text-xs mb-3 font-mono">
-                    01
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">1. Satya (Truth &amp; Integrity)</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Every member must complete a government-issued photo ID verification combined with real-time biometric liveness verification before proposals can be exchanged. Impersonation, misrepresentation, and bot accounts are permanently barred.
-                </p>
-            </div>
-
-            <!-- Pillar 2: Maryada -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--accent-primary)] font-bold flex items-center justify-center text-xs mb-3 font-mono">
-                    02
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">2. Maryada (Dignity &amp; Modesty)</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    We uphold personal modesty with optional photo shields and automated contact masking. Direct phone numbers and email addresses remain shielded until both families formally accept mutual interest.
-                </p>
-            </div>
-
-            <!-- Pillar 3: Sanskar -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--accent-primary)] font-bold flex items-center justify-center text-xs mb-3 font-mono">
-                    03
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">3. Sanskar (Vedic Tradition)</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Our platform computes precise 36-Point Ashtakoota Guna Milan across all eight classical factors. We provide immediate warnings for same-Gotra (Sagotra) ancestral lineages and Manglik dosha balancing.
-                </p>
-            </div>
-
-            <!-- Pillar 4: Kula Gaurav -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--accent-primary)] font-bold flex items-center justify-center text-xs mb-3 font-mono">
-                    04
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">4. Kula Gaurav (Family Reverence)</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    Marriage unites families. Parents and guardians (Ghotoks) can manage biodatas, review proposals, and participate directly in 3-way chaperoned real-time messaging with the prospective in-laws.
-                </p>
-            </div>
-
-            <!-- Pillar 5: Ahimsa -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] border border-[var(--border-default)] text-[var(--accent-primary)] font-bold flex items-center justify-center text-xs mb-3 font-mono">
-                    05
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">5. Ahimsa (Anti-Dowry Shield)</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    In compliance with the UN Convention on the Elimination of All Forms of Discrimination Against Women (CEDAW) and international anti-extortion statutes, dowry demands result in immediate profile suspension and law enforcement audit logs.
-                </p>
-            </div>
-
-            <!-- Single Vivah Pass Philosophy -->
-            <div class="card-ledger p-6 bg-[var(--bg-surface)] border-2 border-[var(--secondary-primary)] space-y-2">
-                <div class="w-8 h-8 rounded-[var(--radius-sm)] bg-[var(--secondary-subtle)] text-[var(--secondary-primary)] font-bold flex items-center justify-center text-xs mb-3">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>
-                </div>
-                <h3 class="font-serif font-bold text-base text-[var(--secondary-text)]">Single Vivah Pass Model</h3>
-                <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    We charge a single one-time pass of <strong>$29 USD</strong> (or <strong>$19 USD</strong> with promo code <code class="font-mono text-[var(--accent-primary)]">SHUBHOVIVAH</code>). No monthly subscriptions. Valid until your sacred wedding is celebrated.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. Why Single Vivah Pass vs Monthly Traps -->
-    <div id="single-pass-ethics" class="card-ledger p-6 sm:p-10 bg-[var(--bg-subtle)] space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider text-[var(--accent-primary)] block">Pricing Ethics</span>
-        <h2 class="text-xl sm:text-2xl font-bold font-serif text-[var(--text-primary)]">
-            Why We Charge Once per Marriage, Never Monthly
-        </h2>
-        <div class="text-xs sm:text-sm text-[var(--text-secondary)] space-y-3 leading-relaxed">
-            <p>
-                Standard commercial matrimonial platforms generate profits by extending your search period. The longer you stay unmarried, the more monthly subscription cycles ($30 to $60 USD each month) they extract from your credit card.
+            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                Most matrimonial sites make their money through recurring monthly subscriptions. That means they make more profit when you stay single longer.
             </p>
-            <p>
-                <strong>Vivah Connect was architected with opposite incentives:</strong>
+            <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                We believe that financial model is fundamentally wrong for marriage. That is why we charge once for your search. When you find your partner, our work is done and we celebrate your wedding day.
             </p>
-            <ul class="list-disc list-inside space-y-1.5 pl-2">
-                <li><strong>One-Time Investment:</strong> You pay $29 USD once for your entire marriage journey.</li>
-                <li><strong>No Auto-Renewals:</strong> Your card is never stored for silent recurring debits.</li>
-                <li><strong>Shared Success Goal:</strong> We celebrate when you find your life partner and record your Shubho Bibaho milestone.</li>
-                <li><strong>Supported Globally:</strong> Seamless checkout through <strong>Stripe</strong> (Visa, Mastercard, Amex, Apple Pay, Google Pay) and <strong>PayPal</strong>.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 4. Pandit Acharya Advisory Council -->
-    <div id="acharya-council" class="card-ledger p-6 sm:p-10 bg-[var(--bg-surface)] space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider text-[var(--accent-primary)] block">Spiritual &amp; Astrological Guidance</span>
-        <h2 class="text-xl sm:text-2xl font-bold font-serif text-[var(--text-primary)]">
-            Pandit Acharya Kalyan Advisory Council
-        </h2>
-        <div class="flex flex-col sm:flex-row items-center gap-6 pt-2">
-            <div class="w-16 h-16 rounded-[var(--radius-md)] bg-[var(--bg-subtle)] border border-[var(--border-default)] flex items-center justify-center text-[var(--accent-primary)] shrink-0">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
-            </div>
-            <div class="text-xs sm:text-sm text-[var(--text-secondary)] space-y-2 leading-relaxed">
-                <p>
-                    Our algorithmic matching engine is overseen and calibrated by traditional Vedic astrologers and Acharyas, led by <strong>Pandit Acharya Kalyan Bhattacharya</strong>.
-                </p>
-                <p>
-                    From computing birth nakshatra padas to assessing Kuja Dosha (Manglik) cancellations and Sampradaya-specific traditions (Vaishnav, Shaiva, Shakta, Smarta), our system adheres to classical Shastric guidelines rather than superficial pop astrology.
-                </p>
+            <div class="pt-2 border-t border-stone-100 dark:border-stone-800">
+                <blockquote class="font-serif italic text-stone-800 dark:text-stone-200 text-sm">
+                    &ldquo;Marriage is a lifetime covenant, not a recurring subscription.&rdquo;
+                </blockquote>
             </div>
         </div>
-    </div>
 
-    <!-- 5. Legal Compliance & International Standards -->
-    <div id="legal-compliance" class="card-ledger p-6 sm:p-10 bg-[var(--neutral-900)] text-white space-y-4">
-        <span class="text-xs font-bold uppercase tracking-wider text-[var(--secondary-border)] block">International Statutory Safeguards</span>
-        <h2 class="text-xl sm:text-2xl font-bold font-serif text-white">
-            Legal Compliance &amp; Diaspora Standards
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[var(--neutral-300)] leading-relaxed pt-2">
-            <div class="p-4 rounded-[var(--radius-sm)] bg-black/40 border border-white/10">
-                <h3 class="font-bold text-white mb-1">Statutory Age &amp; Consent</h3>
-                <p>
-                    Strict adherence to the UN Convention on Consent to Marriage, Minimum Age and Registration of Marriages. No candidate under 21 (groom) or 18 (bride) is permitted to register. Full mutual consent is required before any contact exchange.
-                </p>
-            </div>
-            <div class="p-4 rounded-[var(--radius-sm)] bg-black/40 border border-white/10">
-                <h3 class="font-bold text-white mb-1">Zero-Dowry &amp; Anti-Extortion</h3>
-                <p>
-                    Full alignment with UN CEDAW standards and national Dowry Prohibition Acts. Solicitation of cash, vehicles, or coercive wedding expenditures triggers immediate automated chat interception and permanent user ban.
-                </p>
-            </div>
-            <div class="p-4 rounded-[var(--radius-sm)] bg-black/40 border border-white/10">
-                <h3 class="font-bold text-white mb-1">Strict Monogamy Enforcement</h3>
-                <p>
-                    Only legally single candidates (Never Married, Divorced with certified decree, or Widowed) are accepted. Polygamy or undisclosed concurrent marriages are strictly prohibited.
-                </p>
-            </div>
-            <div class="p-4 rounded-[var(--radius-sm)] bg-black/40 border border-white/10">
-                <h3 class="font-bold text-white mb-1">Data Privacy &amp; Essential Cookies (DPDP &amp; GDPR)</h3>
-                <p>
-                    All personal data, biodata documents, and astrological charts are encrypted. Contact shield masking guarantees telephone numbers and emails are never displayed publicly on search engines. We use strictly essential cookies for secure session management and CSRF protection—zero third-party tracking or advertising cookies.
-                </p>
+        <div class="md:col-span-7 space-y-6">
+            <div class="bg-white dark:bg-stone-900 rounded-2xl p-6 sm:p-8 border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-4">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)] block">Quiet Principles</span>
+                <h3 class="font-serif font-bold text-xl text-stone-900 dark:text-stone-100">
+                    How we treat your family's dignity
+                </h3>
+                
+                <div class="space-y-4 text-xs text-stone-600 dark:text-stone-400">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-lg bg-[var(--color-haldi-soft)] text-[var(--color-accent)] flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <div>
+                            <strong class="font-medium text-stone-900 dark:text-stone-100">Phone numbers stay private.</strong>
+                            <p class="mt-0.5">Contact numbers and personal email addresses are never shown publicly on search engines or profile cards. Both sides must mutually agree before contacts are revealed.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-lg bg-[var(--color-haldi-soft)] text-[var(--color-accent)] flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <div>
+                            <strong class="font-medium text-stone-900 dark:text-stone-100">Parents can review candidates first.</strong>
+                            <p class="mt-0.5">Parents and guardians have their own dedicated access. They can browse biodatas, exchange polite elder macros, and participate in chaperone-guided chats alongside their son or daughter.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-lg bg-[var(--color-haldi-soft)] text-[var(--color-accent)] flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <div>
+                            <strong class="font-medium text-stone-900 dark:text-stone-100">Horoscope matching is always optional.</strong>
+                            <p class="mt-0.5">For families who practice Vedic astrology, we calculate the complete 36-point Ashtakoota Guna Milan, Gotra lineage, and Manglik balance. For families who prefer "Caste no bar" or modern matching, it is completely optional.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-lg bg-[var(--color-haldi-soft)] text-[var(--color-accent)] flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </div>
+                        <div>
+                            <strong class="font-medium text-stone-900 dark:text-stone-100">We never allow dowry demands.</strong>
+                            <p class="mt-0.5">We maintain a strict zero-tolerance policy against dowry, gifts, or financial preconditions. In compliance with the Dowry Prohibition Act and UN CEDAW guidelines, violation reports are audited immediately by human safety officers.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Call to Action Banner -->
-    <div class="card-ledger p-8 text-center bg-[var(--bg-surface)] space-y-4">
-        <h2 class="text-2xl font-bold font-serif text-[var(--text-primary)]">
-            Begin Your Sacred Matrimonial Journey Today
+    <!-- The Saptapadi Path: The Seven Steps -->
+    <div class="space-y-6">
+        <div class="text-center max-w-xl mx-auto">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-1">Tradition</span>
+            <h2 class="font-serif font-bold text-2xl sm:text-3xl text-stone-900 dark:text-stone-100">
+                The Seven Sacred Steps
+            </h2>
+            <p class="text-xs text-stone-600 dark:text-stone-400 mt-1">
+                In a Vedic wedding, bride and groom take seven steps around the sacred Agni. Each step represents a foundational pledge for life together.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 1 &bull; Nourishment</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Food &amp; Health</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To nourish each other, provide for the household, and support healthy living.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 2 &bull; Strength</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Mental &amp; Physical</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To stand together through adversity, protecting family and personal integrity.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 3 &bull; Prosperity</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Dharmic Wealth</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To earn honestly, share resources generously, and care for community elders.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 4 &bull; Harmony</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Family &amp; Respect</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To honor parents and in-laws with equal love, humility, and consideration.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 5 &bull; Progeny</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Lineage &amp; Values</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To raise children with kindness, education, cultural respect, and dharma.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 6 &bull; Togetherness</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">All Seasons</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">To share joys and sorrows through every season and chapter of life.</p>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-1.5 sm:col-span-2">
+                <span class="text-[11px] font-bold text-[var(--color-accent)]">Step 7 &bull; Lifelong Friendship</span>
+                <h3 class="font-serif font-bold text-base text-stone-900 dark:text-stone-100">Sakha Saptapada Bhava</h3>
+                <p class="text-stone-600 dark:text-stone-400 leading-relaxed">&ldquo;With seven steps we have become lifelong friends.&rdquo; The culmination of the marriage rites, sealing mutual devotion for a lifetime.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal & Statutory Standards / Help -->
+    <div id="help" class="bg-stone-100 dark:bg-stone-800/60 rounded-2xl p-6 sm:p-8 border border-stone-200/90 dark:border-stone-700/80 space-y-4">
+        <h3 class="font-serif font-bold text-xl text-stone-900 dark:text-stone-100">
+            Legal Safeguards &amp; Compliance Help
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-stone-600 dark:text-stone-400">
+            <div>
+                <strong class="text-stone-900 dark:text-stone-100 block mb-1">Age &amp; Mutual Consent</strong>
+                <p>Strict enforcement of minimum statutory marriage ages (21 for men, 18 for women). Both parties must freely provide consent.</p>
+            </div>
+            <div>
+                <strong class="text-stone-900 dark:text-stone-100 block mb-1">Zero Dowry Guarantee</strong>
+                <p>In accordance with the Dowry Prohibition Act and UN CEDAW guidelines, demanding dowry or financial gifts is strictly barred.</p>
+            </div>
+            <div>
+                <strong class="text-stone-900 dark:text-stone-100 block mb-1">Encrypted Privacy</strong>
+                <p>Personal biodata and ID documents are encrypted with AES-256 and never indexed by commercial search engines.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Family Care -->
+    <div id="contact" class="p-6 sm:p-8 bg-[var(--color-haldi-soft)]/60 dark:bg-amber-950/20 rounded-2xl border border-[var(--color-haldi)]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <div class="space-y-1">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)]">Support &amp; Family Care</span>
+            <h3 class="font-serif font-bold text-xl text-stone-900 dark:text-stone-100">Have questions or need assistance?</h3>
+            <p class="text-xs text-stone-600 dark:text-stone-400">Our family trust coordinators and Pandit consultation panel are available to help you.</p>
+        </div>
+        <div class="shrink-0 flex items-center gap-3">
+            <a href="mailto:support@globalsaptapadi.com" class="px-4 py-2.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-xs font-semibold transition shadow-xs flex items-center gap-2">
+                <svg class="w-4 h-4 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                <span>support@globalsaptapadi.com</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bottom Action CTA -->
+    <div class="text-center p-8 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/90 dark:border-stone-800 shadow-xs space-y-3">
+        <h2 class="font-serif font-bold text-2xl text-stone-900 dark:text-stone-100">
+            Begin your search with peace of mind
         </h2>
-        <p class="text-xs sm:text-sm text-[var(--text-secondary)] max-w-xl mx-auto leading-relaxed">
-            Create your biodata in minutes, verify your identity, and connect with compatible Dharmic families worldwide.
+        <p class="text-xs text-stone-600 dark:text-stone-400 max-w-md mx-auto leading-relaxed">
+            Create your biodata in minutes, verify your identity, and connect with respectful families worldwide.
         </p>
         <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
-            <a href="{{ route('register') }}" class="btn-primary text-xs">
-                Create Sacred Biodata (Free)
+            <a href="{{ route('register') }}" class="px-5 py-2.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-xs font-medium transition shadow-xs">
+                Create Free Biodata
             </a>
-            <a href="{{ route('login') }}" class="btn-secondary text-xs">
-                Sign In to Portal
+            <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 text-xs font-medium transition">
+                Sign In to Account
             </a>
         </div>
     </div>

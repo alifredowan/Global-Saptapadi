@@ -1,4 +1,4 @@
-# Vivah Connect
+# Global Saptapadi
 ### Sacred Dharmic Matrimonial Platform (Worldwide)
 **Engineered with Laravel 13, Laravel Reverb WebSockets, PostgreSQL 16, and Tailwind CSS**
 
@@ -8,11 +8,11 @@
 
 ## Architectural Overview
 
-Vivah Connect is an enterprise-grade matrimonial platform engineered for marriage-oriented Hindu, Jain, Sikh, and Buddhist seekers across North America, Europe, the United Kingdom, Asia-Pacific, and the worldwide Dharmic diaspora. It prioritizes familial dignity, cultural compatibility, verified identity, statutory civil laws, and customary Vedic safeguards.
+Global Saptapadi is an enterprise-grade matrimonial platform engineered for marriage-oriented Hindu, Jain, Sikh, and Buddhist seekers across North America, Europe, the United Kingdom, Asia-Pacific, and the worldwide Dharmic diaspora. It prioritizes familial dignity, cultural compatibility, verified identity, statutory civil laws, and customary Vedic safeguards.
 
 ```
 +---------------------------------------------------------------------------------------+
-|                                    VIVAH CONNECT                                      |
+|                                  GLOBAL SAPTAPADI                                     |
 +---------------------------------------------------------------------------------------+
 |  FRONTEND & WEB PORTAL (Tailwind CSS, Auspicious Aesthetics, Strictly English, DD/MM) |
 +-------------------------------------------+-------------------------------------------+
@@ -124,26 +124,26 @@ Vivah Connect is an enterprise-grade matrimonial platform engineered for marriag
 ### 1. Prerequisites
 - **PHP 8.3+** with extensions: `pdo_pgsql`, `pgsql`, `gd`, `intl`, `openssl`, `mbstring`.
 - **Node.js 20+** and `npm`.
-- **PostgreSQL 16+** running on `127.0.0.1:5432` with database `vivah_connect`.
+- **PostgreSQL 16+** running on `127.0.0.1:5432` with database `global_saptapadi`.
 
 ### 2. Configuration (`.env`)
 The database, Reverb, Stripe, and PayPal configurations:
 ```env
-APP_NAME="Vivah Connect"
+APP_NAME="Global Saptapadi"
 APP_ENV=local
 APP_URL=http://localhost:5001
 
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=vivah_connect
+DB_DATABASE=global_saptapadi
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
 
 BROADCAST_CONNECTION=reverb
 REVERB_APP_ID=100101
-REVERB_APP_KEY=vivahconnectreverbkey
-REVERB_APP_SECRET=vivahconnectreverbsecret
+REVERB_APP_KEY=globalsaptapadireverbkey
+REVERB_APP_SECRET=globalsaptapadireverbsecret
 REVERB_HOST="127.0.0.1"
 REVERB_PORT=8085
 REVERB_SCHEME="http"
@@ -193,7 +193,7 @@ All test accounts share the default password: **`password123`**. You can test an
 | **Bride (Seeker)** | `ananya@example.com` | `password123` | Ananya Roy • 26 yrs • Investment Banking Analyst • Mumbai, **India** • Mutual accepted proposal with Rohit |
 | **Bride (Remarriage)** | `pooja@example.com` | `password123` | Dr. Pooja Das • 31 yrs • Dental Surgeon • Sydney, **Australia** • Divorced Remarriage Dignity • ISKCON |
 | **Family Representative** | `subhash@example.com` | `password123` | Subhash Chandra Mukherjee • Priya's Father • Toronto, **Canada** • Chaperone Approval Dashboard |
-| **Admin & Trust Officer** | `admin@vivahconnect.com` | `password123` | Trust Operations Dashboard, KYC Review Queue, Anti-Dowry Reports & Immutable Audit Logs |
+| **Admin & Trust Officer** | `admin@globalsaptapadi.com` | `password123` | Trust Operations Dashboard, KYC Review Queue, Anti-Dowry Reports & Immutable Audit Logs |
 
 ---
 

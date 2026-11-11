@@ -3,131 +3,133 @@
 @section('content')
 <div class="max-w-5xl mx-auto space-y-6">
 
-    <!-- Header -->
-    <div class="bg-gradient-to-r from-red-950 via-red-900 to-amber-900 rounded-3xl p-6 sm:p-8 text-amber-100 shadow-md">
-        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
-            <img src="{{ asset('images/logo-emblem.png') }}" alt="" class="w-4 h-4 rounded-full object-cover inline-block">
-            <span>Family Representative Governance Dashboard</span>
+    <!-- Header Card -->
+    <div class="card-ledger p-6 sm:p-8 bg-[var(--bg-surface)] border border-[var(--border-default)]">
+        <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[var(--radius-xs)] bg-[var(--secondary-subtle)] border border-[var(--secondary-border)] text-[var(--secondary-text)] text-[11px] font-semibold uppercase tracking-wider mb-1">
+                <span>Family First Matrimony</span>
+            </div>
+            <h1 class="font-serif font-bold text-2xl sm:text-3xl text-[var(--text-primary)]">
+                Family Guardian &amp; Elder Console
+            </h1>
+            <p class="text-xs text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                Review proposals, grant family blessings, and participate in chaperoned conversations. Your family can review each suitor with calm discretion.
+            </p>
         </div>
-        <h1 class="font-heading font-bold text-2xl sm:text-3xl text-amber-100">
-            Family Oversight & Proposal Approval Center
-        </h1>
-        <p class="text-xs text-amber-200/80 mt-1 leading-relaxed">
-            Dharmic matrimonial facilitation empowering parents and elders to review proposals, grant blessings, and provide dignified chaperoned guidance.
-        </p>
     </div>
 
-    <!-- Assigned Wards Grid -->
-    <div class="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm space-y-4">
-        <h2 class="font-heading font-bold text-base text-red-950 flex items-center space-x-2">
-            <span>👥</span>
-            <span>Assigned Candidate Wards</span>
-        </h2>
+    <!-- Assigned Candidate Wards -->
+    <div class="card-ledger p-6 bg-[var(--bg-surface)] border border-[var(--border-default)] space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h2 class="font-serif font-bold text-base text-[var(--text-primary)]">
+                Linked Candidate Wards
+            </h2>
+            <span class="text-xs text-[var(--text-muted)]">Profiles under your family care</span>
+        </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             @forelse($links as $link)
                 @php $ward = $link->seekerUser; @endphp
-                <div class="p-5 rounded-2xl border border-amber-200/90 bg-amber-50/20 flex items-center justify-between">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 rounded-2xl overflow-hidden bg-gray-100 border border-amber-300">
+                <div class="p-4 rounded-[var(--radius-sm)] border border-[var(--border-default)] bg-[var(--bg-surface)] flex items-center justify-between">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-12 h-12 rounded-[var(--radius-sm)] overflow-hidden bg-[var(--bg-subtle)] border border-[var(--border-default)] shrink-0">
                             <img src="{{ $ward->primary_photo_url }}" alt="{{ $ward->name }}" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h3 class="font-bold text-base text-gray-900">{{ $ward->name }}</h3>
-                            <span class="text-xs text-amber-900 font-semibold block">
-                                Relationship: {{ $link->relationship }} • Scope: {{ ucfirst(str_replace('_', ' ', $link->permission_scope)) }}
+                            <h3 class="font-serif font-bold text-sm text-[var(--text-primary)]">{{ $ward->name }}</h3>
+                            <span class="text-[11px] text-[var(--secondary-text)] font-medium block">
+                                Relationship: {{ $link->relationship }}
                             </span>
-                            <span class="text-[11px] text-gray-500">
-                                {{ $ward->age }} yrs • Gotra: {{ $ward->profile?->gotra ?? 'N/A' }} • {{ $ward->profile?->profession ?? 'Professional' }}
+                            <span class="text-[11px] text-[var(--text-muted)]">
+                                {{ $ward->age }} yrs &bull; Gotra: {{ $ward->profile?->gotra ?? 'N/A' }}
                             </span>
                         </div>
                     </div>
 
-                    <a href="{{ route('profile.show', $ward->id) }}" class="px-3 py-2 rounded-xl border border-gray-300 text-xs font-bold text-gray-700 hover:bg-gray-50">
-                        View Ward Biodata
+                    <a href="{{ route('profile.show', $ward->id) }}" class="btn-secondary text-xs !min-h-[32px] !px-3">
+                        View Biodata
                     </a>
                 </div>
             @empty
-                <div class="col-span-2 p-6 text-center text-xs text-gray-500">
+                <div class="col-span-2 p-6 text-center text-xs text-[var(--text-muted)] bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] border border-[var(--border-subtle)]">
                     No linked candidate wards assigned to your representative account yet.
                 </div>
             @endforelse
         </div>
     </div>
 
-    <!-- Inbound Proposals Awaiting Elder Approval (FR-5.4, FR-7.2) -->
-    <div class="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm space-y-4">
-        <div class="flex items-center justify-between">
-            <h2 class="font-heading font-bold text-base text-red-950 flex items-center space-x-2">
-                <span>📥</span>
-                <span>Inbound Matrimonial Proposals Awaiting Family Clearance ({{ $pendingProposals->count() }})</span>
+    <!-- Inbound Proposals Awaiting Elder Approval -->
+    <div class="card-ledger p-6 bg-[var(--bg-surface)] border border-[var(--border-default)] space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h2 class="font-serif font-bold text-base text-[var(--text-primary)]">
+                Proposals Awaiting Family Review ({{ $pendingProposals->count() }})
             </h2>
-            <span class="text-xs text-amber-800 font-semibold">Familial Consent Protocol Active</span>
+            <span class="text-xs text-[var(--color-success)] font-semibold">Elder Consent Protocol</span>
         </div>
 
         @if($pendingProposals->isEmpty())
-        <div class="p-8 text-center bg-amber-50/30 rounded-xl text-gray-500 text-xs">
-            No pending proposals awaiting family review. All inbound requests are up to date.
+        <div class="p-8 text-center bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] text-[var(--text-muted)] text-xs border border-[var(--border-subtle)]">
+            All inbound candidate inquiries are reviewed and up to date.
         </div>
         @else
         <div class="space-y-4">
             @foreach($pendingProposals as $prop)
-            <div class="p-6 rounded-2xl border-2 border-amber-200 bg-amber-50/20 space-y-4">
+            <div class="p-5 rounded-[var(--radius-sm)] border border-[var(--border-default)] bg-[var(--bg-surface)] space-y-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 rounded-2xl overflow-hidden bg-gray-100 border border-amber-300 shrink-0">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-12 h-12 rounded-[var(--radius-sm)] overflow-hidden bg-[var(--bg-subtle)] border border-[var(--border-default)] shrink-0">
                             <img src="{{ $prop->sender->primary_photo_url }}" alt="{{ $prop->sender->name }}" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <div class="flex items-center space-x-2">
-                                <h3 class="font-bold text-base text-gray-900">{{ $prop->sender->name }}</h3>
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-semibold border border-amber-300">
+                                <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">{{ $prop->sender->name }}</h3>
+                                <span class="text-[10px] px-2 py-0.5 rounded-[var(--radius-xs)] bg-[var(--secondary-subtle)] text-[var(--secondary-text)] border border-[var(--secondary-border)] font-semibold">
                                     Seeking: {{ $prop->receiver->name }}
                                 </span>
                             </div>
-                            <p class="text-xs text-amber-900 font-semibold mt-0.5">
-                                {{ $prop->sender->age }} yrs • {{ $prop->sender->profile?->city ?? 'Location Open' }} • {{ $prop->sender->profile?->profession ?? 'Professional' }} • Gotra: {{ $prop->sender->profile?->gotra ?? 'N/A' }} ({{ $prop->sender->profile?->caste_jati ?? 'Hindu' }})
+                            <p class="text-xs text-[var(--text-secondary)] mt-0.5">
+                                {{ $prop->sender->age }} yrs &bull; {{ $prop->sender->profile?->city ?? 'Diaspora' }} &bull; Gotra: {{ $prop->sender->profile?->gotra ?? 'N/A' }}
                             </p>
                         </div>
                     </div>
 
-                    <a href="{{ route('profile.show', $prop->sender->id) }}" class="px-4 py-2 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 text-xs font-bold text-gray-700 self-start sm:self-center">
+                    <a href="{{ route('profile.show', $prop->sender->id) }}" class="btn-secondary text-xs !min-h-[34px] self-start sm:self-center">
                         Inspect Suitor Biodata
                     </a>
                 </div>
 
-                <!-- Introductory message note -->
-                <div class="p-3 bg-white rounded-xl border border-amber-100 text-xs text-gray-700 italic">
+                <!-- Introductory note -->
+                <div class="p-3 bg-[var(--bg-subtle)] rounded-[var(--radius-sm)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)] italic">
                     "{{ $prop->introductory_note }}"
                 </div>
 
-                <!-- Polite Response Macros (FR-5.4) -->
-                <form method="POST" action="{{ route('family.proposal.handle', $prop->id) }}" class="space-y-3 pt-2 border-t border-amber-100">
+                <!-- Polite Response Form -->
+                <form method="POST" action="{{ route('family.proposal.handle', $prop->id) }}" class="space-y-3 pt-2 border-t border-[var(--border-subtle)]">
                     @csrf
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">
-                            Polite Family Response Macro Note:
+                        <label class="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1">
+                            Response Message from Family Elders:
                         </label>
-                        <select name="family_rep_notes" class="w-full px-3 py-2 rounded-xl border border-gray-300 text-xs bg-white focus:ring-1 focus:ring-red-800">
+                        <select name="family_rep_notes" class="w-full px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border-default)] text-xs bg-[var(--bg-surface)] text-[var(--text-primary)] focus:border-[var(--accent-primary)] focus:outline-none">
                             <option value="Namaskar. Our family elders have reviewed your respected biodata and feel pleased to grant our blessings for your conversation.">
-                                [Approval Macro] Blessings granted: We welcome initiating family conversation.
+                                [Approval] Blessings granted: We welcome initiating conversation.
                             </option>
                             <option value="Pranam. We are honoured by your interest. Our family would be pleased to speak with your elders directly.">
-                                [Approval Macro] Elder dialogue requested: Direct family phone call invited.
+                                [Approval] Direct family dialogue invited.
                             </option>
-                            <option value="With utmost respect and goodwill to your esteemed family, our elders feel that our domestic and astrological horizons are not aligned at this time.">
-                                [Decline Macro] Respectful decline: Wishing you success in finding your destined match.
+                            <option value="With utmost respect and goodwill to your family, our elders feel our horizons are not aligned at this time.">
+                                [Respectful Decline] Wishing you success in finding your life partner.
                             </option>
                         </select>
                     </div>
 
-                    <div class="flex justify-end space-x-3">
-                        <button type="submit" name="action" value="decline" class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold">
-                            ✕ Decline Proposal
+                    <div class="flex justify-end space-x-2">
+                        <button type="submit" name="action" value="decline" class="px-3.5 py-2 rounded-[var(--radius-sm)] bg-[var(--bg-subtle)] hover:bg-[var(--border-default)] text-[var(--text-secondary)] text-xs font-semibold cursor-pointer transition">
+                            Decline
                         </button>
 
-                        <button type="submit" name="action" value="approve" class="px-5 py-2 rounded-xl gold-gradient text-white text-xs font-bold shadow hover:opacity-95 transition">
-                            ✓ Approve Proposal with Blessings
+                        <button type="submit" name="action" value="approve" class="btn-primary text-xs !min-h-[36px] cursor-pointer">
+                            Approve with Family Blessings
                         </button>
                     </div>
                 </form>
@@ -137,42 +139,47 @@
         @endif
     </div>
 
-    <!-- Active Chaperoned Conversations Oversight -->
-    <div class="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm space-y-4">
-        <h2 class="font-heading font-bold text-base text-red-950 flex items-center space-x-2">
-            <span>🛡️</span>
-            <span>Chaperoned Conversation Oversight</span>
-        </h2>
+    <!-- Active Chaperoned Conversations -->
+    <div class="card-ledger p-6 bg-[var(--bg-surface)] border border-[var(--border-default)] space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-[var(--border-subtle)]">
+            <h2 class="font-serif font-bold text-base text-[var(--text-primary)]">
+                Chaperoned Conversation Oversight
+            </h2>
+            <span class="text-xs text-[var(--text-muted)]">Supervisory room access</span>
+        </div>
 
-        <p class="text-xs text-gray-600">
-            As an authorized Family Representative with oversight permissions, you maintain transparent supervisory visibility to protect familial dignity.
+        <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
+            As a family representative, you maintain transparent oversight in the communication room to ensure dignity and decorum.
         </p>
 
         <div class="space-y-3">
             @php
                 $wardIds = $links->pluck('seeker_user_id')->toArray();
             @endphp
-            @foreach($acceptedProposals as $p)
+            @forelse($acceptedProposals as $p)
             @php
                 $suitor = in_array($p->sender_user_id, $wardIds) ? $p->receiver : $p->sender;
                 $wardName = in_array($p->sender_user_id, $wardIds) ? $p->sender->name : $p->receiver->name;
             @endphp
-            <div class="p-4 rounded-xl border border-gray-200 bg-gray-50 flex items-center justify-between text-xs">
+            <div class="p-3.5 rounded-[var(--radius-sm)] border border-[var(--border-default)] bg-[var(--bg-subtle)] flex items-center justify-between text-xs">
                 <div>
-                    <span class="font-bold text-gray-900">{{ $wardName }} (Your Ward)</span>
-                    <span class="text-gray-400 mx-1.5">⇄</span>
-                    <span class="font-bold text-gray-900">{{ $suitor->name }} (Suitor)</span>
-                    <span class="text-[10px] text-emerald-700 font-semibold ml-2">Active Chaperoned Dialogue</span>
+                    <span class="font-serif font-bold text-sm text-[var(--text-primary)]">{{ $wardName }} (Candidate)</span>
+                    <span class="text-[var(--text-muted)] mx-2">&bull;</span>
+                    <span class="font-serif font-bold text-sm text-[var(--text-primary)]">{{ $suitor->name }} (Suitor)</span>
+                    <span class="text-[10px] text-[var(--color-success)] font-semibold ml-2">Chaperoned Active</span>
                 </div>
 
-                <a href="{{ route('chat.show', $suitor->id) }}" class="px-3.5 py-1.5 rounded-xl gold-gradient text-white font-bold text-xs shadow-xs hover:opacity-95 transition flex items-center gap-1.5">
-                    <span>💬</span>
-                    <span>Join Chaperone Messaging →</span>
+                <a href="{{ route('chat.show', $suitor->id) }}" class="btn-primary text-xs !min-h-[32px] !px-3">
+                    <span>Enter Room</span>
+                    &rarr;
                 </a>
             </div>
-            @endforeach
+            @empty
+            <div class="p-6 text-center text-xs text-[var(--text-muted)]">
+                No active conversations yet.
+            </div>
+            @endforelse
         </div>
     </div>
 </div>
 @endsection
-
