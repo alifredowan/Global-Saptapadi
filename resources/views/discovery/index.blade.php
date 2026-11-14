@@ -4,12 +4,9 @@
 <div class="space-y-6 max-w-7xl mx-auto">
     
     <!-- Header Card -->
-    <div class="card-ledger p-6 sm:p-8 bg-[var(--bg-surface)] border border-[var(--border-default)]">
+    <div class="heirloom-folio p-6 sm:p-8 bg-[var(--bg-surface)] border border-[var(--border-default)] rounded-[var(--radius-md)]">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[var(--border-subtle)]">
             <div class="space-y-1">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[var(--radius-xs)] bg-[var(--secondary-subtle)] border border-[var(--secondary-border)] text-[var(--secondary-text)] text-[11px] font-semibold uppercase tracking-wider">
-                    <span>Directory</span>
-                </div>
                 <h1 class="font-serif font-bold text-2xl sm:text-3xl text-[var(--text-primary)]">
                     Explore Verified Candidates
                 </h1>
@@ -169,7 +166,7 @@
                 $canViewPhoto = $item['can_view_photos'];
                 $photoUrl = $canViewPhoto ? $candidate->primary_photo_url : $candidate->blurred_photo_url;
             @endphp
-            <article class="card-ledger flex flex-col justify-between overflow-hidden bg-[var(--bg-surface)] group">
+            <article class="heirloom-folio flex flex-col justify-between overflow-hidden bg-[var(--bg-surface)] rounded-[var(--radius-md)] group">
                 <div>
                     <!-- Photo Header & Modesty Note -->
                     <div class="relative h-60 bg-[var(--bg-subtle)] overflow-hidden">
@@ -193,10 +190,10 @@
 
                         <!-- Modesty Photo Shield Indicator -->
                         @if(!$canViewPhoto)
-                        <div class="absolute inset-0 flex flex-col items-center justify-center p-3 text-center bg-[#171312]/50 text-white">
-                            <svg class="w-5 h-5 text-amber-200 mb-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
-                            <span class="text-[11px] font-serif font-bold text-amber-100">Photo privacy</span>
-                            <span class="text-[9px] text-stone-200 mt-0.5 leading-snug">Shared upon mutual interest</span>
+                        <div class="silk-veil absolute inset-0 flex flex-col items-center justify-center p-3 text-center text-[var(--color-ink-darker)]">
+                            <svg class="w-5 h-5 text-[var(--color-accent)] mb-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+                            <span class="text-[11px] font-serif font-bold text-[var(--color-primary)]">Photo Privacy</span>
+                            <span class="text-[9px] text-[var(--text-secondary)] mt-0.5 leading-snug">Shared upon mutual interest</span>
                         </div>
                         @endif
 

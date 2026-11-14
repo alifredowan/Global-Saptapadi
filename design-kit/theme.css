@@ -547,10 +547,55 @@ body {
   line-height: 1.6;
 }
 
+/* Authentic Deckled Paper & Heirloom Invitation Styling */
 .paper-texture {
   background-color: var(--color-bg);
-  background-image: radial-gradient(rgba(139, 30, 45, 0.025) 1px, transparent 0);
-  background-size: 20px 20px;
+  background-image: 
+    radial-gradient(rgba(139, 30, 45, 0.035) 1px, transparent 1px),
+    radial-gradient(rgba(224, 123, 26, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Heirloom Parchment Folio Container */
+.heirloom-folio {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 
+    0 1px 1px rgba(74, 15, 26, 0.04),
+    0 4px 16px -4px rgba(74, 15, 26, 0.08),
+    0 0 0 1px rgba(224, 123, 26, 0.08);
+  position: relative;
+}
+
+.heirloom-folio::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(224, 123, 26, 0.22);
+  pointer-events: none;
+  border-radius: calc(var(--radius-md) - 2px);
+}
+
+/* Sacred Corner Accents */
+.corner-ornament {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  opacity: 0.65;
+  pointer-events: none;
+}
+.corner-ornament-tl { top: 6px; left: 6px; }
+.corner-ornament-tr { top: 6px; right: 6px; transform: scaleX(-1); }
+.corner-ornament-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+.corner-ornament-br { bottom: 6px; right: 6px; transform: scale(-1); }
+
+/* Silk Veil for Photo Privacy */
+.silk-veil {
+  background: linear-gradient(135deg, rgba(253, 235, 214, 0.85) 0%, rgba(248, 233, 235, 0.92) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .font-serif, .font-heading {

@@ -7,15 +7,11 @@
     <div class="relative overflow-hidden rounded-2xl section--dark text-white p-6 sm:p-8 shadow-sm border border-[var(--color-accent)]/30">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-2">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs text-stone-200 text-xs font-medium tracking-wide border border-white/20">
-                    <svg class="w-3.5 h-3.5 text-[var(--color-accent)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-                    <span>Var Portal &bull; Groom Dashboard</span>
-                </div>
                 <h1 class="font-serif font-bold text-2xl sm:text-3xl text-white tracking-tight">
                     Namaste, {{ $user->name }}
                 </h1>
-                <p class="text-xs sm:text-sm text-stone-200 max-w-xl leading-relaxed">
-                    Track candidate inquiries, review astrological compatibility, and manage conversations guided by family trust.
+                <p class="text-xs sm:text-sm text-[#F3E4DD] max-w-xl leading-relaxed">
+                    Var Portal &bull; Track candidate inquiries, review astrological compatibility, and manage conversations guided by family trust.
                 </p>
 
                 <!-- Profile Tags -->
